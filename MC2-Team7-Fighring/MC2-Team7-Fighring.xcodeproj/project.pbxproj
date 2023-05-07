@@ -11,6 +11,9 @@
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
 		3D221BE02A07B26D00501A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDF2A07B26D00501A18 /* Preview Assets.xcassets */; };
+		3D221BED2A07B59900501A18 /* MyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEC2A07B59900501A18 /* MyHome.swift */; };
+		3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEE2A07B5AA00501A18 /* LoverHome.swift */; };
+		3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BF02A07B5F600501A18 /* ResultHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D221BDC2A07B26D00501A18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D221BDF2A07B26D00501A18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3D221BEC2A07B59900501A18 /* MyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHome.swift; sourceTree = "<group>"; };
+		3D221BEE2A07B5AA00501A18 /* LoverHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverHome.swift; sourceTree = "<group>"; };
+		3D221BF02A07B5F600501A18 /* ResultHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */,
-				3D221BDA2A07B26C00501A18 /* ContentView.swift */,
+				3D221BE62A07B37600501A18 /* Views */,
+				3D221BE82A07B3B900501A18 /* Model */,
+				3D221BE72A07B38400501A18 /* Resources */,
 				3D221BDC2A07B26D00501A18 /* Assets.xcassets */,
 				3D221BDE2A07B26D00501A18 /* Preview Content */,
 			);
@@ -65,6 +73,55 @@
 				3D221BDF2A07B26D00501A18 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3D221BE62A07B37600501A18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D221BDA2A07B26C00501A18 /* ContentView.swift */,
+				3D221BE92A07B55900501A18 /* My */,
+				3D221BEA2A07B57200501A18 /* Lover */,
+				3D221BEB2A07B58800501A18 /* Result */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3D221BE72A07B38400501A18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3D221BE82A07B3B900501A18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D221BE92A07B55900501A18 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				3D221BEC2A07B59900501A18 /* MyHome.swift */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		3D221BEA2A07B57200501A18 /* Lover */ = {
+			isa = PBXGroup;
+			children = (
+				3D221BEE2A07B5AA00501A18 /* LoverHome.swift */,
+			);
+			path = Lover;
+			sourceTree = "<group>";
+		};
+		3D221BEB2A07B58800501A18 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				3D221BF02A07B5F600501A18 /* ResultHome.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
+				3D221BED2A07B59900501A18 /* MyHome.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
+				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
