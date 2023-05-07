@@ -2,6 +2,22 @@
 Based on John Bowlby's attachment theory, this app provides one question a day to check each other's attachment types during a relationship. (A total of 36 questions are provided - 36 days)
 <br>
 
+## 📝 코드 컨벤션
+1. **Class / Struct** 정의
+    - Class / Struct의 정의는 UpperCamelCase를 사용합니다.
+    ```swift
+    class FindIdViewModel: ObservableObject { ... }
+    struct FindIdModel: Codable { ... }
+    ```
+2. **변수 및 함수**정의
+    - 변수와 함수의 정의는 lowerCamelCase를 사용합니다.
+    ```swift
+    func getFacilities(userUUID: String) { ... }
+    var facilityName: String = ""
+    ```
+3. **주석**활용
+    - View는 **// - MARK :** 주석을 통해 영역을 구분합니다.
+
 ## 📌 Git Guide
 > Issue -> 브랜치 생성 -> Pull 받은 후 작업 -> Commit -> Pull -> Push -> PR -> Merge
 
