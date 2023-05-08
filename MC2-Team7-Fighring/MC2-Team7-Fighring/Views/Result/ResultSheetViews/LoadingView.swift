@@ -18,6 +18,7 @@ struct LoadingView: View {
             
             ProgressView(value: progressGauge)
                 .padding(.horizontal, 26)
+            
             Text("유형 분석 중...")
                 .font(.caption)
                 .padding(.bottom, 63)
@@ -32,12 +33,13 @@ struct LoadingView: View {
         .onAppear {
             // TODO: 부드러운 효과
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
-                    progressGauge += 0.1
+                if progressGauge >= 1.0 {
+                    timer.invalidate() // Timer 중지
                 }
                 
-                if progressGauge == 1 {
-                    timer.invalidate() // Timer 중지
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
+                    addGauge()
+                    print(progressGauge)
                 }
             }
         }

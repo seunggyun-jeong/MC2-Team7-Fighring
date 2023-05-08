@@ -10,6 +10,15 @@ import SwiftUI
 struct TestMain: View {
     @State private var showOtherType: Bool = false
     
+    // Card Flip
+    @State var backDegree = 0.0
+    @State var frontDegree = -90.0
+    @State var isFlipped = false
+        
+    let width : CGFloat = 200
+    let height : CGFloat = 250
+    let durationAndDelay : CGFloat = 0.3
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -25,15 +34,15 @@ struct TestMain: View {
                 }
                 .padding(.bottom, 15)
                 
-                // 카드
                 ZStack {
-                    Rectangle()
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                        .shadow(radius: 5)
-                    CardView()
+                    // 카드
+                    FrontCardView(degree: $frontDegree)
+                    BackCardView(degree: $backDegree)
                 }
                 .padding(.bottom, 37)
+                .onTapGesture {
+                    flipCard()
+                }
                 
                 NavigationLink("검사하러 가기", destination: TestSheet())
                 
@@ -46,6 +55,26 @@ struct TestMain: View {
             }
         }
     }
+    
+    func flipCard () {
+            isFlipped = !isFlipped
+            if isFlipped {
+                withAnimation(.linear(duration: durationAndDelay)) {
+                    backDegree = 90
+                }
+                withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                    frontDegree = 0
+                }
+            } else {
+                withAnimation(.linear(duration: durationAndDelay)) {
+                    frontDegree = -90
+                }
+                withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                    backDegree = 0
+                }
+            }
+        }
+    
 }
 
 struct TestMain_Previews: PreviewProvider {

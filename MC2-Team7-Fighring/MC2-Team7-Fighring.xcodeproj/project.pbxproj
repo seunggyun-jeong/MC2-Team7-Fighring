@@ -17,10 +17,11 @@
 		3D221C052A0886CF00501A18 /* LockedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C042A0886CF00501A18 /* LockedResult.swift */; };
 		3D221C072A0889BC00501A18 /* MyResultSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C062A0889BC00501A18 /* MyResultSheet.swift */; };
 		3D221C092A088D8400501A18 /* TestMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C082A088D8400501A18 /* TestMain.swift */; };
-		3D221C0B2A08903000501A18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C0A2A08903000501A18 /* CardView.swift */; };
+		3D221C0B2A08903000501A18 /* FrontCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C0A2A08903000501A18 /* FrontCardView.swift */; };
 		3D221C0D2A0895DD00501A18 /* OtherSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C0C2A0895DD00501A18 /* OtherSheet.swift */; };
 		3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C0E2A089ADE00501A18 /* LoadingView.swift */; };
 		3D221C112A089EE700501A18 /* TestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C102A089EE700501A18 /* TestSheet.swift */; };
+		3D221C132A08CC6100501A18 /* BackCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221C122A08CC6100501A18 /* BackCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +36,11 @@
 		3D221C042A0886CF00501A18 /* LockedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedResult.swift; sourceTree = "<group>"; };
 		3D221C062A0889BC00501A18 /* MyResultSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyResultSheet.swift; sourceTree = "<group>"; };
 		3D221C082A088D8400501A18 /* TestMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMain.swift; sourceTree = "<group>"; };
-		3D221C0A2A08903000501A18 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3D221C0A2A08903000501A18 /* FrontCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontCardView.swift; sourceTree = "<group>"; };
 		3D221C0C2A0895DD00501A18 /* OtherSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSheet.swift; sourceTree = "<group>"; };
 		3D221C0E2A089ADE00501A18 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3D221C102A089EE700501A18 /* TestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSheet.swift; sourceTree = "<group>"; };
+		3D221C122A08CC6100501A18 /* BackCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,15 +136,32 @@
 			isa = PBXGroup;
 			children = (
 				3D221BF02A07B5F600501A18 /* ResultHome.swift */,
-				3D221C042A0886CF00501A18 /* LockedResult.swift */,
-				3D221C062A0889BC00501A18 /* MyResultSheet.swift */,
-				3D221C082A088D8400501A18 /* TestMain.swift */,
-				3D221C0A2A08903000501A18 /* CardView.swift */,
-				3D221C0C2A0895DD00501A18 /* OtherSheet.swift */,
-				3D221C0E2A089ADE00501A18 /* LoadingView.swift */,
-				3D221C102A089EE700501A18 /* TestSheet.swift */,
+				3D221C152A08CCEE00501A18 /* ResultSheetViews */,
+				3D221C142A08CCC800501A18 /* TestViews */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		3D221C142A08CCC800501A18 /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D221C082A088D8400501A18 /* TestMain.swift */,
+				3D221C0A2A08903000501A18 /* FrontCardView.swift */,
+				3D221C122A08CC6100501A18 /* BackCardView.swift */,
+				3D221C102A089EE700501A18 /* TestSheet.swift */,
+				3D221C0C2A0895DD00501A18 /* OtherSheet.swift */,
+			);
+			path = TestViews;
+			sourceTree = "<group>";
+		};
+		3D221C152A08CCEE00501A18 /* ResultSheetViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D221C042A0886CF00501A18 /* LockedResult.swift */,
+				3D221C0E2A089ADE00501A18 /* LoadingView.swift */,
+				3D221C062A0889BC00501A18 /* MyResultSheet.swift */,
+			);
+			path = ResultSheetViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,7 +236,7 @@
 			files = (
 				3D221C0D2A0895DD00501A18 /* OtherSheet.swift in Sources */,
 				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
-				3D221C0B2A08903000501A18 /* CardView.swift in Sources */,
+				3D221C0B2A08903000501A18 /* FrontCardView.swift in Sources */,
 				3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */,
 				3D221BED2A07B59900501A18 /* MyHome.swift in Sources */,
 				3D221C052A0886CF00501A18 /* LockedResult.swift in Sources */,
@@ -226,6 +245,7 @@
 				3D221C072A0889BC00501A18 /* MyResultSheet.swift in Sources */,
 				3D221C092A088D8400501A18 /* TestMain.swift in Sources */,
 				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
+				3D221C132A08CC6100501A18 /* BackCardView.swift in Sources */,
 				3D221C112A089EE700501A18 /* TestSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
