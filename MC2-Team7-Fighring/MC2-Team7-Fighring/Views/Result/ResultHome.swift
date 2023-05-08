@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ResultHome: View {
+    @State private var isLocked: Bool = false
+    @State private var isConfirm: Bool = false
+    @State private var isLoadingDone: Bool = false
+    @State private var is36DaysLater: Bool = false
+    
     var body: some View {
-        Text("ResultHomeView")
+        if isConfirm {
+            if isLoadingDone {
+                if is36DaysLater {
+                    TestMain()
+                } else {
+                    MyResultSheet(is36DaysLater: $is36DaysLater)
+                }
+            } else {
+                LoadingView(isLoadingDone: $isLoadingDone)
+            }
+        } else {
+            LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
+        }
     }
 }
 
