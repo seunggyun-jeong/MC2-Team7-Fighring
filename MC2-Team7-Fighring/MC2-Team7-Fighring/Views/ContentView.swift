@@ -20,14 +20,13 @@ struct ContentView: View {
     }
     
     var body: some View {
-<<<<<<< HEAD
         if isFirst {
             OnBoardingView0(isFirstLaunch: $isFirst)
                 .edgesIgnoringSafeArea(.all)
             
         } else {
             TabView(selection: $selection) {
-                MyHome()
+                MainView()
                     .tabItem {
                         Label("My", systemImage: "person.circle.fill")
                     }
@@ -44,26 +43,6 @@ struct ContentView: View {
                         Label("Result", systemImage: "book.circle.fill")
                     }
             }
-=======
-        TabView(selection: $selection) {
-            MainView()
-                .tabItem {
-                    Label("My", systemImage: "person.circle.fill")
-                }
-                .tag(Tab.my)
-            
-            LoverHome()
-                .tabItem {
-                    Label("Lover", systemImage: "heart.circle")
-                }
-                .tag(Tab.lover)
-            
-            ResultHome()
-                .tabItem {
-                    Label("Result", systemImage: "book.circle.fill")
-                }
-                .tag(Tab.result)
->>>>>>> feature
         }
     }
 }
