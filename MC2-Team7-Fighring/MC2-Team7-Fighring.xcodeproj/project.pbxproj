@@ -31,6 +31,9 @@
 		CDAE7E432A08914A00B1D2C3 /* OnBoardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E422A08914A00B1D2C3 /* OnBoardingView2.swift */; };
 		CDAE7E452A08A50800B1D2C3 /* OnBoardingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E442A08A50800B1D2C3 /* OnBoardingNameView.swift */; };
 		CDAE7E4B2A08D68400B1D2C3 /* OnBoardingView0.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */; };
+		CDAE7E4D2A094C1200B1D2C3 /* EmotionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */; };
+		CDAE7E4F2A0963A200B1D2C3 /* EmotionCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */; };
+		CDAE7E512A0963E800B1D2C3 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E502A0963E800B1D2C3 /* Emotion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		CDAE7E422A08914A00B1D2C3 /* OnBoardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView2.swift; sourceTree = "<group>"; };
 		CDAE7E442A08A50800B1D2C3 /* OnBoardingNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingNameView.swift; sourceTree = "<group>"; };
 		CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView0.swift; sourceTree = "<group>"; };
+		CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectView.swift; sourceTree = "<group>"; };
+		CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCarouselView.swift; sourceTree = "<group>"; };
+		CDAE7E502A0963E800B1D2C3 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Emotion.swift; path = "MC2-Team7-Fighring/Views/My/Emotion.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 		3D221BE82A07B3B900501A18 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
 				AEA059E12A08CE4E00DEE144 /* LetterView.swift */,
 				6C11F0BE2A08A107004D60A0 /* DailyTest.swift */,
+				CDAE7E522A09654E00B1D2C3 /* EmotionSelectionViews */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -197,6 +205,15 @@
 				CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */,
 			);
 			path = OnBoardingView;
+			sourceTree = "<group>";
+		};
+		CDAE7E522A09654E00B1D2C3 /* EmotionSelectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */,
+				CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */,
+			);
+			path = EmotionSelectionViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,11 +297,13 @@
 				AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */,
+				CDAE7E4F2A0963A200B1D2C3 /* EmotionCarouselView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
 				AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */,
 				3D221C0B2A08903000501A18 /* FrontCardView.swift in Sources */,
 				3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */,
 				3D221C052A0886CF00501A18 /* LockedResult.swift in Sources */,
+				CDAE7E4D2A094C1200B1D2C3 /* EmotionSelectView.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
@@ -294,6 +313,7 @@
 				CDAE7E3F2A088E1700B1D2C3 /* OnBoardingMainView.swift in Sources */,
 				3D221C132A08CC6100501A18 /* BackCardView.swift in Sources */,
 				3D221C112A089EE700501A18 /* TestSheet.swift in Sources */,
+				CDAE7E512A0963E800B1D2C3 /* Emotion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
