@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ResultHome: View {
+    @State private var isLocked: Bool = false
+    @State private var isConfirm: Bool = false
+    
     var body: some View {
-        Text("ResultHomeView")
+        if isConfirm {
+            LoadingView()
+        } else {
+            LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
+        }
     }
 }
 
