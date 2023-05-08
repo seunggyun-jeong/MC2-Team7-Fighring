@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            MyHome()
+            MainView()
                 .tabItem {
                     Label("My", systemImage: "person.circle.fill")
                 }
