@@ -11,9 +11,12 @@
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
 		3D221BE02A07B26D00501A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDF2A07B26D00501A18 /* Preview Assets.xcassets */; };
-		3D221BED2A07B59900501A18 /* MyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEC2A07B59900501A18 /* MyHome.swift */; };
 		3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEE2A07B5AA00501A18 /* LoverHome.swift */; };
 		3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BF02A07B5F600501A18 /* ResultHome.swift */; };
+		AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DB2A088E7600DEE144 /* MainView.swift */; };
+		AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DD2A08900F00DEE144 /* CouponView.swift */; };
+		AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DF2A08A1C300DEE144 /* LockView.swift */; };
+		AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059E12A08CE4E00DEE144 /* LetterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,9 +25,12 @@
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D221BDC2A07B26D00501A18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D221BDF2A07B26D00501A18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3D221BEC2A07B59900501A18 /* MyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHome.swift; sourceTree = "<group>"; };
 		3D221BEE2A07B5AA00501A18 /* LoverHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverHome.swift; sourceTree = "<group>"; };
 		3D221BF02A07B5F600501A18 /* ResultHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHome.swift; sourceTree = "<group>"; };
+		AEA059DB2A088E7600DEE144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AEA059DD2A08900F00DEE144 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		AEA059DF2A08A1C300DEE144 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
+		AEA059E12A08CE4E00DEE144 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,10 @@
 		3D221BE92A07B55900501A18 /* My */ = {
 			isa = PBXGroup;
 			children = (
-				3D221BEC2A07B59900501A18 /* MyHome.swift */,
+				AEA059DB2A088E7600DEE144 /* MainView.swift */,
+				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
+				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
+				AEA059E12A08CE4E00DEE144 /* LetterView.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -195,9 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
-				3D221BED2A07B59900501A18 /* MyHome.swift in Sources */,
+				AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */,
+				AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
+				AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
+				AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */,
 				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
