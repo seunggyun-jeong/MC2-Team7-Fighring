@@ -17,7 +17,7 @@ struct TestMain: View {
         
     let width : CGFloat = 200
     let height : CGFloat = 250
-    let durationAndDelay : CGFloat = 0.3
+    let durationAndDelay : CGFloat = 0.1
     
     var body: some View {
         NavigationStack {
@@ -45,6 +45,7 @@ struct TestMain: View {
                 }
                 
                 NavigationLink("검사하러 가기", destination: TestSheet())
+                    .padding(.bottom, 11)
                 
                 Spacer()
             }

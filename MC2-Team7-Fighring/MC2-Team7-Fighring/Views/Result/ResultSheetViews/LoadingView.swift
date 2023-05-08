@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     @State var progressGauge: Float = 0.0
+    @Binding var isLoadingDone: Bool
     
     var body: some View {
         VStack {
@@ -35,6 +36,7 @@ struct LoadingView: View {
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 if progressGauge >= 1.0 {
                     timer.invalidate() // Timer 중지
+                    isLoadingDone.toggle()
                 }
                 
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
@@ -46,12 +48,12 @@ struct LoadingView: View {
     }
     
     func addGauge() {
-        progressGauge += 0.1
+        progressGauge += 0.2
     }
 }
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView()
+        LoadingView(isLoadingDone: .constant(false))
     }
 }

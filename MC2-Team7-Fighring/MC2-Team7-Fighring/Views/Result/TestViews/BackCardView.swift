@@ -23,6 +23,7 @@ struct BackCardView: View {
                 Text("\"유형 이름\"")
                     .font(.title)
                     .bold()
+                    .padding(.top, 32)
                 
                 HStack {
                     ForEach(hashTags, id: \.self) { tag in
