@@ -34,6 +34,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Result", systemImage: "book.circle.fill")
                 }
+                .tag(Tab.result)
         }
     }
 }
