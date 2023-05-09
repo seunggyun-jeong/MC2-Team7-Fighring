@@ -15,15 +15,15 @@ struct EmotionCarouselView: View {
     var body: some View {
         VStack {
             ZStack {
-                Circle()
-                    .frame(width: 270, height: 270)
-                    .foregroundColor(.white)
-                    .background(
-                        Circle()
-                            .stroke(.gray, lineWidth: 0.5)
-                    )
-                    .shadow(color: .black, radius: 4)
-                    .padding(.bottom, 100)
+//                Circle()
+//                    .frame(width: 270, height: 270)
+//                    .foregroundColor(.white)
+//                    .background(
+//                        Circle()
+//                            .stroke(.gray, lineWidth: 0.5)
+//                    )
+//                    .shadow(color: .black, radius: 4)
+//                    .padding(.bottom, 100)
                 
                 ZStack {
                     ForEach(emotionStorage.items) { item in
