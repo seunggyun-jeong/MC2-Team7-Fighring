@@ -29,7 +29,7 @@ struct CouponView: View {
                         EmotionSelectView()
                     } label: {
                         ZStack{
-                            Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
+                            Image("whiteMain")
                                 .cornerRadius(15)
                                 .frame(width: 150, height: 150)
                             Text("Day \(day)")
