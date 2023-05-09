@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
+    
+    
+    
     @State private var selection: Tab = .my
 
     // 앱을 첫 실행할 때만 온보딩 화면 띄우기 위한 변수
@@ -21,12 +28,13 @@ struct ContentView: View {
     
     var body: some View {
         if isFirst {
+            
             OnBoardingView0(isFirstLaunch: $isFirst)
                 .edgesIgnoringSafeArea(.all)
             
         } else {
             TabView(selection: $selection) {
-                MainView()
+                MainView(questions: question)
                     .tabItem {
                         Label("My", systemImage: "person.circle.fill")
                     }
