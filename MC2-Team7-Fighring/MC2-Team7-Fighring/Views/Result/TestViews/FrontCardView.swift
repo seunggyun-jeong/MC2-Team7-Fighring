@@ -25,7 +25,7 @@ struct FrontCardView: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                     
-                    Text(quotes[attachmentType.rawValue].randomElement()!)
+                    Text(TypeData.quotes[attachmentType.rawValue].randomElement()!)
                 }
                 .padding(.horizontal, 22)
                 .padding(.top, 23)
@@ -37,7 +37,7 @@ struct FrontCardView: View {
                     .padding(.bottom, 66)
                 
                 HStack {
-                    ForEach(tags[attachmentType.rawValue], id: \.self) { tag in
+                    ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
                         Text("#\(tag)")
                     }
                 }

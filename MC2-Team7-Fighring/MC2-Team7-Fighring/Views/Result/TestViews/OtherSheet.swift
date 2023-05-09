@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OtherSheet: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var selection: typeTab = .type1
     
     enum typeTab {
@@ -24,7 +25,7 @@ struct OtherSheet: View {
                     .bold()
                 Spacer()
                 Button {
-                    // 닫기 기능
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                 }
