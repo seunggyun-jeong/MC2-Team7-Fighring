@@ -36,7 +36,7 @@ struct TestMain: View {
                 
                 ZStack {
                     // 카드
-                    FrontCardView(degree: $frontDegree)
+                    FrontCardView(degree: $frontDegree, attachmentType: .anxious)
                     BackCardView(degree: $backDegree)
                 }
                 .padding(.bottom, 37)

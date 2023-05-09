@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FrontCardView: View {
     @Binding var degree : Double
+    var attachmentType: AttachmentType
     var hashTags: [String] = ["사랑", "바보", "멋쟁이", "애교쟁이"]
     
     var body: some View {
@@ -25,7 +26,7 @@ struct FrontCardView: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                     
-                    Text("\"너에게 더 좋은 사람이 되고 싶어!\"")
+                    Text(quotes[attachmentType.rawValue].randomElement()!)
                 }
                 .padding(.horizontal, 22)
                 .padding(.top, 23)
@@ -45,11 +46,14 @@ struct FrontCardView: View {
             }
         }
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+        .onAppear {
+            
+        }
     }
 }
 
 struct FrontCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FrontCardView(degree: .constant(0.0))
+        FrontCardView(degree: .constant(0.0), attachmentType: .anxious)
     }
 }
