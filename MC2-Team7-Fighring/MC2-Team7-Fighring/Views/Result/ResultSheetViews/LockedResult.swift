@@ -14,7 +14,7 @@ struct LockedResult: View {
     
     var body: some View {
         VStack {
-            Circle()
+            Image(isLocked ? "notFIN" : "FIN")
                 .padding(.bottom, 60)
                 .frame(width: 236, height: 236)
             Text(isLocked ? "아직 여정이 끝나지 않았어요." : "모든 여정을 마쳤어요!")
@@ -39,6 +39,6 @@ struct LockedResult: View {
 
 struct lockedResult_Previews: PreviewProvider {
     static var previews: some View {
-        LockedResult(isLocked: false, isConfirm: .constant(true))
+        LockedResult(isLocked: true, isConfirm: .constant(true))
     }
 }
