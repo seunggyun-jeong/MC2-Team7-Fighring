@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		114603692A08888D00BCA7F2 /* LoverDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114603682A08888D00BCA7F2 /* LoverDetail.swift */; };
+		1146036D2A09DFA900BCA7F2 /* LoverDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */; };
 		3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */; };
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
@@ -15,11 +15,10 @@
 		3D221BED2A07B59900501A18 /* MyHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEC2A07B59900501A18 /* MyHome.swift */; };
 		3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BEE2A07B5AA00501A18 /* LoverHome.swift */; };
 		3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BF02A07B5F600501A18 /* ResultHome.swift */; };
-		6C11F0BD2A088D4C004D60A0 /* LoverDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BC2A088D4C004D60A0 /* LoverDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		114603682A08888D00BCA7F2 /* LoverDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
+		1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
 		3D221BD52A07B26C00501A18 /* MC2-Team7-Fighring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team7-Fighring.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team7_FighringApp.swift; sourceTree = "<group>"; };
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,7 +27,6 @@
 		3D221BEC2A07B59900501A18 /* MyHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHome.swift; sourceTree = "<group>"; };
 		3D221BEE2A07B5AA00501A18 /* LoverHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverHome.swift; sourceTree = "<group>"; };
 		3D221BF02A07B5F600501A18 /* ResultHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHome.swift; sourceTree = "<group>"; };
-		6C11F0BC2A088D4C004D60A0 /* LoverDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +113,8 @@
 		3D221BEA2A07B57200501A18 /* Lover */ = {
 			isa = PBXGroup;
 			children = (
-				6C11F0BC2A088D4C004D60A0 /* LoverDetail.swift */,
 				3D221BEE2A07B5AA00501A18 /* LoverHome.swift */,
-				114603682A08888D00BCA7F2 /* LoverDetail.swift */,
+				1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */,
 			);
 			path = Lover;
 			sourceTree = "<group>";
@@ -205,8 +202,7 @@
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
 				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
-				114603692A08888D00BCA7F2 /* LoverDetail.swift in Sources */,
-				6C11F0BD2A088D4C004D60A0 /* LoverDetail.swift in Sources */,
+				1146036D2A09DFA900BCA7F2 /* LoverDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
