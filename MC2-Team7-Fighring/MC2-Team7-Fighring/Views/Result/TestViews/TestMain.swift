@@ -11,8 +11,8 @@ struct TestMain: View {
     @State private var showOtherType: Bool = false
     
     // Card Flip
-    @State var backDegree = 0.0
-    @State var frontDegree = -90.0
+    @State var backDegree = 90.0
+    @State var frontDegree = 0.0
     @State var isFlipped = false
         
     let width : CGFloat = 200
@@ -36,8 +36,8 @@ struct TestMain: View {
                 
                 ZStack {
                     // 카드
-                    FrontCardView(degree: $frontDegree)
-                    BackCardView(degree: $backDegree)
+                    FrontCardView(degree: $frontDegree, attachmentType: .secure)
+                    BackCardView(degree: $backDegree, attachmentType: .secure)
                 }
                 .padding(.bottom, 37)
                 .onTapGesture {
