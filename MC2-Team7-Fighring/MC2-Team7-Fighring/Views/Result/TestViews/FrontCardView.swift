@@ -10,7 +10,6 @@ import SwiftUI
 struct FrontCardView: View {
     @Binding var degree : Double
     var attachmentType: AttachmentType
-    var hashTags: [String] = ["사랑", "바보", "멋쟁이", "애교쟁이"]
     
     var body: some View {
         ZStack {
@@ -38,7 +37,7 @@ struct FrontCardView: View {
                     .padding(.bottom, 66)
                 
                 HStack {
-                    ForEach(hashTags, id: \.self) { tag in
+                    ForEach(tags[attachmentType.rawValue], id: \.self) { tag in
                         Text("#\(tag)")
                     }
                 }
@@ -54,6 +53,6 @@ struct FrontCardView: View {
 
 struct FrontCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FrontCardView(degree: .constant(0.0), attachmentType: .anxious)
+        FrontCardView(degree: .constant(0.0), attachmentType: .secure)
     }
 }
