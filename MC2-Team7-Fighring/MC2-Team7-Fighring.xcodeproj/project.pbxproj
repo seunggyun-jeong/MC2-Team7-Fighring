@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1146036D2A09DFA900BCA7F2 /* LoverDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */; };
 		3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */; };
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
 		3D221BD52A07B26C00501A18 /* MC2-Team7-Fighring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team7-Fighring.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team7_FighringApp.swift; sourceTree = "<group>"; };
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				3D221BEE2A07B5AA00501A18 /* LoverHome.swift */,
+				1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */,
 			);
 			path = Lover;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				3D221C072A0889BC00501A18 /* MyResultSheet.swift in Sources */,
 				3D221C092A088D8400501A18 /* TestMain.swift in Sources */,
 				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
+				1146036D2A09DFA900BCA7F2 /* LoverDetail.swift in Sources */,
 				CDAE7E3F2A088E1700B1D2C3 /* OnBoardingMainView.swift in Sources */,
 				3D221C132A08CC6100501A18 /* BackCardView.swift in Sources */,
 				3D221C112A089EE700501A18 /* TestSheet.swift in Sources */,
@@ -442,7 +446,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team7-Fighring/Preview Content\"";
-				DEVELOPMENT_TEAM = G7X65ZSJ3J;
+				DEVELOPMENT_TEAM = BKVJ4G5G3J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -471,7 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team7-Fighring/Preview Content\"";
-				DEVELOPMENT_TEAM = G7X65ZSJ3J;
+				DEVELOPMENT_TEAM = BKVJ4G5G3J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
