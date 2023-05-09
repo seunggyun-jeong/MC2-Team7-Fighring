@@ -29,7 +29,7 @@
 		AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059E12A08CE4E00DEE144 /* LetterView.swift */; };
 		AEF2EDD42A09E8F500C3CF98 /* QuestionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEF2EDD22A09E8F500C3CF98 /* QuestionModel.xcdatamodeld */; };
 		AEF2EDD62A09EA0D00C3CF98 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF2EDD52A09EA0D00C3CF98 /* DataController.swift */; };
-		CD8CE93F2A0A79DC00E46FCE /* CodeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CE93E2A0A79DC00E46FCE /* CodeShare.swift */; };
+		CD8CE9412A0A988000E46FCE /* CodeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CE9402A0A988000E46FCE /* CodeShare.swift */; };
 		CDAE7E3F2A088E1700B1D2C3 /* OnBoardingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E3E2A088E1700B1D2C3 /* OnBoardingMainView.swift */; };
 		CDAE7E412A08914400B1D2C3 /* OnBoardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E402A08914400B1D2C3 /* OnBoardingView1.swift */; };
 		CDAE7E432A08914A00B1D2C3 /* OnBoardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E422A08914A00B1D2C3 /* OnBoardingView2.swift */; };
@@ -64,7 +64,7 @@
 		AEA059E12A08CE4E00DEE144 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
 		AEF2EDD32A09E8F500C3CF98 /* QuestionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuestionModel.xcdatamodel; sourceTree = "<group>"; };
 		AEF2EDD52A09EA0D00C3CF98 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		CD8CE93E2A0A79DC00E46FCE /* CodeShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodeShare.swift; path = "../../../../../../../.Trash/MC2-Team7-Fighring/MC2-Team7-Fighring/MC2-Team7-Fighring/Views/My/CodeShare.swift"; sourceTree = "<group>"; };
+		CD8CE9402A0A988000E46FCE /* CodeShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeShare.swift; sourceTree = "<group>"; };
 		CDAE7E3E2A088E1700B1D2C3 /* OnBoardingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingMainView.swift; sourceTree = "<group>"; };
 		CDAE7E402A08914400B1D2C3 /* OnBoardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView1.swift; sourceTree = "<group>"; };
 		CDAE7E422A08914A00B1D2C3 /* OnBoardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView2.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				AEA059E12A08CE4E00DEE144 /* LetterView.swift */,
-				CD8CE93D2A0A71EC00E46FCE /* ShareViews */,
+				CD8CE9402A0A988000E46FCE /* CodeShare.swift */,
 				AEA059DB2A088E7600DEE144 /* MainView.swift */,
 				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
@@ -213,14 +213,6 @@
 				AEF2EDD52A09EA0D00C3CF98 /* DataController.swift */,
 			);
 			path = DataModel;
-			sourceTree = "<group>";
-		};
-		CD8CE93D2A0A71EC00E46FCE /* ShareViews */ = {
-			isa = PBXGroup;
-			children = (
-				CD8CE93E2A0A79DC00E46FCE /* CodeShare.swift */,
-			);
-			path = ShareViews;
 			sourceTree = "<group>";
 		};
 		CDAE7E3D2A088BED00B1D2C3 /* OnBoardingView */ = {
@@ -318,10 +310,10 @@
 				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
 				CDAE7E452A08A50800B1D2C3 /* OnBoardingNameView.swift in Sources */,
 				CDAE7E4B2A08D68400B1D2C3 /* OnBoardingView0.swift in Sources */,
+				CD8CE9412A0A988000E46FCE /* CodeShare.swift in Sources */,
 				CDAE7E412A08914400B1D2C3 /* OnBoardingView1.swift in Sources */,
 				3D221C0D2A0895DD00501A18 /* OtherSheet.swift in Sources */,
 				AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */,
-				CD8CE93F2A0A79DC00E46FCE /* CodeShare.swift in Sources */,
 				AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */,
