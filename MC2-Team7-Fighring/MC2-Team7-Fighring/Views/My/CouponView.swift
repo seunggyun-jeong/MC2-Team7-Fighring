@@ -26,7 +26,7 @@ struct CouponView: View {
                 ForEach(days, id: \.self) { day in
                     
                     NavigationLink {
-                        LoverHome()
+                        EmotionSelectView()
                     } label: {
                         ZStack{
                             Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
