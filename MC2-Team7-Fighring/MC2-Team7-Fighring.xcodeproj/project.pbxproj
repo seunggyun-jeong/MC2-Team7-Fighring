@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		114603692A08888D00BCA7F2 /* LoverDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114603682A08888D00BCA7F2 /* LoverDetail.swift */; };
 		3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */; };
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		114603682A08888D00BCA7F2 /* LoverDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
 		3D221BD52A07B26C00501A18 /* MC2-Team7-Fighring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team7-Fighring.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team7_FighringApp.swift; sourceTree = "<group>"; };
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				6C11F0BC2A088D4C004D60A0 /* LoverDetail.swift */,
 				3D221BEE2A07B5AA00501A18 /* LoverHome.swift */,
+				114603682A08888D00BCA7F2 /* LoverDetail.swift */,
 			);
 			path = Lover;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
 				3D221BEF2A07B5AA00501A18 /* LoverHome.swift in Sources */,
+				114603692A08888D00BCA7F2 /* LoverDetail.swift in Sources */,
 				6C11F0BD2A088D4C004D60A0 /* LoverDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +335,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team7-Fighring/Preview Content\"";
-				DEVELOPMENT_TEAM = G7X65ZSJ3J;
+				DEVELOPMENT_TEAM = BKVJ4G5G3J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -360,7 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC2-Team7-Fighring/Preview Content\"";
-				DEVELOPMENT_TEAM = G7X65ZSJ3J;
+				DEVELOPMENT_TEAM = BKVJ4G5G3J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
