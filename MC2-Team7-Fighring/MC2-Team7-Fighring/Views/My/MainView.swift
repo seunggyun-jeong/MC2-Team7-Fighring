@@ -48,9 +48,6 @@ struct MainView: View {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
-    
-    
-
 }
 
 //struct MainView_Previews: PreviewProvider {
