@@ -62,7 +62,7 @@ struct EmotionCarouselView: View {
                 
             }
             
-            NavigationLink(destination: DailyTest(questionData: questionData), label: {
+            NavigationLink(destination: DailyTest(questionData: questionData, userEmotion: 0), label: {
                 
                 Text("선택완료")
                     .font(.body.bold())
