@@ -28,10 +28,7 @@ struct ContentView: View {
     
     var body: some View {
         if isFirst {
-            
             OnBoardingView0(isFirstLaunch: $isFirst)
-                .edgesIgnoringSafeArea(.all)
-            
         } else {
             TabView(selection: $selection) {
                 MainView(questions: question)

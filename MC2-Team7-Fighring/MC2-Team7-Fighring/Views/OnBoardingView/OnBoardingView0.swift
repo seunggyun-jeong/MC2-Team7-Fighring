@@ -34,7 +34,6 @@ struct OnBoardingView0: View {
         }
         .fullScreenCover(isPresented: $isNextViewPresented) {
             OnBoardingMainView(isFirstLaunch: $isFirstLaunch)
-                .edgesIgnoringSafeArea(.all)
         }
     }
 }
