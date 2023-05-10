@@ -21,17 +21,18 @@ struct CouponView: View {
     
     
     var body: some View {
+    
         VStack{
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) {  question in
-                    NavigationLink (destination: EmotionSelectView()){
-                        Button {
-                            question.isSolved.toggle()
-                            isLock = question.isSolved
-                            DataController().save(context: managedObjectContext)
-                            count = countSolved(questions: questions)
-                        }
-                    label: {
+                    NavigationLink (destination: EmotionSelectView(questionData: question)){
+                        //                        Button {
+                        //                            question.isSolved.toggle()
+                        //                            isLock = question.isSolved
+                        //                            DataController().save(context: managedObjectContext)
+                        //                            count = countSolved(questions: questions)
+                        //                        }
+                        //                    label: {
                         VStack{
                             Image(question.isSolved ? "greenMain" : "whiteMain")
                                 .frame(width: 150, height: 150)
@@ -39,13 +40,13 @@ struct CouponView: View {
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
                                 .padding(.zero)
+                            // }
+                            
                         }
-                        
-                    }
                     }
                 }
-//                .sheet(isPresented: $isLock){
-//                    LockView()}
+                //                .sheet(isPresented: $isLock){
+                //                    LockView()}
             }
             .onAppear{
                 count = countSolved(questions: questions)
@@ -66,11 +67,11 @@ struct CouponView: View {
                 Text(completeSix ? "공유하기" : "\(count)/6")
             }
             .disabled(!completeSix)
-
+            
         }
-        .sheet(isPresented: $shareActivated) {
-            LetterView()
-        }
+        //        .sheet(isPresented: $shareActivated) {
+        //            LetterView()
+        //        }
     }
     
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
@@ -80,7 +81,7 @@ struct CouponView: View {
                 count = 6
             }
             else if question.isSolved == true{
-                 count = count + 1
+                count = count + 1
             }
         }
         return count

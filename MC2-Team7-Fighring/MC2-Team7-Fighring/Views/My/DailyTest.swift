@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct DailyTest: View {
+    
+    var questionData: FetchedResults<Question>.Element
+    
+    @StateObject var queList = QuestionList()
+    
     @State var loverName: String = "❤️"
-    @State var question: String = "Q1. 나는 (❤️)에게 나의 마음을\n 표현하는걸 머뭇거리게 돼.. "
-    @State var day = "Day 1"
     @State var click = false
     @State var clicked = 0
     @State var reason: String = ""
     
     var body: some View {
         VStack(alignment: .center){
-            Text(day)
+            Text("Day \(Int(questionData.questionNum))")
                 .font(.system(size: 34))
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
                 .bold()
             
-            Text("\(question)")
+            Text("\(queList.questionList[Int(questionData.questionNum)-1])")
                 .font(.system(size: 25))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
@@ -107,8 +110,8 @@ struct DailyTest: View {
     }
 }
 
-struct DailyTest_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyTest()
-    }
-}
+//struct DailyTest_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DailyTest()
+//    }
+//}
