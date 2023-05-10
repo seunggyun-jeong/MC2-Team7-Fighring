@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DailyTest: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var questionData: FetchedResults<Question>.Element
-    
-    @StateObject var queList = QuestionList()
+    var userEmotion: Int
     
     @State var loverName: String = "❤️"
     @State var click = false
@@ -25,28 +25,30 @@ struct DailyTest: View {
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
                 .bold()
             
-            Text("\(queList.questionList[Int(questionData.questionNum)-1])")
+            Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
                 .font(.system(size: 25))
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
+                .frame(alignment: .center)
+                .padding()
+            // .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
             
             HStack(spacing: 18){
-                ForEach(0 ..< 5){ index in
+                ForEach(1 ..< 6){ index in
                     Button(action:{
                         click = true
                         clicked = index
+                        
                     }){
                         if index == clicked {
+                            // 하트 마크
                             ZStack{
                                 Circle()
                                     .frame(width: 45, height: 45)
                                     .foregroundColor(click ? .pink: .white)
                                     .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                                if(click){
-                                    Image(systemName: "heart.fill")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 24))
-                                }
+                                
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 24))
                             }
                         }
                         else{
@@ -74,35 +76,41 @@ struct DailyTest: View {
             }
             .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 66, trailing: 0))
+            
             ZStack(alignment: .topLeading){
-                TextEditor(text: $reason)
+                TextField("이유에 대해 생각해봐요!", text: $reason)
                     .font(.system(size: 17))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .scrollContentBackground(.hidden)
                     .padding(EdgeInsets(top: 20, leading: 21, bottom: 0, trailing: 0))
-
-                if reason.isEmpty {
-                    Text("이유에 대해 생각해봐요!")
-                        .foregroundColor(.gray)
-                        .padding(EdgeInsets(top: 50, leading: 84, bottom: 0, trailing: 0))
-                }
+                
             }
             .frame(width: 336, height: 124, alignment: .top)
             .background(.gray.opacity(0.2))
             .cornerRadius(10)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 69, trailing: 0))
             
-            Button(action: {print("hi")}){
-                ZStack{
-                    Rectangle()
-                        .frame(width: 99, height: 51)
-                        .cornerRadius(5)
-                        .foregroundColor(.gray)
-                    Text("저장하기")
-                        .foregroundColor(.white)
-                        .font(.system(size: 17))
-                }
-            }
+            Button {
+                DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
+                
+                
+            } label: {
+                
+                Text("저장하기")
+                    .foregroundColor(.white)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 15)
+                    .background(
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(reason.isEmpty || clicked == 0 ? .gray : .blue)
+                    )
+                    .font(.system(size: 17))
+                
+                
+            }.disabled(reason.isEmpty || clicked == 0)
+            
+            
+            
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -111,7 +119,11 @@ struct DailyTest: View {
 }
 
 //struct DailyTest_Previews: PreviewProvider {
+//    @Environment(\.managedObjectContext) var managedObjectContext
+//
+//    var questions: FetchedResults<Question>.Element
+//
 //    static var previews: some View {
-//        DailyTest()
+//        DailyTest(questionData: questions)
 //    }
 //}

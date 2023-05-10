@@ -27,8 +27,7 @@ class DataController: ObservableObject{
         }
     }
     
-    func answerQuestion(questionAnswer: Int32, questionNum: Int32, userReason: String, userEmotion: Int32, context: NSManagedObjectContext){
-        let question = Question(context: context)
+    func answerQuestion(question: Question, questionAnswer: Int32, questionNum: Int32, userReason: String, userEmotion: Int32, context: NSManagedObjectContext){
         
         question.clearDate = Date()
         question.isSolved = true
