@@ -11,6 +11,8 @@ struct DailyTest: View {
     @State var loverName: String = "❤️"
     @State var question: String = "Q1. 나는 (❤️)에게 나의 마음을\n 표현하는걸 머뭇거리게 돼.. "
     @State var day = "Day 1"
+    @State var click = false
+    @State var clicked = 0
     @State var reason: String = ""
     
     var body: some View {
@@ -25,53 +27,67 @@ struct DailyTest: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
             
-            HStack(spacing: 13){
-                VStack{
-                    Circle()
-                        .frame(width: 66.68, height: 66.68)
-                        .foregroundColor(.pink)
-                        .overlay(Circle().stroke())
-                    Text("그렇지 않다")
-                }
-                VStack{
-                    Circle()
-                        .frame(width: 47.47, height: 47.47)
-                        .foregroundColor(.white)
-                        .overlay(Circle().stroke())
-                    Text(" ")
-                }
-                VStack{
-                    Circle()
-                        .frame(width: 39.55, height: 39.55)
-                        .foregroundColor(.white)
-                        .overlay(Circle().stroke())
-                    Text(" ")
-                }
-                VStack{
-                    Circle()
-                        .frame(width: 47.47, height: 47.47)
-                        .foregroundColor(.white)
-                        .overlay(Circle().stroke())
-                    Text(" ")
-                }
-                VStack{
-                    Circle()
-                        .frame(width: 66.68, height: 66.68)
-                        .foregroundColor(.green)
-                        .overlay(Circle().stroke())
-                    Text("그렇다")
+            HStack(spacing: 18){
+                ForEach(0 ..< 5){ index in
+                    Button(action:{
+                        click = true
+                        clicked = index
+                    }){
+                        if index == clicked {
+                            ZStack{
+                                Circle()
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(click ? .pink: .white)
+                                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                                if(click){
+                                    Image(systemName: "heart.fill")
+                                        .foregroundColor(Color.white)
+                                        .font(.system(size: 24))
+                                }
+                            }
+                        }
+                        else{
+                            Circle()
+                                .frame(width: 45, height: 45)
+                                .foregroundColor(.white)
+                                .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                        }
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+            HStack{
+                HStack{
+                    Text("전혀 그렇지 않다")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+                    Spacer()
+                    Text("매우 그렇다")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+                }
+                .frame(width: 337)
+            }
+            .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 66, trailing: 0))
-            
-            
-            TextField("이유에 대해 생각해봐요!", text: $reason)
-                .font(.system(size: 17))
-                .frame(width: 336, height: 124, alignment: .top)
-                .background(.gray)
-                .cornerRadius(10)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 69, trailing: 0))
+            ZStack(alignment: .topLeading){
+                TextEditor(text: $reason)
+                    .font(.system(size: 17))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    .scrollContentBackground(.hidden)
+                    .padding(EdgeInsets(top: 20, leading: 21, bottom: 0, trailing: 0))
+
+                if reason.isEmpty {
+                    Text("이유에 대해 생각해봐요!")
+                        .foregroundColor(.gray)
+                        .padding(EdgeInsets(top: 50, leading: 84, bottom: 0, trailing: 0))
+                }
+            }
+            .frame(width: 336, height: 124, alignment: .top)
+            .background(.gray.opacity(0.2))
+            .cornerRadius(10)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 69, trailing: 0))
             
             Button(action: {print("hi")}){
                 ZStack{

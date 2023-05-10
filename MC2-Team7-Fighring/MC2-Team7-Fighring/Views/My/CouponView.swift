@@ -7,63 +7,88 @@
 import SwiftUI
 
 struct CouponView: View {
-    
-    @State var isLock: [Bool] = [true, true, false, false, false, false]
-    
-    @State var completeSix = false
-    @State private var isActive:Bool = true
-    @State private var letter:String = ""
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     
-    var days: ClosedRange<Int>
+    var questions: FetchedResults<Question>.SubSequence
+    @State private var isLock: Bool = false
+    @State private var completeSix: Bool = false
+    @State private var shareActivated: Bool = false
+    @State private var count: Int = 0
+    
+    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     
     var body: some View {
         VStack{
             LazyVGrid(columns: columns) {
-                
-                ForEach(days, id: \.self) { day in
-                    
-                    NavigationLink {
-                        EmotionSelectView()
-                    } label: {
-                        ZStack{
-                            Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
-                                .cornerRadius(15)
-                                .frame(width: 150, height: 150)
-                            Text("Day \(day)")
-                                .foregroundColor(.white)
+                ForEach(questions, id: \.self) {  question in
+                    NavigationLink (destination: EmotionSelectView()){
+                        Button {
+                            question.isSolved.toggle()
+                            isLock = question.isSolved
+                            DataController().save(context: managedObjectContext)
+                            count = countSolved(questions: questions)
                         }
+                    label: {
+                        VStack{
+                            Image(question.isSolved ? "greenMain" : "whiteMain")
+                                .frame(width: 150, height: 150)
+                                .padding(.zero)
+                            Text("Day \(question.questionNum)")
+                                .foregroundColor(.black)
+                                .padding(.zero)
+                        }
+                        
+                    }
                     }
                 }
-                .sheet(isPresented: $isLock[3]){
-                    LockView()}
+//                .sheet(isPresented: $isLock){
+//                    LockView()}
+            }
+            .onAppear{
+                count = countSolved(questions: questions)
             }
             Divider()
                 .frame(width: 200)
                 .background(.black)
                 .padding(.top)
             
-            if isActive{
-                Button {
-                    completeSix = true
-                } label: {
-                    Text("공유하기")
+            Button {
+                print("넘어가기")
+                if completeSix{
+                    shareActivated = true
+                }else{
+                    shareActivated = false
                 }
-            }else{
-                Text("count/6")
-                
+            } label: {
+                Text(completeSix ? "공유하기" : "\(count)/6")
             }
+            .disabled(!completeSix)
+
         }
-        .sheet(isPresented: $completeSix) {
+        .sheet(isPresented: $shareActivated) {
             LetterView()
         }
     }
-}
-
-struct CouponView_Previews: PreviewProvider {
-    static var previews: some View {
-        CouponView(days: (1...6))
+    
+    func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
+        var count = 0
+        for question in questions{
+            if count == 6{
+                count = 6
+            }
+            else if question.isSolved == true{
+                 count = count + 1
+            }
+        }
+        return count
     }
 }
+
+//struct CouponView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CouponView(quesdays: (1...6))
+//    }
+//}
