@@ -8,7 +8,7 @@
 import Foundation
 var name = "❤️"
 
-class Question: ObservableObject {
+class QuestionList: ObservableObject {
     @Published var question = [
         "Q1. \(name)에게 나의 마음을 표현하는 걸 머뭇거린 적이 있나요?",
         "Q2.\(name)가(이) 나에게 거리를 둘까봐 걱정한 적이 있나요?",
