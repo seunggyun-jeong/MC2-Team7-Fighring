@@ -6,10 +6,10 @@
 //
 
 import Foundation
-var name = "❤️"
+var name = UserDefaults.standard.string(forKey: "loverName") ?? "❤️"
 
-class QuestionList: ObservableObject {
-    @Published var question = [
+struct QuestionList {
+    static var question = [
         "Q1. \(name)에게 나의 마음을 표현하는 걸 머뭇거린 적이 있나요?",
         "Q2.\(name)가(이) 나에게 거리를 둘까봐 걱정한 적이 있나요?",
         "Q3. \(name)와(과) 내가 서로 가까워지는 것이 편안한가요?",
