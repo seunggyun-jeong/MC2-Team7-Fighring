@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct EmotionCarouselView: View {
+    
+    var questionData: FetchedResults<Question>.Element
+    
     @StateObject var emotionStorage = EmotionStore()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     
     var body: some View {
+        
+        
         VStack {
             ZStack {
-//                Circle()
-//                    .frame(width: 270, height: 270)
-//                    .foregroundColor(.white)
-//                    .background(
-//                        Circle()
-//                            .stroke(.gray, lineWidth: 0.5)
-//                    )
-//                    .shadow(color: .black, radius: 4)
-//                    .padding(.bottom, 100)
+                //                Circle()
+                //                    .frame(width: 270, height: 270)
+                //                    .foregroundColor(.white)
+                //                    .background(
+                //                        Circle()
+                //                            .stroke(.gray, lineWidth: 0.5)
+                //                    )
+                //                    .shadow(color: .black, radius: 4)
+                //                    .padding(.bottom, 100)
                 
                 ZStack {
                     ForEach(emotionStorage.items) { item in
@@ -57,9 +62,8 @@ struct EmotionCarouselView: View {
                 
             }
             
-            Button {
+            NavigationLink(destination: DailyTest(questionData: questionData), label: {
                 
-            } label: {
                 Text("선택완료")
                     .font(.body.bold())
                     .foregroundColor(.white)
@@ -68,7 +72,8 @@ struct EmotionCarouselView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.blue)
                     )
-            }
+            })
+            
         }
     }
     
@@ -82,8 +87,8 @@ struct EmotionCarouselView: View {
     }
 }
 
-struct EmotionCarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmotionCarouselView()
-    }
-}
+//struct EmotionCarouselView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EmotionCarouselView()
+//    }
+//}

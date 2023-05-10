@@ -111,8 +111,8 @@
 		3D221BD72A07B26C00501A18 /* MC2-Team7-Fighring */ = {
 			isa = PBXGroup;
 			children = (
-				AEF2EDD12A09E8DD00C3CF98 /* DataModel */,
 				3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */,
+				AEF2EDD12A09E8DD00C3CF98 /* DataModel */,
 				3D221BE62A07B37600501A18 /* Views */,
 				3D221BE82A07B3B900501A18 /* Model */,
 				3D221BE72A07B38400501A18 /* Resources */,
