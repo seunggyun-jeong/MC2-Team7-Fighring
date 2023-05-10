@@ -19,6 +19,9 @@ struct EmotionCarouselView: View {
         
         
         VStack {
+            
+            Text(emotionStorage.emotions[getCenterItem()])
+            
             ZStack {
                 //                Circle()
                 //                    .frame(width: 270, height: 270)
@@ -62,7 +65,7 @@ struct EmotionCarouselView: View {
                 
             }
             
-            NavigationLink(destination: DailyTest(questionData: questionData, userEmotion: 0), label: {
+            NavigationLink(destination: DailyTest(questionData: questionData, userEmotion: getCenterItem()), label: {
                 
                 Text("선택완료")
                     .font(.body.bold())
@@ -84,6 +87,12 @@ struct EmotionCarouselView: View {
     func getMyXOffset(_ item: Int) -> Double {
         let angle = Double.pi * 2 / Double(emotionStorage.items.count) * getDistance(item)
         return sin(angle) * 200
+    }
+    
+    // 선택된 항목 String 값 가져오기
+    func getCenterItem() -> Int {
+        let centerIndex = Int(snappedItem.rounded()) % emotionStorage.items.count
+        return centerIndex < 0 ? emotionStorage.items.count + centerIndex : centerIndex
     }
 }
 

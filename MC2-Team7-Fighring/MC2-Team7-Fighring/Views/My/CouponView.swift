@@ -26,13 +26,7 @@ struct CouponView: View {
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) {  question in
                     NavigationLink (destination: EmotionSelectView(questionData: question)){
-                        //                        Button {
-                        //                            question.isSolved.toggle()
-                        //                            isLock = question.isSolved
-                        //                            DataController().save(context: managedObjectContext)
-                        //                            count = countSolved(questions: questions)
-                        //                        }
-                        //                    label: {
+                     
                         VStack{
                             Image(question.isSolved ? "greenMain" : "whiteMain")
                                 .frame(width: 150, height: 150)
@@ -40,7 +34,6 @@ struct CouponView: View {
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
                                 .padding(.zero)
-                            // }
                             
                         }
                     }
@@ -63,9 +56,14 @@ struct CouponView: View {
                 }else{
                     shareActivated = false
                 }
+                
+                
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
             }
+            .sheet(isPresented: $shareActivated, content: {
+                LetterView()
+            })
             .disabled(!completeSix)
             
         }
