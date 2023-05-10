@@ -13,7 +13,6 @@ struct DailyTest: View {
     var questionData: FetchedResults<Question>.Element
     var userEmotion: Int
     
-    
     @State var loverName: String = "❤️"
     @State var click = false
     @State var clicked = 0
@@ -30,7 +29,7 @@ struct DailyTest: View {
                 .font(.system(size: 25))
                 .frame(alignment: .center)
                 .padding()
-               // .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
+            // .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
             
             HStack(spacing: 18){
                 ForEach(1 ..< 6){ index in
@@ -40,16 +39,16 @@ struct DailyTest: View {
                         
                     }){
                         if index == clicked {
+                            // 하트 마크
                             ZStack{
                                 Circle()
                                     .frame(width: 45, height: 45)
                                     .foregroundColor(click ? .pink: .white)
                                     .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                                if(click){
-                                    Image(systemName: "heart.fill")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 24))
-                                }
+                                
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 24))
                             }
                         }
                         else{
@@ -84,7 +83,7 @@ struct DailyTest: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .scrollContentBackground(.hidden)
                     .padding(EdgeInsets(top: 20, leading: 21, bottom: 0, trailing: 0))
-
+                
             }
             .frame(width: 336, height: 124, alignment: .top)
             .background(.gray.opacity(0.2))
@@ -92,10 +91,8 @@ struct DailyTest: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 69, trailing: 0))
             
             Button {
-                DataController().answerQuestion(questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
-    
+                DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
                 
-                print(questionData.userReason!)
                 
             } label: {
                 
@@ -108,12 +105,12 @@ struct DailyTest: View {
                             .foregroundColor(reason.isEmpty || clicked == 0 ? .gray : .blue)
                     )
                     .font(.system(size: 17))
-                    
-                    
+                
+                
             }.disabled(reason.isEmpty || clicked == 0)
-
             
-      
+            
+            
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
