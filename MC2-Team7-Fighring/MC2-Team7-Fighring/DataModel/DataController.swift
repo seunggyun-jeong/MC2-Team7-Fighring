@@ -73,4 +73,16 @@ class DataController: ObservableObject{
         }
     }
     
+    func saveSharingData(questionNum: Int32, questionAnswer: Int32, letter: String,  context: NSManagedObjectContext){
+        let sharingData = Sharing(context: context)
+        
+        sharingData.id = UUID()
+        sharingData.questionNum = questionNum
+        sharingData.questionAnswer = questionAnswer
+        sharingData.sixLetters = letter
+        
+        save(context: context)
+        print("Saved")
+    }
+    
 }
