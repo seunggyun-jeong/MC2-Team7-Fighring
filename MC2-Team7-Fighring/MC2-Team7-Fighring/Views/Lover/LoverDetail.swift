@@ -8,16 +8,41 @@
 import SwiftUI
 
 struct LoverDetail: View {
+    @State var shareLetter = ["너", "없", "이", "못", "살", "아"]
+    @State var shareLetterClicked = 0
     @State var loverName: String = "❤️"
     @State var question: String = "Q1. 나는 (❤️)에게 나의 마음을\n 표현하는걸 머뭇거리게 돼.. "
     @State var tip: String = "위의 답변을 가지고 서로의 생각을 조금 더 들어보는\n 시간을 갖는 것은 어떨까요?\n\n대화를 나누고 서로를 조금 더 이해해보아요!"
-    @State var click = false
-    @State var clicked = 0
+    @State var click = true
+    @State var clicked = 1
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("\(loverName)의 이야기를 들어보아요~")
-                .padding(EdgeInsets(top: 0, leading: 30, bottom: 61, trailing: 0))
+            HStack{
+                HStack(spacing: 0){
+                    ForEach(0 ..< 6) { index in
+                        ZStack{
+                            Button(action: {
+                                shareLetterClicked = index
+                            }){
+                                Image("blueCircle")
+                                    .frame(width: 45, height: 45)
+                                    .opacity(shareLetterClicked == index ? 1 : 0)
+                            }
+                            Text(shareLetter[index])
+                                .foregroundColor(shareLetterClicked == index ? .white : .black)
+                                .font(.system(size: shareLetterClicked == index ? 30: 25))
+                                .bold()
+                        }
+                    }
+                }
+                .frame(width: 340, height: 102)
+                .background(.gray.opacity(0.1))
+                .cornerRadius(8)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 56, trailing: 0))
+
             
             Text("\(question)")
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -27,27 +52,17 @@ struct LoverDetail: View {
             HStack(spacing: 18){
                 ForEach(0 ..< 5){ index in
                     Button(action:{
-                        click = true
-                        clicked = index
                     }){
-                        if index == clicked {
-                            ZStack{
-                                Circle()
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(click ? .pink: .white)
-                                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                                if(click){
-                                    Image(systemName: "heart.fill")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 24))
-                                }
-                            }
-                        }
-                        else{
+                        ZStack{
                             Circle()
                                 .frame(width: 45, height: 45)
-                                .foregroundColor(.white)
+                                .foregroundColor(clicked == index ? .pink: .white)
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                            if(clicked == index){
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 24))
+                            }
                         }
                     }
                 }
@@ -77,14 +92,9 @@ struct LoverDetail: View {
                 Text(tip)
                     .font(.system(size: 14))
                     .padding(EdgeInsets(top: 23, leading: 0, bottom: 0, trailing: 0))
-                Circle()
-                    .frame(width: 73, height: 73)
-                    .foregroundColor(.gray)
-                    .overlay(Circle().stroke())
-                    .offset(x: 120,y: 35)
             }
-            .frame(width: 332, height: 218, alignment: .top)
-            .background(.secondary)
+            .frame(width: 332, height: 131, alignment: .top)
+            .background(.gray.opacity(0.1))
             .cornerRadius(15)
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
         }

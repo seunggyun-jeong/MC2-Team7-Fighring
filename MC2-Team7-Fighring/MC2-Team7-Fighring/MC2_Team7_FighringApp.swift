@@ -15,7 +15,10 @@ struct MC2_Team7_FighringApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
-            
+            // TODO: URL 데이터 처리
+                .onOpenURL { url in
+                    print(url)
+                }
         }
     }
 }

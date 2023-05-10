@@ -74,14 +74,4 @@ class DataController: ObservableObject{
         }
     }
     
-    
-    
-    //    func editFood(food: Food, name: String, calories: Double, context: NSManagedObjectContext){
-    //
-    //        food.date = Date()
-    //        food.name = name
-    //        food.calories = calories
-    //
-    //        save(context: context)
-    //    }
 }
