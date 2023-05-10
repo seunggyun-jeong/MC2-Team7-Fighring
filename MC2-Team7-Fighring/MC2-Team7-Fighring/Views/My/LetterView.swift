@@ -21,6 +21,7 @@ struct LetterView: View {
     @State private var letters: [String] = Array(repeating: "", count: 6)
     @FocusState private var focusedField: LetterField?
     @State private var showModal: Bool = false
+    @State private var finalCode: String = ""
     
     //@State private var chars: [Character]
     @Environment(\.dismiss) private var dismiss
@@ -49,6 +50,8 @@ struct LetterView: View {
                 
                 Button {
                     showModal.toggle()
+                    finalCode = letters.joined()
+                    let _ = print(finalCode)
                 } label: {
                     Text("코드 공유하기")
                         .foregroundColor(.white)
@@ -63,10 +66,11 @@ struct LetterView: View {
                 .padding()
                 .sheet(isPresented: $showModal) {
                     // TODO: Deep Link 지정 후 수정 예정
-                    ActivityViewController(activityItems: [""])
+                    ActivityViewController(activityItems: ["lover36://\(letters.joined())"])
                 }
             }
         }
+        
     }
     
     @ViewBuilder
