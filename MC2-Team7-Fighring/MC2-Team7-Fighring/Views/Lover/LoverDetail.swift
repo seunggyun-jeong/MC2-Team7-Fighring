@@ -13,8 +13,8 @@ struct LoverDetail: View {
     @State var loverName: String = "❤️"
     @State var question: String = "Q1. 나는 (❤️)에게 나의 마음을\n 표현하는걸 머뭇거리게 돼.. "
     @State var tip: String = "위의 답변을 가지고 서로의 생각을 조금 더 들어보는\n 시간을 갖는 것은 어떨까요?\n\n대화를 나누고 서로를 조금 더 이해해보아요!"
-    @State var click = false
-    @State var clicked = 0
+    @State var click = true
+    @State var clicked = 1
     
     var body: some View {
         VStack(alignment: .leading){
@@ -52,27 +52,17 @@ struct LoverDetail: View {
             HStack(spacing: 18){
                 ForEach(0 ..< 5){ index in
                     Button(action:{
-                        click = true
-                        clicked = index
                     }){
-                        if index == clicked {
-                            ZStack{
-                                Circle()
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(click ? .pink: .white)
-                                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                                if(click){
-                                    Image(systemName: "heart.fill")
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size: 24))
-                                }
-                            }
-                        }
-                        else{
+                        ZStack{
                             Circle()
                                 .frame(width: 45, height: 45)
-                                .foregroundColor(.white)
+                                .foregroundColor(clicked == index ? .pink: .white)
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                            if(clicked == index){
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 24))
+                            }
                         }
                     }
                 }
