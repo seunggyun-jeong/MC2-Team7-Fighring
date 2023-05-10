@@ -26,7 +26,7 @@ struct OnboardingContents: View {
                 
                 Image(image)
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(height: 347)
                     .padding(.bottom, 30)
                 
