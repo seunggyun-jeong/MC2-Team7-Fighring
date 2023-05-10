@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
     
     

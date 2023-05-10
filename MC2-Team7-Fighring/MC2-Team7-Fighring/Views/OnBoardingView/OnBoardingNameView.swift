@@ -11,6 +11,7 @@ struct OnBoardingNameView: View {
     @State private var loverName: String = ""
     @Binding var isFirstLaunch: Bool
     @Environment(\.managedObjectContext) var managedObjectContext
+
     
     var body: some View {
         VStack {
@@ -39,9 +40,11 @@ struct OnBoardingNameView: View {
             
             Button {
                 DataController().addData(context: managedObjectContext)
+                
                 isFirstLaunch = false
                 UserDefaults.standard.set(loverName, forKey: "loverName")
-                print(UserDefaults.standard.string(forKey: "loverName")) // UserDefaults에 저장된 값 불러오는 방법
+              
+                // print(UserDefaults.standard.string(forKey: "loverName") ?? "🧡") // UserDefaults에 저장된 값 불러오는 방법
             } label: {
                 Text("저장하기")
                     .foregroundColor(.white)

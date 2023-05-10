@@ -16,6 +16,7 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
+                
 //                Button("Create"){
 //                    DataController().addData(context: managedObjectContext)
 //                }
@@ -25,6 +26,7 @@ struct MainView: View {
                 ZStack{
                     TabView{
                         ForEach((1...6), id:\.self){ idx in
+                            
                             CouponView(questions: questions[idx*6-6...6*idx-1])
                                 .tabItem {
                                     Image(systemName: "\(idx).circle")
@@ -33,7 +35,7 @@ struct MainView: View {
                     }
                     .tabViewStyle(PageTabViewStyle())
                 }
-                .navigationTitle("My 0.0")
+                .navigationTitle("Our 36 Days")
                 .onAppear{
                     setupAppearance()
                 }
