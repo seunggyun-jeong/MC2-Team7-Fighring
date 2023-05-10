@@ -12,7 +12,7 @@ struct CouponView: View {
     
     var questions: FetchedResults<Question>.SubSequence
     @State private var isLock: Bool = false
-    @State private var completeSix: Bool = false
+    @State private var completeSix: Bool = true
     @State private var shareActivated: Bool = false
     @State private var count: Int = 0
     
