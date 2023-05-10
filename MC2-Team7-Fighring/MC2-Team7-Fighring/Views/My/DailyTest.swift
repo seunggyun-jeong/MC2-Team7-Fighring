@@ -20,23 +20,27 @@ struct DailyTest: View {
     
     var body: some View {
         VStack(alignment: .center){
+            Image(EmotionStore().emotions[userEmotion])
+                .resizable()
+                .scaledToFill()
+                .frame(width: 150)
+            
             Text("Day \(Int(questionData.questionNum))")
-                .font(.system(size: 34))
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
+                .font(.system(size: 32))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
                 .bold()
             
             Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
                 .font(.system(size: 25))
+                .multilineTextAlignment(.center)
                 .frame(alignment: .center)
                 .padding()
-            // .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
             
             HStack(spacing: 18){
                 ForEach(1 ..< 6){ index in
                     Button(action:{
                         click = true
                         clicked = index
-                        
                     }){
                         if index == clicked {
                             // 하트 마크
@@ -61,7 +65,8 @@ struct DailyTest: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+            
             HStack{
                 HStack{
                     Text("전혀 그렇지 않다")
@@ -75,7 +80,7 @@ struct DailyTest: View {
                 .frame(width: 337)
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 66, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
             
             ZStack(alignment: .topLeading){
                 TextField("이유에 대해 생각해봐요!", text: $reason)
@@ -83,19 +88,17 @@ struct DailyTest: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .scrollContentBackground(.hidden)
                     .padding(EdgeInsets(top: 20, leading: 21, bottom: 0, trailing: 0))
-                
             }
             .frame(width: 336, height: 124, alignment: .top)
             .background(.gray.opacity(0.2))
             .cornerRadius(10)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 69, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
+            
+            // 저장하기 버튼 (데이터 저장)
             Button {
                 DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
-                
-                
             } label: {
-                
                 Text("저장하기")
                     .foregroundColor(.white)
                     .padding(.vertical, 10)
@@ -105,16 +108,20 @@ struct DailyTest: View {
                             .foregroundColor(reason.isEmpty || clicked == 0 ? .gray : .blue)
                     )
                     .font(.system(size: 17))
-                
-                
             }.disabled(reason.isEmpty || clicked == 0)
-            
-            
-            
+                .padding(.bottom, 20)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
+        .onAppear {
+            reason = questionData.userReason ?? ""
+            
+            if Int(questionData.questionAnswer) != 0 {
+                clicked = Int(questionData.questionAnswer)
+                click = true
+            }
+        }
     }
 }
 
