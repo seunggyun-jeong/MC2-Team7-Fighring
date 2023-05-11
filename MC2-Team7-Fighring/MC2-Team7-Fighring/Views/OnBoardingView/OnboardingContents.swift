@@ -22,7 +22,7 @@ struct OnboardingContents: View {
                     .font(.title)
                     .bold()
                     .padding(.bottom, 18)
-                    .padding(.top, 36)
+                    .padding(.top, 26)
                 
                 Image(image)
                     .resizable()

@@ -29,7 +29,7 @@ struct ContentView: View {
     
     var body: some View {
         if isFirst {
-            OnBoardingView0(isFirstLaunch: $isFirst)
+            OnBoardingMainView(isFirstLaunch: $isFirst)
         } else {
             TabView(selection: $selection) {
                 MainView(questions: question)
@@ -50,7 +50,9 @@ struct ContentView: View {
                     }
                     .tag(Tab.result)
             }
+
         }
+
     }
 }
 

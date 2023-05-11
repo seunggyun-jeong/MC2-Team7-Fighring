@@ -28,6 +28,7 @@
 		3D3E1FD12A0B3F0D00D0F4A4 /* OnboardingContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E1FD02A0B3F0D00D0F4A4 /* OnboardingContents.swift */; };
 		3D3E1FD42A0B790B00D0F4A4 /* Ex+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E1FD32A0B790B00D0F4A4 /* Ex+Color.swift */; };
 		3D87BD622A0A550C004B2C08 /* TypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87BD612A0A550C004B2C08 /* TypeData.swift */; };
+		3DB999122A0C941300BF254B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB999112A0C941300BF254B /* Line.swift */; };
 		6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BE2A08A107004D60A0 /* DailyTest.swift */; };
 		AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DB2A088E7600DEE144 /* MainView.swift */; };
 		AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DD2A08900F00DEE144 /* CouponView.swift */; };
@@ -38,7 +39,6 @@
 		CD8CE9412A0A988000E46FCE /* CodeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CE9402A0A988000E46FCE /* CodeShare.swift */; };
 		CDAE7E3F2A088E1700B1D2C3 /* OnBoardingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E3E2A088E1700B1D2C3 /* OnBoardingMainView.swift */; };
 		CDAE7E452A08A50800B1D2C3 /* OnBoardingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E442A08A50800B1D2C3 /* OnBoardingNameView.swift */; };
-		CDAE7E4B2A08D68400B1D2C3 /* OnBoardingView0.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */; };
 		CDAE7E4D2A094C1200B1D2C3 /* EmotionSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */; };
 		CDAE7E4F2A0963A200B1D2C3 /* EmotionCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */; };
 		CDAE7E512A0963E800B1D2C3 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE7E502A0963E800B1D2C3 /* Emotion.swift */; };
@@ -67,6 +67,7 @@
 		3D3E1FD02A0B3F0D00D0F4A4 /* OnboardingContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContents.swift; sourceTree = "<group>"; };
 		3D3E1FD32A0B790B00D0F4A4 /* Ex+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Color.swift"; sourceTree = "<group>"; };
 		3D87BD612A0A550C004B2C08 /* TypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeData.swift; sourceTree = "<group>"; };
+		3DB999112A0C941300BF254B /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		6C11F0BE2A08A107004D60A0 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
 		AEA059DB2A088E7600DEE144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AEA059DD2A08900F00DEE144 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		CD8CE9422A0A9A5A00E46FCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CDAE7E3E2A088E1700B1D2C3 /* OnBoardingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingMainView.swift; sourceTree = "<group>"; };
 		CDAE7E442A08A50800B1D2C3 /* OnBoardingNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingNameView.swift; sourceTree = "<group>"; };
-		CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView0.swift; sourceTree = "<group>"; };
 		CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectView.swift; sourceTree = "<group>"; };
 		CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCarouselView.swift; sourceTree = "<group>"; };
 		CDAE7E502A0963E800B1D2C3 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Emotion.swift; path = "MC2-Team7-Fighring/Model/Emotion.swift"; sourceTree = SOURCE_ROOT; };
@@ -156,12 +156,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3D221BE82A07B3B900501A18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
+				11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */,
+				3DB999112A0C941300BF254B /* Line.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3D221BE92A07B55900501A18 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				AEA059DB2A088E7600DEE144 /* MainView.swift */,
 				AEA059E12A08CE4E00DEE144 /* LetterView.swift */,
 				CD8CE9402A0A988000E46FCE /* CodeShare.swift */,
-				AEA059DB2A088E7600DEE144 /* MainView.swift */,
 				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
 				6C11F0BE2A08A107004D60A0 /* DailyTest.swift */,
@@ -243,7 +253,6 @@
 			children = (
 				CDAE7E3E2A088E1700B1D2C3 /* OnBoardingMainView.swift */,
 				3D3E1FD02A0B3F0D00D0F4A4 /* OnboardingContents.swift */,
-				CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */,
 				CDAE7E442A08A50800B1D2C3 /* OnBoardingNameView.swift */,
 			);
 			path = OnBoardingView;
@@ -331,7 +340,6 @@
 				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
 				CDAE7E452A08A50800B1D2C3 /* OnBoardingNameView.swift in Sources */,
 				1146036F2A09F3EC00BCA7F2 /* Questions.swift in Sources */,
-				CDAE7E4B2A08D68400B1D2C3 /* OnBoardingView0.swift in Sources */,
 				CD8CE9412A0A988000E46FCE /* CodeShare.swift in Sources */,
 				3D221C0D2A0895DD00501A18 /* OtherSheet.swift in Sources */,
 				AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */,
@@ -347,6 +355,7 @@
 				3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */,
 				3D87BD622A0A550C004B2C08 /* TypeData.swift in Sources */,
 				3D221C052A0886CF00501A18 /* LockedResult.swift in Sources */,
+				3DB999122A0C941300BF254B /* Line.swift in Sources */,
 				CDAE7E4D2A094C1200B1D2C3 /* EmotionSelectView.swift in Sources */,
 				AEF2EDD42A09E8F500C3CF98 /* QuestionModel.xcdatamodeld in Sources */,
 				6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */,
@@ -495,7 +504,6 @@
 				INFOPLIST_FILE = "MC2-Team7-Fighring/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -525,7 +533,6 @@
 				INFOPLIST_FILE = "MC2-Team7-Fighring/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
