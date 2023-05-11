@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct leadingBackBtnView: View {
+struct LeadingBackBtnView: View {
     @Environment(\.presentationMode) var presentationMode
     var dismissDest: String
     

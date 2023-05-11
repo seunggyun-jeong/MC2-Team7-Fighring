@@ -31,7 +31,7 @@ struct EmotionSelectView: View {
                 Spacer()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: leadingBackBtnView(dismissDest: "My 목록"))
+        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "My 목록"))
     }
     
 }

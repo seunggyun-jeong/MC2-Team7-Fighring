@@ -143,7 +143,7 @@ struct DailyTest: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: leadingBackBtnView(dismissDest: "나의 감정"))
+        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "나의 감정"))
     }
 }
 
