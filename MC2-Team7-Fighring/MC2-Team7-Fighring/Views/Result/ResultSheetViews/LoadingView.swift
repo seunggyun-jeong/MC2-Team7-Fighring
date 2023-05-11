@@ -9,11 +9,15 @@ import SwiftUI
 
 struct LoadingView: View {
     @State var progressGauge: Float = 0.0
+    @State var imageCount: Int = 0
     @Binding var isLoadingDone: Bool
+    var blackImageName: [String] = ["Beagle_black", "Bichon_black", "Chihuahua_black", "Retriever_black"]
     
     var body: some View {
         VStack {
-            Circle()
+            Image(blackImageName[imageCount])
+                .resizable()
+                .scaledToFit()
                 .frame(width: 261)
                 .padding(.bottom, 53)
             
@@ -34,7 +38,7 @@ struct LoadingView: View {
         .onAppear {
             // TODO: 부드러운 효과
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                if progressGauge >= 1.0 {
+                if progressGauge >= 0.8 {
                     timer.invalidate() // Timer 중지
                     isLoadingDone.toggle()
                 }
@@ -42,12 +46,18 @@ struct LoadingView: View {
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
                     addGauge()
                     print(progressGauge)
+                    print(imageCount)
                 }
             }
         }
     }
     
     func addGauge() {
+        if imageCount >= 3 {
+            imageCount = 0
+        } else {
+            imageCount += 1
+        }
         progressGauge += 0.2
     }
 }
