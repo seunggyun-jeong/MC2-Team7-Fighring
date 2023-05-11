@@ -26,7 +26,7 @@ struct EnvelopeCarouseView<Content: View, T: Identifiable>: View {
         self.content = content
     }
     @GestureState var offset: CGFloat = 0
-    @State var currentIndex: Int = 0
+    @State var currentIndex: Int = Envelope.week - 1
     
     var body: some View{
         
@@ -76,6 +76,6 @@ struct EnvelopeCarouseView<Content: View, T: Identifiable>: View {
 
 struct EnvelopeCarouseView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoverHome()
     }
 }
