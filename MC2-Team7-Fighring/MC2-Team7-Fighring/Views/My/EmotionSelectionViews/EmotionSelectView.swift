@@ -29,9 +29,9 @@ struct EmotionSelectView: View {
                 EmotionCarouselView(questionData: questionData)
                 
                 Spacer()
-                
-            
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: leadingBackBtnView(dismissDest: "My 목록"))
     }
     
 }

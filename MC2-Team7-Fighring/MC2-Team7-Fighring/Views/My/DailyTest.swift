@@ -10,6 +10,7 @@ import SwiftUI
 struct DailyTest: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    
     var questionData: FetchedResults<Question>.Element
     var userEmotion: Int
     
@@ -19,101 +20,120 @@ struct DailyTest: View {
     @State var reason: String = ""
     
     var body: some View {
-        VStack(alignment: .center){
-            Image(EmotionStore().emotions[userEmotion])
-                .resizable()
-                .scaledToFill()
-                .frame(width: 150)
+        VStack {
+            VStack {
+                HStack {
+                    Text("Day \(Int(questionData.questionNum))")
+                        .font(.title.bold())
+                        .padding(.trailing, 5)
+                
+                    Image(EmotionStore().emotions[userEmotion])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 45)
+                    
+                    Spacer()
+                }
+                
+                HStack {
+                    Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
+                        .font(.system(size: 22))
+                    
+                    Spacer()
+                }
+                .padding(.top, 20)
+            }
+            .padding(.leading, 20)
             
-            Text("Day \(Int(questionData.questionNum))")
-                .font(.system(size: 32))
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
-                .bold()
-            
-            Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
-                .font(.system(size: 25))
-                .multilineTextAlignment(.center)
-                .frame(alignment: .center)
-                .padding()
-            
-            HStack(spacing: 18){
-                ForEach(1 ..< 6){ index in
-                    Button(action:{
-                        click = true
-                        clicked = index
-                    }){
-                        if index == clicked {
-                            // 하트 마크
-                            ZStack{
-                                Circle()
-                                    .frame(width: 45, height: 45)
-                                    .foregroundColor(click ? .pink: .white)
-                                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                                
-                                Image(systemName: "heart.fill")
-                                    .foregroundColor(Color.white)
-                                    .font(.system(size: 24))
+            // Selection Answer View
+            Group {
+                HStack(spacing: 20){
+                    ForEach(1 ..< 6){ index in
+                        Button(action:{
+                            click = true
+                            clicked = index
+                        }){
+                            if index == clicked {
+                                // 하트 마크
+                                ZStack{
+                                    Circle()
+                                        .frame(width: 45, height: 45)
+                                        .foregroundColor(click ? Color(red: 255/255, green: 151/255, blue: 172/255): .white)
+                                    
+                                    Image(systemName: "heart.fill")
+                                        .foregroundColor(Color.white)
+                                        .font(.system(size: 24))
+                                }
                             }
-                        }
-                        else{
-                            Circle()
-                                .frame(width: 45, height: 45)
-                                .foregroundColor(.white)
-                                .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                            else{
+                                Circle()
+                                    .frame(width: 44, height: 44)
+                                    .foregroundColor(.white)
+                                    .overlay(Circle().stroke(Color.gray.opacity(0.5), lineWidth: 1))
+                            }
                         }
                     }
                 }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            
-            HStack{
+                .padding(.horizontal, 40)
+                .padding(.bottom, 5)
+                
                 HStack{
                     Text("전혀 그렇지 않다")
                         .foregroundColor(.gray)
-                        .font(.system(size: 15))
                     Spacer()
                     Text("매우 그렇다")
                         .foregroundColor(.gray)
-                        .font(.system(size: 15))
                 }
-                .frame(width: 337)
+                .font(.caption)
+                .padding(.leading, 30)
+                .padding(.trailing, 40)
+                .padding(.bottom, 20)
             }
-            .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
             
+            
+            // TextEditor - Why
             ZStack(alignment: .topLeading){
-                TextField("이유에 대해 생각해봐요!", text: $reason)
-                    .font(.system(size: 17))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                TextEditor(text: $reason)
+                    .font(.system(size: 18))
                     .scrollContentBackground(.hidden)
-                    .padding(EdgeInsets(top: 20, leading: 21, bottom: 0, trailing: 0))
+                    .foregroundColor(.black)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(.gray.opacity(0.15))
+                    )
+                    .padding(.horizontal, 30)
+                    .lineLimit(4)
+                
+                if reason.isEmpty {
+                    Text("이유에 대해 생각해보아요!\nex.델리빈 볼 말랑말랑")
+                        .font(.system(size: 18))
+                        .foregroundColor(.gray.opacity(0.5))
+                        .padding(.leading, 36)
+                        .padding(.top, 8)
+                }
             }
-            .frame(width: 336, height: 124, alignment: .top)
-            .background(.gray.opacity(0.2))
-            .cornerRadius(10)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            .frame(height: 130)
+            .padding(.bottom, 40)
             
             
-            // 저장하기 버튼 (데이터 저장)
+            // 저장하기 버튼 (Data Store - Question)
             Button {
                 DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
             } label: {
                 Text("저장하기")
                     .foregroundColor(.white)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 15)
+                    .font(.body.bold())
+                    .padding(.horizontal, 150)
+                    .padding(.vertical, 15)
                     .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(reason.isEmpty || clicked == 0 ? .gray : .blue)
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(reason.isEmpty || clicked == 0 ? .gray.opacity(0.5) : Color(red: 255/255, green: 151/255, blue: 172/255))
                     )
                     .font(.system(size: 17))
-            }.disabled(reason.isEmpty || clicked == 0)
-                .padding(.bottom, 20)
-            
+            }
+            .disabled(reason.isEmpty || clicked == 0)
+            .padding(.bottom, 40)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
         .onAppear {
             reason = questionData.userReason ?? ""
             
@@ -122,15 +142,9 @@ struct DailyTest: View {
                 click = true
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: leadingBackBtnView(dismissDest: "나의 감정"))
     }
 }
 
-//struct DailyTest_Previews: PreviewProvider {
-//    @Environment(\.managedObjectContext) var managedObjectContext
-//
-//    var questions: FetchedResults<Question>.Element
-//
-//    static var previews: some View {
-//        DailyTest(questionData: questions)
-//    }
-//}
+
