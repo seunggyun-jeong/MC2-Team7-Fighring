@@ -48,7 +48,7 @@
 		1146036C2A09DFA900BCA7F2 /* LoverDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoverDetail.swift; sourceTree = "<group>"; };
 		1146036E2A09F3EC00BCA7F2 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Questions.swift; path = "MC2-Team7-Fighring/Views/Lover/Questions.swift"; sourceTree = SOURCE_ROOT; };
 		114603722A0A918000BCA7F2 /* EnvelopeCarouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeCarouseView.swift; sourceTree = "<group>"; };
-		11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Envelope.swift; path = "MC2-Team7-Fighring/Views/Lover/Envelope.swift"; sourceTree = SOURCE_ROOT; };
+		11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Envelope.swift; path = "MC2-Team7-Fighring/Model/Envelope.swift"; sourceTree = SOURCE_ROOT; };
 		3D221BD52A07B26C00501A18 /* MC2-Team7-Fighring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team7-Fighring.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team7_FighringApp.swift; sourceTree = "<group>"; };
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		CDAE7E4A2A08D68400B1D2C3 /* OnBoardingView0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView0.swift; sourceTree = "<group>"; };
 		CDAE7E4C2A094C1200B1D2C3 /* EmotionSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectView.swift; sourceTree = "<group>"; };
 		CDAE7E4E2A0963A200B1D2C3 /* EmotionCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCarouselView.swift; sourceTree = "<group>"; };
-		CDAE7E502A0963E800B1D2C3 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Emotion.swift; path = "MC2-Team7-Fighring/Views/My/Emotion.swift"; sourceTree = SOURCE_ROOT; };
+		CDAE7E502A0963E800B1D2C3 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Emotion.swift; path = "MC2-Team7-Fighring/Model/Emotion.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +114,13 @@
 		3D221BD72A07B26C00501A18 /* MC2-Team7-Fighring */ = {
 			isa = PBXGroup;
 			children = (
-				CD8CE9422A0A9A5A00E46FCE /* Info.plist */,
 				3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */,
+				3D221BE72A07B38400501A18 /* Resources */,
 				3D3E1FD22A0B78F700D0F4A4 /* Extensions */,
 				AEF2EDD12A09E8DD00C3CF98 /* DataModel */,
 				3D221BE62A07B37600501A18 /* Views */,
-				3D221BE82A07B3B900501A18 /* Model */,
-				3D221BE72A07B38400501A18 /* Resources */,
+				CD8CE96F2A0C7F9C00E46FCE /* Model */,
+				CD8CE9422A0A9A5A00E46FCE /* Info.plist */,
 				3D221BDC2A07B26D00501A18 /* Assets.xcassets */,
 				3D221BDE2A07B26D00501A18 /* Preview Content */,
 			);
@@ -154,15 +154,6 @@
 				3D87BD612A0A550C004B2C08 /* TypeData.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		3D221BE82A07B3B900501A18 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
-				11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3D221BE92A07B55900501A18 /* My */ = {
@@ -236,6 +227,15 @@
 				AEF2EDD52A09EA0D00C3CF98 /* DataController.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		CD8CE96F2A0C7F9C00E46FCE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */,
+				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CDAE7E3D2A088BED00B1D2C3 /* OnBoardingView */ = {

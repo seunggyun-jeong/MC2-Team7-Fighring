@@ -9,7 +9,6 @@ import SwiftUI
 struct CouponView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    
     var questions: FetchedResults<Question>.SubSequence
     @State private var isLock: Bool = false
     @State private var completeSix: Bool = true
@@ -51,12 +50,12 @@ struct CouponView: View {
                             let image = Image(question.isSolved ? "greenMain" : "whiteMain")
                                 .frame(width: 150, height: 150)
                                 .padding(.zero)
-                            
-                            if question.isOpened {
-                                image
-                            } else {
-                                image.blur(radius: 6)
-                            }
+//
+//                            if question. {
+//                                image
+//                            } else {
+//                                image.blur(radius: 6)
+//                            }
                             
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
@@ -64,12 +63,12 @@ struct CouponView: View {
                         }
                     }
                     .onTapGesture {
-                        if question.isOpened {
-                            // navigate to EmotionSelectView
-                            isLock = false
-                        } else {
-                            isLock = true
-                        }
+//                        if question.isOpened {
+//                            // navigate to EmotionSelectView
+//                            isLock = false
+//                        } else {
+//                            isLock = true
+//                        }
                     }
                     .zIndex(isLock ? 1 : 0)
                    

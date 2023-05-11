@@ -76,6 +76,10 @@ struct LoverHome: View {
                     envelopes.append(Envelope(envelopeImage: "envelope\(index)"))
                 }
             }
+            
+            .onOpenURL { url in
+                print(url)
+            }
         } else {
             VStack {
                 Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요")
