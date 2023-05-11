@@ -70,7 +70,6 @@ struct LetterView: View {
                 }
             }
         }
-        
     }
     
     @ViewBuilder

@@ -43,7 +43,7 @@ class DataController: ObservableObject{
         
         question.id = UUID()
         question.isSolved = false
-        question.isOpened = isOpened
+        //question.isOpened = isOpened
         question.questionNum = questionNum
         
         save(context: context)
