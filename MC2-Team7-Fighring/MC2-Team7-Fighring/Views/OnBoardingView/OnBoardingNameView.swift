@@ -17,8 +17,9 @@ struct OnBoardingNameView: View {
             Text("상대방의 이름을\n입력해주세요!")
                 .font(.title.bold())
                 .multilineTextAlignment(.leading)
-                .padding(.top, 75)
-                .padding(.bottom, 19)
+                .padding(.top, 30)
+                .padding(.bottom, 5)
+                .allowsTightening(true)
             
             Text("*입력시 수정 불가")
                 .foregroundColor(.theme.secondary)

@@ -19,7 +19,7 @@ struct OnBoardingMainView: View {
                 .padding(.bottom, 12)
             
             Line()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                .stroke(style: StrokeStyle(lineWidth: 3, dash: [5]))
                 .frame(height: 1)
                 .foregroundColor(.accentColor)
                 .padding(.horizontal, 24)
@@ -72,6 +72,7 @@ struct OnBoardingMainView: View {
         .sheet(isPresented: $showNameToggle) {
             OnBoardingNameView(isFirstLaunch: $isFirstLaunch)
                 .presentationDetents([.fraction(0.5)])
+                .presentationDragIndicator(.visible)
         }
     }
     
