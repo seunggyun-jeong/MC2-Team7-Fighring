@@ -47,7 +47,7 @@ struct ContentView: View {
                             let data = Array(message)
                             let week = 6*Int(String(data[0]))! - 7
                             if(week == -1 && share.count != 0 || week == 5 && share.count != 6 || week == 11 && share.count != 12 || week == 17 && share.count != 18 || week == 23 && share.count != 24 || week == 29 && share.count != 30){
-                                print("error")
+                                print("share data 주차가 다름")
                                 return
                             }
                             for n in 1...6{
@@ -55,8 +55,8 @@ struct ContentView: View {
                                 let num = Int32(Int(String(n))! + week)
                                 let answer = Int32(String(data[Int(String(n))!]))!
                                 let letterC = String(data[Int(String(n))! + 6])
-                                print(num, answer ,letterC )
-//                                DataController().saveSharingData(questionNum: num, questionAnswer: answer, letter: letterC, context: managedObjectContext)
+//                                print(num, answer ,letterC )
+                                DataController().saveSharingData(questionNum: num, questionAnswer: answer, letter: letterC, context: managedObjectContext)
                             }
                         }
                         

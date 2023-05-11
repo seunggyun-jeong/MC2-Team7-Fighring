@@ -10,7 +10,7 @@ import SwiftUI
 struct LoverHome: View {
     var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
     @State var envelopes: [Envelope] = []
-    @State var week: Int = Envelope.week
+    @State var week: Int = DataController().getCurrentWeek()
     @State var currentIndex: Int = Envelope.week - 1
     
     var body: some View {
@@ -74,10 +74,6 @@ struct LoverHome: View {
                 for index in 1...week {
                     envelopes.append(Envelope(envelopeImage: "envelope\(index)"))
                 }
-            }
-            
-            .onOpenURL { url in
-                print(url)
             }
         } else {
             VStack {
