@@ -17,6 +17,13 @@ struct OnBoardingMainView: View {
         VStack {
             OnboardingTopView(isFirstLaunch: $isFirstLaunch)
                 .padding(.bottom, 12)
+            
+            Line()
+                .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                .frame(height: 1)
+                .foregroundColor(.accentColor)
+                .padding(.horizontal, 24)
+            
             // OnBoarding 탭 리스트.
             TabView(selection: $selection) {
                 OnboardingContents(title: "이 앱은 무슨 앱인가요?", image: "John_Bowlby", description: "존 볼비의 애착 이론을 기반으로,\n 36일동안 애착 유형을\n검사할 수 있는 앱입니다.")
@@ -54,19 +61,17 @@ struct OnBoardingMainView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(.white)
-                    .foregroundColor(.black)
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
                     .cornerRadius(12)
-                    .shadow(color: Color(uiColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.12)), radius: 8, x: 0, y: 3)
             }
             .padding(.horizontal, 12)
-            .padding(.top, 36)
             
             Spacer()
         }
-        .background(Color.theme.mainColor)
         .sheet(isPresented: $showNameToggle) {
             OnBoardingNameView(isFirstLaunch: $isFirstLaunch)
+                .presentationDetents([.fraction(0.5)])
         }
     }
     
@@ -85,23 +90,24 @@ struct OnboardingTopView: View {
     
     var body: some View {
         HStack {
+            Text("36 Days")
+                .font(.title)
+                .fontWeight(.heavy)
+                .foregroundColor(.theme.secondary)
+            
             Spacer()
-            Button {
+            
+            Button("건너뛰기") {
                 showToggle.toggle()
-            } label: {
-                Text("건너뛰기")
-                    .fontWeight(.semibold)
-                    .font(.system(size: 13))
-                    .frame(width: 80, height: 28)
-                    .background(.white)
-                    .foregroundColor(.black)
-                    .cornerRadius(7)
             }
+            .fontWeight(.semibold)
             .sheet(isPresented: $showToggle) {
                 OnBoardingNameView(isFirstLaunch: $isFirstLaunch)
+                    .presentationDetents([.fraction(0.5)])
             }
         }
-        .padding(.trailing, 15)
+        .padding(.top, 18)
+        .padding(.horizontal, 24)
     }
 }
 

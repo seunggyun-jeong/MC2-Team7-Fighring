@@ -28,6 +28,7 @@
 		3D3E1FD12A0B3F0D00D0F4A4 /* OnboardingContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E1FD02A0B3F0D00D0F4A4 /* OnboardingContents.swift */; };
 		3D3E1FD42A0B790B00D0F4A4 /* Ex+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E1FD32A0B790B00D0F4A4 /* Ex+Color.swift */; };
 		3D87BD622A0A550C004B2C08 /* TypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87BD612A0A550C004B2C08 /* TypeData.swift */; };
+		3DB999122A0C941300BF254B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB999112A0C941300BF254B /* Line.swift */; };
 		6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BE2A08A107004D60A0 /* DailyTest.swift */; };
 		AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DB2A088E7600DEE144 /* MainView.swift */; };
 		AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DD2A08900F00DEE144 /* CouponView.swift */; };
@@ -67,6 +68,7 @@
 		3D3E1FD02A0B3F0D00D0F4A4 /* OnboardingContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContents.swift; sourceTree = "<group>"; };
 		3D3E1FD32A0B790B00D0F4A4 /* Ex+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Color.swift"; sourceTree = "<group>"; };
 		3D87BD612A0A550C004B2C08 /* TypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeData.swift; sourceTree = "<group>"; };
+		3DB999112A0C941300BF254B /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		6C11F0BE2A08A107004D60A0 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
 		AEA059DB2A088E7600DEE144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AEA059DD2A08900F00DEE144 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
 				11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */,
+				3DB999112A0C941300BF254B /* Line.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,9 +171,9 @@
 		3D221BE92A07B55900501A18 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				AEA059DB2A088E7600DEE144 /* MainView.swift */,
 				AEA059E12A08CE4E00DEE144 /* LetterView.swift */,
 				CD8CE9402A0A988000E46FCE /* CodeShare.swift */,
-				AEA059DB2A088E7600DEE144 /* MainView.swift */,
 				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
 				6C11F0BE2A08A107004D60A0 /* DailyTest.swift */,
@@ -347,6 +350,7 @@
 				3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */,
 				3D87BD622A0A550C004B2C08 /* TypeData.swift in Sources */,
 				3D221C052A0886CF00501A18 /* LockedResult.swift in Sources */,
+				3DB999122A0C941300BF254B /* Line.swift in Sources */,
 				CDAE7E4D2A094C1200B1D2C3 /* EmotionSelectView.swift in Sources */,
 				AEF2EDD42A09E8F500C3CF98 /* QuestionModel.xcdatamodeld in Sources */,
 				6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */,
@@ -495,7 +499,6 @@
 				INFOPLIST_FILE = "MC2-Team7-Fighring/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -525,7 +528,6 @@
 				INFOPLIST_FILE = "MC2-Team7-Fighring/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

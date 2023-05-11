@@ -13,29 +13,22 @@ struct OnBoardingNameView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("잠깐만요!")
-                    .font(.title.bold())
-                    .padding(.leading, 30)
-                    .padding(.top, 30)
-                Spacer()
-            }
-            
-            Spacer()
-            
+        VStack(alignment: .leading) {
             Text("상대방의 이름을\n입력해주세요!")
                 .font(.title.bold())
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
+                .padding(.top, 75)
+                .padding(.bottom, 19)
             
-            Text("입력시 수정 불가 0,.0 :)")
-                .padding(10)
+            Text("*입력시 수정 불가")
+                .foregroundColor(.theme.secondary)
+                .fontWeight(.bold)
+                .padding(.bottom, 44)
             
             TextField("상대방의 이름을 입력해 주세요", text: $loverName)
                 .textFieldStyle(TextFieldBackground(systemImageString: "pencil"))
-                .padding(.horizontal, 50)
-                .padding(.top, 15)
             
+            Spacer()
             
             Button {
                 DataController().addData(context: managedObjectContext)
@@ -45,18 +38,21 @@ struct OnBoardingNameView: View {
             } label: {
                 Text("저장하기")
                     .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
                     .padding(15)
+                    .fontWeight(.semibold)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(loverName.isEmpty ? .gray : .blue)
+                            .foregroundColor(loverName.isEmpty ? .secondary : .accentColor)
                     )
             }
             .disabled(loverName.isEmpty)
-            .padding(.top, 20)
+            .padding(.bottom, 50)
             
             
             Spacer()
         }
+        .padding(.horizontal, 30)
     }
 }
 
@@ -80,5 +76,11 @@ struct TextFieldBackground: TextFieldStyle {
             .padding(.leading)
             .foregroundColor(.gray)
         }
+    }
+}
+
+struct OnBoardingNameView_preview: PreviewProvider {
+    static var previews: some View {
+        OnBoardingNameView(isFirstLaunch: .constant(true))
     }
 }
