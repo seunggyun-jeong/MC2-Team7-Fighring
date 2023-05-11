@@ -8,67 +8,66 @@
 import SwiftUI
 
 struct LoverHome: View {
-    @State var currentIndex: Int = 0
-    @State var loverName: String = "❤️"
+    var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
     @State var envelopes: [Envelope] = []
-    @State var week: Int = 6
+    @State var week: Int = Envelope.week
+    @State var currentIndex: Int = Envelope.week - 1
     
     var body: some View {
         if week != 0 {
             VStack {
-                Text("\(loverName)가 보낸 메시지에여~\n확인해 보십시다")
+                HStack {
+                    Text("\(loverName)")
+                        .multilineTextAlignment(.center)
+                        .fontWeight(.bold)
+                        .font(.system(size: 26))
+                    Text("가 보낸 메세지에요")
+                        .multilineTextAlignment(.center)
+                        .fontWeight(.regular)
+                        .font(.system(size: 26))
+                }.padding(EdgeInsets(top: 90, leading: 0, bottom: 1, trailing: 0))
+                Text("확인해볼까요?")
                     .multilineTextAlignment(.center)
-                    .fontWeight(.bold)
-                    .font(.title)
-                    .padding(EdgeInsets(top: 149, leading: 0, bottom: 0, trailing: 0))
-                GeometryReader { geometry in
-                    Path { path in
-                        let size = geometry.size.width
-                        let nearLine = size * 0.1
-                        let farLine = size * 0.9
-                        let middle = size * 0.03
-                        path.move(to: .init(x: nearLine, y: middle))
-                        path.addLine(to: .init(x: farLine, y: middle))
-                    }.stroke(Color(red: 165 / 255, green: 205 / 255, blue: 251 / 255), style: .init(lineWidth: 3.0, dash: [geometry.size.width / 20, geometry.size.width / 20], dashPhase: 0))
-                }
-                Button{
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 103, height: 32)
-                            .opacity(week == 6 ? 0.55 : 1.0)
-                            .foregroundColor(week == 6 ? Color(red: 0 / 255, green: 122 / 255, blue: 255 / 255) : Color(red: 199 / 255, green: 199 / 255, blue: 204 / 255))
-                        Text("유형보기")
-                            .foregroundColor(.white)
-                    }
-                }.padding(EdgeInsets(top: -210, leading: 0, bottom: 0, trailing: 0))
-                EnvelopeCarouseView(index: $currentIndex, items: envelopes) {envelope in
+                    .fontWeight(.semibold)
+                    .font(.system(size: 26))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                
+                
+                EnvelopeCarouseView(spacing: -25, trailingSpace: 100, index: $currentIndex, items: envelopes) {envelope in
                     GeometryReader{proxy in
-                        
                         let size = proxy.size
                         VStack {
                             Image(envelope.envelopeImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: size.width)
+                                .scaleEffect(envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 1.0 : 0.75)
+                                .offset(y: envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 0.0 : 100)
+                                .animation(.easeOut, value: envelope.envelopeImage == "envelope" + String(currentIndex + 1))
                                 .onTapGesture {
-                                    print("\(currentIndex + 1)")
+                                    print(envelope.envelopeImage)
+                                    print(currentIndex + 1)
                                 }
                         }
                     }
                 }
                 .padding(.vertical, 80)
-                .padding(EdgeInsets(top: -200, leading: 0, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                 
-                HStack(spacing: 10) {
-                    ForEach(envelopes.indices,id: \.self){index in
-                        Circle()
-                            .fill(Color.black.opacity(currentIndex == index ? 1 : 0.1))
-                            .frame(width: 10, height: 10)
-                            .scaleEffect(currentIndex == index ? 1.4 : 1)
-                            .animation(.spring(), value: currentIndex == index)
+                Button{
+                    print(envelopes)
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 7)
+                            .frame(width: 330, height: 60)
+                            .foregroundColor(week == 6 ? Color(red: 255 / 255, green: 151 / 255, blue: 172 / 255) : Color(red: 199 / 255, green: 199 / 255, blue: 204 / 255))
+                        Text("유형보기")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
                     }
-                }.padding(EdgeInsets(top: -120, leading: 0, bottom: 0, trailing: 0))
+                }.padding(EdgeInsets(top: -150, leading: 0, bottom: 0, trailing: 0))
+                
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .onAppear {
@@ -83,7 +82,7 @@ struct LoverHome: View {
                     .fontWeight(.bold)
                     .font(.system(size: 25))
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
-                Image("notFIN")
+                Image("yongjun")
             }
         }
     }
