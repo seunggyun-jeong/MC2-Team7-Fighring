@@ -32,7 +32,8 @@ struct TestMain: View {
                     }
                     Spacer()
                 }
-                .padding(.bottom, 15)
+                .padding(.top, 11)
+                .padding(.bottom, 11)
                 
                 ZStack {
                     // 카드
@@ -44,8 +45,19 @@ struct TestMain: View {
                     flipCard()
                 }
                 
-                NavigationLink("검사하러 가기", destination: TestSheet())
-                    .padding(.bottom, 11)
+                NavigationLink {
+                    TestSheet()
+                } label: {
+                    Text("검사하러 가기")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 11)
                 
                 Spacer()
             }

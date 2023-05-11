@@ -39,6 +39,8 @@ struct FrontCardView: View {
                 HStack {
                     ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
                         Text("#\(tag)")
+                            .bold()
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .padding(.bottom, 33)

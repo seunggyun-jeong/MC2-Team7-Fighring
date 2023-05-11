@@ -14,7 +14,7 @@ struct LockedResult: View {
     
     var body: some View {
         VStack {
-            Image(isLocked ? "notFIN" : "FIN")
+            Image(isLocked ? "lia" : "tamra")
                 .padding(.bottom, 60)
                 .frame(width: 236, height: 236)
             Text(isLocked ? "아직 여정이 끝나지 않았어요." : "모든 여정을 마쳤어요!")

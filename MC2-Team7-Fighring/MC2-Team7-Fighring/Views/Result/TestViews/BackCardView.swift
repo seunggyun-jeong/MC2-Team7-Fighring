@@ -24,13 +24,6 @@ struct BackCardView: View {
                     .bold()
                     .padding(.top, 32)
                 
-                HStack {
-                    ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
-                        Text("#\(tag)")
-                    }
-                }
-                .padding(.bottom, 10)
-                
                 Image("Bichon_avoidant")
                     .resizable()
                     .scaledToFit()
@@ -55,7 +48,7 @@ struct BackCardView: View {
                 Spacer()
                 
                 Text(TypeData.description[attachmentType.rawValue])
-                    .font(.caption)
+                    .font(.callout)
                     .padding(.horizontal, 27)
                     .padding(.bottom, 32)
                     .multilineTextAlignment(.center)
