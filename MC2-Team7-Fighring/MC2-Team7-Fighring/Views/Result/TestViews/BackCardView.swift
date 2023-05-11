@@ -31,7 +31,9 @@ struct BackCardView: View {
                 }
                 .padding(.bottom, 10)
                 
-                Circle()
+                Image("Bichon_avoidant")
+                    .resizable()
+                    .scaledToFit()
                     .frame(width: 173)
                     .padding(.bottom, 14)
                 

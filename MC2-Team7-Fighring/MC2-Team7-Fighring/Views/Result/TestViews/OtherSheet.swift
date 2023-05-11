@@ -9,14 +9,7 @@ import SwiftUI
 
 struct OtherSheet: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var selection: typeTab = .type1
-    
-    enum typeTab {
-        case type1
-        case type2
-        case type3
-        case type4
-    }
+    @State private var selection: AttachmentType = .secure
     
     var body: some View {
         VStack {
@@ -37,17 +30,17 @@ struct OtherSheet: View {
             
             // TODO: UIKit으로 다시 구현해야 함
             TabView(selection: $selection) {
-                Type1()
-                    .tag(typeTab.type1)
+                Type1(attachmentType: .secure)
+                    .tag(AttachmentType.secure)
                 
-                Type1()
-                    .tag(typeTab.type2)
+                Type1(attachmentType: .anxious)
+                    .tag(AttachmentType.anxious)
                 
-                Type1()
-                    .tag(typeTab.type3)
+                Type1(attachmentType: .avoidant)
+                    .tag(AttachmentType.avoidant)
                 
-                Type1()
-                    .tag(typeTab.type4)
+                Type1(attachmentType: .fearful)
+                    .tag(AttachmentType.fearful)
             }
             .tabViewStyle(.page)
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
@@ -57,7 +50,7 @@ struct OtherSheet: View {
 }
 
 struct Type1: View {
-    var hashTags: [String] = ["사랑", "바보", "멋쟁이", "애교쟁이"]
+    let attachmentType: AttachmentType
     
     var body: some View {
         VStack {
@@ -67,12 +60,14 @@ struct Type1: View {
                 .bold()
                 .padding(.bottom, 26)
             
-            Circle()
+            Image(TypeData.imageName[attachmentType.rawValue])
+                .resizable()
+                .scaledToFit()
                 .frame(width: 265)
                 .padding(.bottom, 33)
             
             HStack {
-                ForEach(hashTags, id: \.self) { tag in
+                ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
                     Text("#\(tag)")
                         .foregroundColor(.secondary)
                 }

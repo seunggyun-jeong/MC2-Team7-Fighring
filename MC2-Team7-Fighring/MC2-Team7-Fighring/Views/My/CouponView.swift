@@ -12,7 +12,7 @@ struct CouponView: View {
     
     var questions: FetchedResults<Question>.SubSequence
     @State private var isLock: Bool = false
-    @State private var completeSix: Bool = true
+    @State private var completeSix: Bool = false
     @State private var shareActivated: Bool = false
     @State private var count: Int = 0
     
@@ -21,57 +21,93 @@ struct CouponView: View {
     
     
     var body: some View {
-    
+        
         VStack{
+            
             LazyVGrid(columns: columns) {
-                ForEach(questions, id: \.self) {  question in
-                    NavigationLink (destination: EmotionSelectView(questionData: question)){
-                        //                        Button {
-                        //                            question.isSolved.toggle()
-                        //                            isLock = question.isSolved
-                        //                            DataController().save(context: managedObjectContext)
-                        //                            count = countSolved(questions: questions)
-                        //                        }
-                        //                    label: {
-                        VStack{
-                            Image(question.isSolved ? "greenMain" : "whiteMain")
-                                .frame(width: 150, height: 150)
+                ForEach(questions, id: \.self) { question in
+                    
+                    
+                    NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                        VStack {
+                            let image = Image(question.isSolved ? "greenMain" : "whiteMain")
+                                .frame(width: 120, height: 110)
                                 .padding(.zero)
+                            
+                            if question.isOpened {
+                                image
+                            } else {
+                                image
+                            }
+                            
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
                                 .padding(.zero)
-                            // }
-                            
                         }
                     }
+                    
+                    .onAppear{
+                        count = countSolved(questions: questions)
+                        if count == 6{
+                            completeSix = true
+                        } else{
+                            completeSix = false
+                        }
+                        checkDate(question: questions)
+                    }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        
+                        isLock = !question.isOpened
+                        //isLock.toggle()
+                        print(isLock)
+                    })
+                   // .disabled(!question.isOpened)
+                    
+                    
+                    .sheet(isPresented: $isLock, content: {
+                        LockView()
+                    })
+                    
                 }
-                //                .sheet(isPresented: $isLock){
-                //                    LockView()}
+                
             }
-            .onAppear{
-                count = countSolved(questions: questions)
-            }
-            Divider()
-                .frame(width: 200)
-                .background(.black)
-                .padding(.top)
             
             Button {
-                print("넘어가기")
                 if completeSix{
                     shareActivated = true
                 }else{
                     shareActivated = false
                 }
+                
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
+                    .foregroundColor(.white)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 130)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(completeSix ? Color("ThemeColor") : .gray)
+                    )
+                
+                
             }
+            .sheet(isPresented: $shareActivated, content: {
+                LetterView()
+            })
             .disabled(!completeSix)
+            .padding()
             
         }
-        //        .sheet(isPresented: $shareActivated) {
-        //            LetterView()
-        //        }
+        .sheet(isPresented: $isLock) {
+            LockView()
+                .onAppear{
+                    count = countSolved(questions: questions)
+                    
+                }
+        }
+        //        .navigationBarTitleDisplayMode(.inline)
+        
+        
     }
     
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
@@ -86,10 +122,26 @@ struct CouponView: View {
         }
         return count
     }
+    
+    
+    
+    func checkDate(question: FetchedResults<Question>.SubSequence){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let endDate = dateFormatter.date(from: DataController().getCurrentDateTime()) ?? Date()
+        
+        let numbers = (0...5)
+        
+        for number in numbers{
+            if 0 < number && number > 5{
+                let targetDate = dateFormatter.date(from: question[number-1].clearDate!) ?? Date()
+                let interval = endDate.timeIntervalSince(targetDate)
+                let days = Int(interval / 86400)
+                print("\(days) 일 차이 난다")
+                if(days == 1){
+                    question[number].isOpened = true
+                }
+            }
+        }
+    }
 }
-
-//struct CouponView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CouponView(quesdays: (1...6))
-//    }
-//}

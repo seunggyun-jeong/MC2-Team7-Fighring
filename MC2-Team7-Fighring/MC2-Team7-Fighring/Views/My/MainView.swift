@@ -16,15 +16,25 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
-//                Button("Create"){
-//                    DataController().addData(context: managedObjectContext)
-//                }
-//                Button("Reset"){
-//                    DataController().resetCoreData(viewContext: managedObjectContext)
-//                }
+                
+                //                Button("Create"){
+                //                    DataController().addData(context: managedObjectContext)
+                //                }
+                //                Button("Reset"){
+                //                    DataController().resetCoreData(viewContext: managedObjectContext)
+                //                }
                 ZStack{
                     TabView{
+                        
                         ForEach((1...6), id:\.self){ idx in
+                            VStack{
+                                Text("\(idx)주차")
+                                CouponView(questions: questions[idx*6-6...6*idx-1])
+                                    .tabItem {
+                                        Image(systemName: "\(idx).circle")
+                                    }
+                            }
+                            
                             CouponView(questions: questions[idx*6-6...6*idx-1])
                                 .tabItem {
                                     Image(systemName: "\(idx).circle")
@@ -33,14 +43,14 @@ struct MainView: View {
                     }
                     .tabViewStyle(PageTabViewStyle())
                 }
-                .navigationTitle("My 0.0")
+                .navigationTitle("Our 36 Days")
                 .onAppear{
                     setupAppearance()
                 }
                 
             }
         }
-       
+        
     }
     
     
@@ -48,9 +58,6 @@ struct MainView: View {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
-    
-    
-
 }
 
 //struct MainView_Previews: PreviewProvider {
