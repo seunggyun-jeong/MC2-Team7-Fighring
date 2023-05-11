@@ -11,8 +11,6 @@ struct EmotionSelectView: View {
     var questionData: FetchedResults<Question>.Element
     
     var body: some View {
-        
-            
             VStack {
                 HStack {
                     VStack(alignment: .leading){
@@ -31,9 +29,9 @@ struct EmotionSelectView: View {
                 EmotionCarouselView(questionData: questionData)
                 
                 Spacer()
-                
-            
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "My 목록"))
     }
     
 }

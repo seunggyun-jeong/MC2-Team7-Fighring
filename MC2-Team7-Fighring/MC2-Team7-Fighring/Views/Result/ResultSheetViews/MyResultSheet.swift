@@ -14,7 +14,9 @@ struct MyResultSheet: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Circle()
+                Image("Bichon_avoidant")
+                    .resizable()
+                    .scaledToFit()
                     .frame(width: 254)
                     .padding(.bottom, 27)
                 

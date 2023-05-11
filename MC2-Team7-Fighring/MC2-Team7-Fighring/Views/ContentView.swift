@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
     
     
@@ -28,10 +29,7 @@ struct ContentView: View {
     
     var body: some View {
         if isFirst {
-            
-            OnBoardingView0(isFirstLaunch: $isFirst)
-                .edgesIgnoringSafeArea(.all)
-            
+            OnBoardingMainView(isFirstLaunch: $isFirst)
         } else {
             TabView(selection: $selection) {
                 MainView(questions: question)
@@ -77,7 +75,9 @@ struct ContentView: View {
                     }
                     .tag(Tab.result)
             }
+
         }
+
     }
 }
 

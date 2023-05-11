@@ -15,7 +15,6 @@ struct MC2_Team7_FighringApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
-
         }
     }
 }
