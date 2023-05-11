@@ -26,10 +26,10 @@ struct CouponView: View {
             
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) { question in
-                    
-                    
+
                     NavigationLink(destination: EmotionSelectView(questionData: question)) {
                         VStack {
+                            // 나중에 3가지 상황 처리하기 => 이미지
                             let image = Image(question.isSolved ? "greenMain" : "whiteMain")
                                 .frame(width: 120, height: 110)
                                 .padding(.zero)
@@ -40,12 +40,13 @@ struct CouponView: View {
                                 image
                             }
                             
+                            // 몇일째의 질문인지 표기
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
                                 .padding(.zero)
                         }
                     }
-                    
+                    // 몇개의 질문을 해결했는지 count하기! => 버튼에 값이 후에 적용됨
                     .onAppear{
                         count = countSolved(questions: questions)
                         if count == 6{
@@ -53,17 +54,18 @@ struct CouponView: View {
                         } else{
                             completeSix = false
                         }
+                        // 하루가 지났으면 .isOpened를 true로 변환해주는 함수 subSequence 6개 안에서만 진행
+                        // 각각의 subSequence는 공유 유무에 따라서 바꿔줘야함!
+                        
                         checkDate(question: questions)
                     }
+                    // navigationLink에서의 TapGestrue()!
                     .simultaneousGesture(TapGesture().onEnded {
-                        
                         isLock = !question.isOpened
-                        //isLock.toggle()
                         print(isLock)
                     })
-                   // .disabled(!question.isOpened)
                     
-                    
+                    // NavigationLink로 옮겨가고 모달뷰가 띄게 됨 ERROR!!!!
                     .sheet(isPresented: $isLock, content: {
                         LockView()
                     })

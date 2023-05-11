@@ -34,11 +34,6 @@ struct MainView: View {
                                         Image(systemName: "\(idx).circle")
                                     }
                             }
-                            
-                            CouponView(questions: questions[idx*6-6...6*idx-1])
-                                .tabItem {
-                                    Image(systemName: "\(idx).circle")
-                                }
                         }
                     }
                     .tabViewStyle(PageTabViewStyle())
