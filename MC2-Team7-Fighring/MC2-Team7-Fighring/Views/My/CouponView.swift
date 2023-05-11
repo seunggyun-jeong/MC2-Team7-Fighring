@@ -9,7 +9,6 @@ import SwiftUI
 struct CouponView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    
     var questions: FetchedResults<Question>.SubSequence
     @State private var isLock: Bool = false
     @State private var completeSix: Bool = true
@@ -21,55 +20,76 @@ struct CouponView: View {
     
     
     var body: some View {
-    
+        
         VStack{
+            HStack{
+                Spacer()
+                Button {
+                    print("넘어가기")
+                    if completeSix{
+                        shareActivated = true
+                    }else{
+                        shareActivated = false
+                    }
+                    
+                    
+                } label: {
+                    Text(completeSix ? "공유하기" : "\(count)/6")
+                }
+                .sheet(isPresented: $shareActivated, content: {
+                    LetterView()
+                })
+                .disabled(!completeSix)
+                .padding()
+            }
+            
             LazyVGrid(columns: columns) {
-                ForEach(questions, id: \.self) {  question in
-                    NavigationLink (destination: EmotionSelectView(questionData: question)){
-                     
-                        VStack{
-                            Image(question.isSolved ? "greenMain" : "whiteMain")
+                ForEach(questions, id: \.self) { question in
+                    NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                        VStack {
+                            let image = Image(question.isSolved ? "greenMain" : "whiteMain")
                                 .frame(width: 150, height: 150)
                                 .padding(.zero)
+//
+//                            if question. {
+//                                image
+//                            } else {
+//                                image.blur(radius: 6)
+//                            }
+                            
                             Text("Day \(question.questionNum)")
                                 .foregroundColor(.black)
                                 .padding(.zero)
-                            
                         }
                     }
+                    .onTapGesture {
+//                        if question.isOpened {
+//                            // navigate to EmotionSelectView
+//                            isLock = false
+//                        } else {
+//                            isLock = true
+//                        }
+                    }
+                    .zIndex(isLock ? 1 : 0)
+                   
+                    }
+//                      .disabled(!question.isOpened)
+                    
                 }
-                //                .sheet(isPresented: $isLock){
-                //                    LockView()}
+            .sheet(isPresented: $isLock) {
+                LockView()
+                
             }
             .onAppear{
                 count = countSolved(questions: questions)
             }
-            Divider()
-                .frame(width: 200)
-                .background(.black)
-                .padding(.top)
+            //            .navigationBarTitleDisplayMode(.inline)
             
-            Button {
-                print("넘어가기")
-                if completeSix{
-                    shareActivated = true
-                }else{
-                    shareActivated = false
-                }
-                
-                
-            } label: {
-                Text(completeSix ? "공유하기" : "\(count)/6")
-            }
-            .sheet(isPresented: $shareActivated, content: {
-                LetterView()
-            })
-            .disabled(!completeSix)
+            
             
         }
-        //        .sheet(isPresented: $shareActivated) {
-        //            LetterView()
-        //        }
+        
+        
     }
     
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
@@ -85,9 +105,3 @@ struct CouponView: View {
         return count
     }
 }
-
-//struct CouponView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CouponView(quesdays: (1...6))
-//    }
-//}

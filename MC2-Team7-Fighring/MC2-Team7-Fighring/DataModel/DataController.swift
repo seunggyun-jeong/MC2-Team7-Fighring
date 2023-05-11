@@ -7,8 +7,6 @@ import CoreData
 class DataController: ObservableObject{
     let container = NSPersistentContainer(name: "QuestionModel")
     
-    
-    
     init(){
         container.loadPersistentStores{ desc, error in
             if let error = error{
@@ -40,18 +38,17 @@ class DataController: ObservableObject{
         print("Saved")
     }
     
-    func createQuestion(questionNum: Int32, context: NSManagedObjectContext){
+    func createQuestion(questionNum: Int32, isOpened: Bool, context: NSManagedObjectContext){
         let question = Question(context: context)
         
         question.id = UUID()
         question.isSolved = false
+        //question.isOpened = isOpened
         question.questionNum = questionNum
         
         save(context: context)
         print("Saved")
     }
-    
-    
     
     func resetCoreData(viewContext: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Question")
@@ -69,8 +66,14 @@ class DataController: ObservableObject{
     func addData(context: NSManagedObjectContext) {
         let numbers = (0...35)
         for number in numbers{
-            createQuestion(questionNum: Int32(number+1), context: context)
+            if number == 0{
+                createQuestion(questionNum: Int32(number+1), isOpened: true, context: context)
+            }else {
+                createQuestion(questionNum: Int32(number+1), isOpened: false, context: context)
+            }
+            
         }
+        
     }
     
 }
