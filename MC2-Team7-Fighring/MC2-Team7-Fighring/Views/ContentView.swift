@@ -30,27 +30,28 @@ struct ContentView: View {
         if isFirst {
             OnBoardingMainView(isFirstLaunch: $isFirst)
         } else {
+            TabView(selection: $selection) {
+                MainView(questions: question)
+                    .tabItem {
+                        Label("My", systemImage: "person.circle.fill")
+                    }
+                    .tag(Tab.my)
+                
+                LoverHome()
+                    .tabItem {
+                        Label("Lover", systemImage: "heart.circle")
+                    }
+                    .tag(Tab.lover)
+                
+                ResultHome()
+                    .tabItem {
+                        Label("Result", systemImage: "book.circle.fill")
+                    }
+                    .tag(Tab.result)
+            }
 
         }
-        TabView(selection: $selection) {
-            MainView(questions: question)
-                .tabItem {
-                    Label("My", systemImage: "person.circle.fill")
-                }
-                .tag(Tab.my)
-            
-            LoverHome()
-                .tabItem {
-                    Label("Lover", systemImage: "heart.circle")
-                }
-                .tag(Tab.lover)
-            
-            ResultHome()
-                .tabItem {
-                    Label("Result", systemImage: "book.circle.fill")
-                }
-                .tag(Tab.result)
-        }
+
     }
 }
 
