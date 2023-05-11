@@ -50,9 +50,7 @@ struct ContentView: View {
                     }
                     .tag(Tab.result)
             }
-
         }
-
     }
 }
 

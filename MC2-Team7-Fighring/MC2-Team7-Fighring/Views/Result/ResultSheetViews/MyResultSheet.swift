@@ -31,7 +31,7 @@ struct MyResultSheet: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                .padding(.bottom, 57)
+                .padding(.bottom, 20)
                 
                 Text(TypeData.description[attachmentType.rawValue])
                     .multilineTextAlignment(.center)

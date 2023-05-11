@@ -18,7 +18,8 @@ struct LoadingView: View {
             Image(blackImageName[imageCount])
                 .resizable()
                 .scaledToFit()
-                .frame(width: 261)
+                .frame(height: 310)
+                .frame(width: 317)
                 .padding(.bottom, 53)
             
             ProgressView(value: progressGauge)
@@ -38,15 +39,15 @@ struct LoadingView: View {
         .onAppear {
             // TODO: 부드러운 효과
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                if progressGauge >= 0.8 {
-                    timer.invalidate() // Timer 중지
-                    isLoadingDone.toggle()
-                }
-                
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
                     addGauge()
                     print(progressGauge)
                     print(imageCount)
+                }
+                
+                if progressGauge >= 0.9 {
+                    timer.invalidate() // Timer 중지
+                    isLoadingDone.toggle()
                 }
             }
         }
