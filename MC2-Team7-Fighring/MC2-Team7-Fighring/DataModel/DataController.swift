@@ -27,7 +27,7 @@ class DataController: ObservableObject{
     
     func answerQuestion(question: Question, questionAnswer: Int32, questionNum: Int32, userReason: String, userEmotion: Int32, context: NSManagedObjectContext){
         
-        question.clearDate = Date()
+        question.clearDate = getCurrentDateTime()
         question.isSolved = true
         question.questionAnswer = questionAnswer
         question.questionNum = questionNum
@@ -75,5 +75,14 @@ class DataController: ObservableObject{
         }
         
     }
+    func getCurrentDateTime() -> String {
+            let formatter = DateFormatter() //객체 생성
+            formatter.dateStyle = .long
+            formatter.timeStyle = .medium
+            formatter.dateFormat = "yyyy-MM-dd" //데이터 포멧 설정
+            let str = formatter.string(from: Date()) //문자열로 바꾸기
+            
+            return str
+        }
     
 }
