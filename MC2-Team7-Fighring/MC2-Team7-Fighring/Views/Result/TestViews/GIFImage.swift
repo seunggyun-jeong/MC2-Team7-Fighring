@@ -20,6 +20,8 @@ struct GifImage: UIViewRepresentable {
         let url = Bundle.main.url(forResource: name, withExtension: "gif")!
         let data = try! Data(contentsOf: url)
         
+        webView.scrollView.isScrollEnabled = false
+        
         webView.load(
             data,
             mimeType: "image/gif",
@@ -37,6 +39,6 @@ struct GifImage: UIViewRepresentable {
 
 struct GifImage_Previews: PreviewProvider {
     static var previews: some View {
-        GifImage("Beagle")
+        GifImage("Bichon_avoidant")
     }
 }

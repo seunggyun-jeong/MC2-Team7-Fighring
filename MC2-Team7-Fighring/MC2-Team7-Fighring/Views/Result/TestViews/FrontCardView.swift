@@ -20,17 +20,14 @@ struct FrontCardView: View {
             
             VStack {
                 // TODO: 유형별 멘트 뽑아오기 (random)
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
                     
-                    Text(TypeData.quotes[attachmentType.rawValue].randomElement()!)
-                }
-                .padding(.horizontal, 22)
-                .padding(.top, 23)
-                .frame(height: 84)
-                .padding(.bottom, 58)
+                Text(TypeData.quotes[attachmentType.rawValue].randomElement()!)
+                    .font(.custom("NanumPen", size: 40))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(nil)
+                    .padding(.horizontal, 22)
+                    .padding(.top, 23)
+                    .padding(.bottom, 58)
                 
                 GifImage(TypeData.imageName[attachmentType.rawValue])
                     .frame(width: 300)
