@@ -10,8 +10,9 @@ import SwiftUI
 struct LoverHome: View {
     var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
     @State var envelopes: [Envelope] = []
-    @State var week: Int = DataController().getCurrentWeek()
+    @State var week: Int = Envelope.week
     @State var currentIndex: Int = Envelope.week - 1
+    @State var sendIndex: Int = Envelope.week
     @State private var showModal = false
     
     var body: some View {
@@ -49,7 +50,7 @@ struct LoverHome: View {
                                     self.showModal = true
                                 }
                                 .sheet(isPresented: self.$showModal) {
-                                    LoverDetail(currentIndex: currentIndex + 1)
+                                    LoverDetail(currentIndex: $currentIndex)
                                 }
                         }
                     }

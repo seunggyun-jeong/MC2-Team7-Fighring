@@ -39,7 +39,7 @@ struct ContentView: View {
                     .tag(Tab.my)
                     // TODO: URL 데이터 처리
                     .onOpenURL { url in
-//                        let urlStr = "lover36://receive?message=1123456널좋아한다구"
+//                        let urlStr = "lover36://receive?message=1123453abcdef"
 //                        print(encodedStr)
                         selection = .lover
                         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
@@ -55,7 +55,7 @@ struct ContentView: View {
                                 let num = Int32(Int(String(n))! + week)
                                 let answer = Int32(String(data[Int(String(n))!]))!
                                 let letterC = String(data[Int(String(n))! + 6])
-//                                print(num, answer ,letterC )
+                                print(num, answer ,letterC )
                                 DataController().saveSharingData(questionNum: num, questionAnswer: answer, letter: letterC, context: managedObjectContext)
                             }
                         }

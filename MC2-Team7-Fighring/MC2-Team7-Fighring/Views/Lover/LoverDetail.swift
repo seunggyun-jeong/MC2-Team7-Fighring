@@ -8,18 +8,14 @@
 import SwiftUI
 
 struct LoverDetail: View {
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
     @State var shareLetter = ["너", "없", "이", "못", "살", "아"]
     @State var shareLetterClicked = 0
     @State var loverName: String = "❤️"
-    @State var question: String = "Q1. 나는 (❤️)에게 나의 마음을\n 표현하는걸 머뭇거리게 돼.. "
     @State var tip: String = "위의 답변을 가지고 서로의 생각을 조금 더 들어보는\n 시간을 갖는 것은 어떨까요?\n\n대화를 나누고 서로를 조금 더 이해해보아요!"
     @State var click = true
-    @State var clicked = 1
-    @State var currentIndex: Int
-    
-    init(currentIndex: Int) {
-        self.currentIndex = currentIndex
-    }
+    @State var clicked = 0
+    @Binding var currentIndex: Int
     
     var body: some View {
         VStack(alignment: .leading){
@@ -34,7 +30,7 @@ struct LoverDetail: View {
                                     .frame(width: 45, height: 45)
                                     .opacity(shareLetterClicked == index ? 1 : 0)
                             }
-                            Text(shareLetter[index])
+                            Text(share[6 * currentIndex + index].sixLetters!)
                                 .foregroundColor(shareLetterClicked == index ? .white : .black)
                                 .font(.system(size: shareLetterClicked == index ? 30: 25))
                                 .bold()
@@ -49,7 +45,7 @@ struct LoverDetail: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 56, trailing: 0))
 
             
-            Text("\(question)")
+            Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .font(.system(size: 25))
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
@@ -57,20 +53,23 @@ struct LoverDetail: View {
             HStack(spacing: 18){
                 ForEach(0 ..< 5){ index in
                     Button(action:{
+                        print(share.count)
+                        print(share[0])
                         print(currentIndex)
                     }){
                         ZStack{
                             Circle()
                                 .frame(width: 45, height: 45)
-                                .foregroundColor(clicked == index ? .pink: .white)
+                                .foregroundColor(share[6 * currentIndex + shareLetterClicked].questionAnswer - 1 == index ? .pink: .white)
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-                            if(clicked == index){
+                            if(share[6 * currentIndex + shareLetterClicked].questionAnswer - 1 == index){
                                 Image(systemName: "heart.fill")
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 24))
                             }
                         }
                     }
+                   .disabled(true)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -111,6 +110,6 @@ struct LoverDetail: View {
 
 struct LoverDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LoverDetail(currentIndex: 6)
+        LoverDetail(currentIndex: .constant(1))
     }
 }

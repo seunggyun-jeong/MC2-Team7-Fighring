@@ -10,5 +10,6 @@ import SwiftUI
 struct Envelope: Identifiable{
     var id = UUID().uuidString
     var envelopeImage: String
-    static var week: Int = 3
+    static var week: Int = 4
+    //static var week: Int = DataController().getCurrentWeek() ?? 1
 }
