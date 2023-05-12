@@ -23,41 +23,39 @@ struct CouponView: View {
     
     var body: some View {
         VStack{
+
+            
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) { question in
                     
                     VStack{
+                        // if question is opened
                         if question.isOpened{
                             NavigationLink(destination: EmotionSelectView(questionData: question)) {
-                                VStack {
-                                    Image(question.isSolved ? "greenMain" : "whiteMain")
-                                        .frame(width: 120, height: 110)
-                                        .padding(.zero)
-                                    
-                                    // 몇일째의 질문인지 표기
-                                    Text("Day \(question.questionNum)")
-                                        .foregroundColor(.black)
-                                        .padding(.zero)
-                                }
+                                
+                                Image(question.isSolved ? "solvedFlower" : "opendFlower")
+                                    .frame(width: 120, height: 110)
+                                    .padding(.zero)
+                                
+                                
+                                
                             }
                         }else{
+                            // if question is closed
                             Button {
                                 isLock = !question.isOpened
                             } label: {
-                                VStack {
-                                    Image("whiteMain")
-                                        .frame(width: 120, height: 110)
-                                        .padding(.zero)
-                                    
-                                    // 몇일째의 질문인지 표기
-                                    Text("Day \(question.questionNum)")
-                                        .foregroundColor(.black)
-                                        .padding(.zero)
-                                }
+                                
+                                Image("closedFlower")
+                                    .frame(width: 120, height: 110)
+                                    .padding(.zero)
+                                
                             }
                         }
-                        
-                        
+                        // 몇일째의 질문인지 표기
+                        Text("Day \(question.questionNum)")
+                            //.foregroundColor(Color("AccentColor"))
+                            .padding(.bottom)
                     }
                 }
             }
@@ -74,7 +72,7 @@ struct CouponView: View {
                     .padding(.horizontal, 130)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(completeSix ? Color("AccentColor") : .gray)
+                            .foregroundColor(completeSix ? Color("AccentColor") : .theme.secondary)
                     )
             }
             .sheet(isPresented: $shareActivated, content: {
@@ -96,7 +94,6 @@ struct CouponView: View {
         }
     }
     
-    
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
         var count = 0
         for question in questions{
@@ -108,27 +105,5 @@ struct CouponView: View {
             }
         }
         return count
-    }
-    
-    
-    
-    func checkDate(question: FetchedResults<Question>.SubSequence){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let endDate = dateFormatter.date(from: DataController().getCurrentDateTime()) ?? Date()
-        
-        let numbers = (0...5)
-        
-        for number in numbers{
-            if 0 < number && number > 5{
-                let targetDate = dateFormatter.date(from: question[number-1].clearDate!) ?? Date()
-                let interval = endDate.timeIntervalSince(targetDate)
-                let days = Int(interval / 86400)
-                print("\(days) 일 차이 난다")
-                if(days == 1){
-                    question[number].isOpened = true
-                }
-            }
-        }
     }
 }
