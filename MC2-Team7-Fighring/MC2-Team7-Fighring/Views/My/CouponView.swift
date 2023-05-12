@@ -62,7 +62,7 @@ struct CouponView: View {
                     // navigationLink에서의 TapGestrue()!
                     .simultaneousGesture(TapGesture().onEnded {
                         isLock = !question.isOpened
-                        print(isLock)
+                        print("is LOCK: \(isLock)")
                     })
                     
                     // NavigationLink로 옮겨가고 모달뷰가 띄게 됨 ERROR!!!!
@@ -88,10 +88,8 @@ struct CouponView: View {
                     .padding(.horizontal, 130)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(completeSix ? Color("ThemeColor") : .gray)
+                            .foregroundColor(completeSix ? Color("AccentColor") : .gray)
                     )
-                
-                
             }
             .sheet(isPresented: $shareActivated, content: {
                 LetterView()
