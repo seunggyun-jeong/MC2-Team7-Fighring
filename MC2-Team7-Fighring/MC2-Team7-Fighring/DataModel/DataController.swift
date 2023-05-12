@@ -26,8 +26,7 @@ class DataController: ObservableObject{
     }
     
     func answerQuestion(question: Question, questionAnswer: Int32, questionNum: Int32, userReason: String, userEmotion: Int32, context: NSManagedObjectContext){
-        
-        question.clearDate = getCurrentDateTime()
+    
         question.isSolved = true
         question.questionAnswer = questionAnswer
         question.questionNum = questionNum
@@ -38,9 +37,10 @@ class DataController: ObservableObject{
         print("Saved")
     }
     
-    func createQuestion(questionNum: Int32, isOpened: Bool, context: NSManagedObjectContext){
+    func createQuestion(questionNum: Int32, openedDate: String, isOpened: Bool, context: NSManagedObjectContext){
         let question = Question(context: context)
         
+        question.openedDate = openedDate
         question.id = UUID()
         question.isSolved = false
         question.isOpened = isOpened
@@ -67,9 +67,9 @@ class DataController: ObservableObject{
         let numbers = (0...35)
         for number in numbers{
             if number == 0 {
-                createQuestion(questionNum: Int32(number+1), isOpened: true, context: context)
+                createQuestion(questionNum: Int32(number+1), openedDate: getCurrentDateTime(), isOpened: true, context: context)
             }else {
-                createQuestion(questionNum: Int32(number+1), isOpened: false, context: context)
+                createQuestion(questionNum: Int32(number+1), openedDate: "none", isOpened: false, context: context)
             }
             
         }

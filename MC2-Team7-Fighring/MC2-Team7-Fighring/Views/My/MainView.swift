@@ -9,25 +9,30 @@ import SwiftUI
 import CoreData
 
 struct MainView: View {
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var questions: FetchedResults<Question>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
+    
     
     var body: some View {
         NavigationStack {
             VStack{
+//                HStack{
+//                    Text("36 Days")
+//                        .font(.title)
+//                        .fontWeight(.heavy)
+//                      //  .foregroundColor(.theme.secondary)
+//                    Spacer()
+//                }
+//                .padding(.top, 18)
+//                .padding(.horizontal, 24)
                 
-                //                Button("Create"){
-                //                    DataController().addData(context: managedObjectContext)
-                //                }
-                //                Button("Reset"){
-                //                    DataController().resetCoreData(viewContext: managedObjectContext)
-                //                }
                 ZStack{
                     TabView{
                         ForEach((1...6), id:\.self){ idx in
                             VStack{
-                                Text("\(idx)주차")
                                 CouponView(questions: questions[idx*6-6...6*idx-1])
                                     .tabItem {
                                         Image(systemName: "\(idx).circle")
@@ -37,16 +42,50 @@ struct MainView: View {
                     }
                     .tabViewStyle(PageTabViewStyle())
                 }
-                .navigationTitle("Our 36 Days")
+                .navigationTitle("36 Days")
                 .onAppear{
                     setupAppearance()
+                    checkOpened(questions: questions)
                 }
                 
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.large)
+    }
+    
+    func checkOpened(questions: FetchedResults<Question>){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let endDate = dateFormatter.date(from: DataController().getCurrentDateTime()) ?? Date()
         
+        let numbers = (0...34)
+        let points = [6, 12, 18, 24, 30]
+        
+        for number in numbers{
+            if questions[number].openedDate != "none"{
+                let targetDate = dateFormatter.date(from: questions[number].openedDate!) ?? Date()
+                let interval = endDate.timeIntervalSince(targetDate)
+                let days = Int(interval / 86400)
+                print("\(days) 일 차이 난다")
+                
+                if points.contains(number) {
+                    let cnt = share.count
+                    
+                    if points.contains(cnt){
+                        questions[number].isOpened = true
+                    }
+                    
+                    
+                }
+                else{
+                    if(days == 1){
+                        questions[number+1].isOpened = true
+                        print(questions[number+1].questionNum)
+                    }
+                }
+            }
+            
+        }
     }
     
     
