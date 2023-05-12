@@ -92,7 +92,7 @@ class DataController: ObservableObject{
         sharingData.questionNum = questionNum
         sharingData.questionAnswer = questionAnswer
         sharingData.sixLetters = letter
-        
+        print(sharingData)
         save(context: context)
         print("Saved")
     }
