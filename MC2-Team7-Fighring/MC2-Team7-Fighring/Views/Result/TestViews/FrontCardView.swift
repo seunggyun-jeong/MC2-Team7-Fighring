@@ -32,7 +32,7 @@ struct FrontCardView: View {
                 .frame(height: 84)
                 .padding(.bottom, 58)
                 
-                GifImage("Retriever_secure")
+                GifImage(TypeData.imageName[attachmentType.rawValue])
                     .frame(width: 300)
                     .padding(.bottom, 113)
                 

@@ -15,7 +15,7 @@ struct MyResultSheet: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    GifImage("Bichon_avoidant")
+                    GifImage(TypeData.imageName[attachmentType.rawValue])
                         .scaledToFit()
                         .frame(width: 254)
                         .padding(.bottom, 27)
