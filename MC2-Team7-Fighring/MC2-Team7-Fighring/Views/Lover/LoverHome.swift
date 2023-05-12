@@ -12,6 +12,7 @@ struct LoverHome: View {
     @State var envelopes: [Envelope] = []
     @State var week: Int = DataController().getCurrentWeek()
     @State var currentIndex: Int = Envelope.week - 1
+    @State private var showModal = false
     
     var body: some View {
         if week != 0 {
@@ -45,8 +46,10 @@ struct LoverHome: View {
                                 .offset(y: envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 0.0 : 100)
                                 .animation(.easeOut, value: envelope.envelopeImage == "envelope" + String(currentIndex + 1))
                                 .onTapGesture {
-                                    print(envelope.envelopeImage)
-                                    print(currentIndex + 1)
+                                    self.showModal = true
+                                }
+                                .sheet(isPresented: self.$showModal) {
+                                    LoverDetail(currentIndex: currentIndex + 1)
                                 }
                         }
                     }
