@@ -12,6 +12,7 @@ struct CouponView: View {
     
     var questions: FetchedResults<Question>.SubSequence
     @State private var isLock: Bool = false
+    @State private var isNavigation: Bool = false
     @State private var completeSix: Bool = false
     @State private var shareActivated: Bool = false
     @State private var count: Int = 0
@@ -21,66 +22,51 @@ struct CouponView: View {
     
     
     var body: some View {
-        
         VStack{
-            
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) { question in
-
-                    NavigationLink(destination: EmotionSelectView(questionData: question)) {
-                        VStack {
-                            // 나중에 3가지 상황 처리하기 => 이미지
-                            let image = Image(question.isSolved ? "greenMain" : "whiteMain")
-                                .frame(width: 120, height: 110)
-                                .padding(.zero)
-                            
-                            if question.isOpened {
-                                image
-                            } else {
-                                image
+                    
+                    VStack{
+                        if question.isOpened{
+                            NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                                VStack {
+                                    Image(question.isSolved ? "greenMain" : "whiteMain")
+                                        .frame(width: 120, height: 110)
+                                        .padding(.zero)
+                                    
+                                    // 몇일째의 질문인지 표기
+                                    Text("Day \(question.questionNum)")
+                                        .foregroundColor(.black)
+                                        .padding(.zero)
+                                }
                             }
-                            
-                            // 몇일째의 질문인지 표기
-                            Text("Day \(question.questionNum)")
-                                .foregroundColor(.black)
-                                .padding(.zero)
+                        }else{
+                            Button {
+                                isLock = !question.isOpened
+                            } label: {
+                                VStack {
+                                    Image("whiteMain")
+                                        .frame(width: 120, height: 110)
+                                        .padding(.zero)
+                                    
+                                    // 몇일째의 질문인지 표기
+                                    Text("Day \(question.questionNum)")
+                                        .foregroundColor(.black)
+                                        .padding(.zero)
+                                }
+                            }
                         }
-                    }
-                    // 몇개의 질문을 해결했는지 count하기! => 버튼에 값이 후에 적용됨
-                    .onAppear{
-                        count = countSolved(questions: questions)
-                        if count == 6{
-                            completeSix = true
-                        } else{
-                            completeSix = false
-                        }
-                        // 하루가 지났으면 .isOpened를 true로 변환해주는 함수 subSequence 6개 안에서만 진행
-                        // 각각의 subSequence는 공유 유무에 따라서 바꿔줘야함!
                         
-                        checkDate(question: questions)
+                        
                     }
-                    // navigationLink에서의 TapGestrue()!
-                    .simultaneousGesture(TapGesture().onEnded {
-                        isLock = !question.isOpened
-                        print("is LOCK: \(isLock)")
-                    })
-                    
-                    // NavigationLink로 옮겨가고 모달뷰가 띄게 됨 ERROR!!!!
-                    .sheet(isPresented: $isLock, content: {
-                        LockView()
-                    })
-                    
                 }
-                
             }
-            
             Button {
                 if completeSix{
                     shareActivated = true
                 }else{
                     shareActivated = false
                 }
-                
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
                     .foregroundColor(.white)
@@ -96,19 +82,20 @@ struct CouponView: View {
             })
             .disabled(!completeSix)
             .padding()
-            
-        }
-        .sheet(isPresented: $isLock) {
-            LockView()
-                .onAppear{
-                    count = countSolved(questions: questions)
-                    
+            .onAppear{
+                count = countSolved(questions: questions)
+                if count == 6{
+                    completeSix = true
+                } else{
+                    completeSix = false
                 }
+            }
+            .sheet(isPresented: $isLock, content: {
+                LockView()
+            })
         }
-        //        .navigationBarTitleDisplayMode(.inline)
-        
-        
     }
+    
     
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
         var count = 0
