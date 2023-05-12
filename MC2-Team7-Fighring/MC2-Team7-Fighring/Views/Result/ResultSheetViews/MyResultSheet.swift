@@ -16,7 +16,6 @@ struct MyResultSheet: View {
             ScrollView {
                 VStack {
                     GifImage("Bichon_avoidant")
-                        .resizable()
                         .scaledToFit()
                         .frame(width: 254)
                         .padding(.bottom, 27)

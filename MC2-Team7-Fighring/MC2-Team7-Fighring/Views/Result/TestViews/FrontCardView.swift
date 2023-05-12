@@ -30,17 +30,17 @@ struct FrontCardView: View {
                 .padding(.horizontal, 22)
                 .padding(.top, 23)
                 .frame(height: 84)
-                .padding(.bottom, 21)
+                .padding(.bottom, 58)
                 
-                Circle()
+                GifImage("Retriever_secure")
                     .frame(width: 300)
-                    .padding(.bottom, 66)
+                    .padding(.bottom, 113)
                 
                 HStack {
                     ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
                         Text("#\(tag)")
                             .bold()
-                            .foregroundColor(.accentColor)
+                          g  .foregroundColor(.accentColor)
                     }
                 }
                 .padding(.bottom, 33)
