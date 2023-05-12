@@ -78,7 +78,7 @@ struct CouponView: View {
                     )
             }
             .sheet(isPresented: $shareActivated, content: {
-                LetterView()
+                LetterView(questions: questions)
             })
             .disabled(!completeSix)
             .padding()

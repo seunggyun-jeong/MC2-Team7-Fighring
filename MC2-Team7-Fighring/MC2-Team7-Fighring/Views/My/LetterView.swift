@@ -18,6 +18,7 @@ enum LetterField{
 }
 
 struct LetterView: View {
+    var questions: FetchedResults<Question>.SubSequence
     @State private var letters: [String] = Array(repeating: "", count: 6)
     @FocusState private var focusedField: LetterField?
     @State private var showModal: Bool = false
@@ -65,8 +66,8 @@ struct LetterView: View {
                 .disabled(checkBtnStatus())
                 .padding()
                 .sheet(isPresented: $showModal) {
-                    // TODO: Deep Link 지정 후 수정 예정
-                    ActivityViewController(activityItems: ["lover36://\(letters.joined())"])
+                    // TODO: Deep Link 지정 후 수정 예정  1 -> 1, 7 -> 2, 13 -> 3
+                    ActivityViewController(activityItems: ["lover36://receive?message=\(getStringData())\(letters.joined())"])
                 }
             }
         }
@@ -103,7 +104,7 @@ struct LetterView: View {
     func letterCondition(value: [String])  {
         // 한 글자 입력되면 다음 칸으로 이동하기.
         for i in 0..<5 {
-            if value[i].count == 1 && activeStateForIndex(index: i) == focusedField {
+            if value[i].count > 1 && activeStateForIndex(index: i) == focusedField {
                 focusedField = activeStateForIndex(index: i + 1)
             }
         }
@@ -118,7 +119,7 @@ struct LetterView: View {
         
         // 한 글자 이상 입력되는 경우 마지막 한 글자만 받는다.
         for i in 0..<6 {
-            if value[i].count > 1 {
+            if value[i].count == 2 {
                 letters[i] = String(value[i].last!)
             }
         }
@@ -134,13 +135,29 @@ struct LetterView: View {
         default: return .f6
         }
     }
-}
-
-
-struct LetterView_Previews: PreviewProvider {
-    static var previews: some View {
-        LetterView()
+    
+    // url로 넘길 데이터 string (주차 + 해당 주차의 답변)
+    func getStringData() -> String {
+        var week: String = ""
+        var answer: String = ""
+        
+        week = String((questions[0].questionNum / 6) + 1)   // 몇 주차인지 확인
+        
+        for i in 0..<6 {
+            answer.append(String(questions[i].questionAnswer))  // 해당 주차 내부의 문제 답변
+        }
+        
+        week.append(answer)
+        
+        return week
     }
 }
+
+
+//struct LetterView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LetterView()
+//    }
+//}
 
 
