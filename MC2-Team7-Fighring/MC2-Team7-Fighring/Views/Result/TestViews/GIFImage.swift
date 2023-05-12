@@ -36,7 +36,7 @@ struct GifImage: UIViewRepresentable {
 }
 
 struct GifImage_Previews: PreviewProvider {
-    static var previews: some View {ㅎ
-        GifImage()
+    static var previews: some View {
+        GifImage("Beagle")
     }
 }
