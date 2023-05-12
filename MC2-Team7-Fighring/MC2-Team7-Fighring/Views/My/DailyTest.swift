@@ -10,6 +10,7 @@ import SwiftUI
 struct DailyTest: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
     
     var questionData: FetchedResults<Question>.Element
     var userEmotion: Int
@@ -102,7 +103,12 @@ struct DailyTest: View {
                             .foregroundColor(.gray.opacity(0.15))
                     )
                     .padding(.horizontal, 30)
-                    .lineLimit(4)
+                //  글자 수 제한 - 50자
+                    .onChange(of: reason) { newValue in
+                        if newValue.count > 50 {
+                            reason = String(newValue.prefix(50))
+                        }
+                    }
                 
                 if reason.isEmpty {
                     Text("이유에 대해 생각해보아요!\nex.델리빈 볼 말랑말랑")
@@ -116,14 +122,13 @@ struct DailyTest: View {
             .padding(.bottom, 40)
             
             
-            // 저장하기 버튼 (Data Store - Question)
-            Button {
-                DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
+            NavigationLink {
+                MainView(questions: question)
             } label: {
                 Text("저장하기")
                     .foregroundColor(.white)
                     .font(.body.bold())
-                    .padding(.horizontal, 150)
+                    .padding(.horizontal, 130)
                     .padding(.vertical, 15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
@@ -133,6 +138,10 @@ struct DailyTest: View {
             }
             .disabled(reason.isEmpty || clicked == 0)
             .padding(.bottom, 40)
+            .simultaneousGesture(TapGesture().onEnded {
+                DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
+            })
+            .navigationBarBackButtonHidden(true)
         }
         .onAppear {
             reason = questionData.userReason ?? ""
@@ -142,7 +151,6 @@ struct DailyTest: View {
                 click = true
             }
         }
-        .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "나의 감정"))
     }
 }

@@ -25,7 +25,6 @@ struct MainView: View {
                 //                }
                 ZStack{
                     TabView{
-                        
                         ForEach((1...6), id:\.self){ idx in
                             VStack{
                                 Text("\(idx)주차")
@@ -45,6 +44,8 @@ struct MainView: View {
                 
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.large)
         
     }
     

@@ -43,7 +43,7 @@ class DataController: ObservableObject{
         
         question.id = UUID()
         question.isSolved = false
-        //question.isOpened = isOpened
+        question.isOpened = isOpened
         question.questionNum = questionNum
         
         save(context: context)
@@ -66,7 +66,7 @@ class DataController: ObservableObject{
     func addData(context: NSManagedObjectContext) {
         let numbers = (0...35)
         for number in numbers{
-            if number == 0{
+            if number == 0 {
                 createQuestion(questionNum: Int32(number+1), isOpened: true, context: context)
             }else {
                 createQuestion(questionNum: Int32(number+1), isOpened: false, context: context)

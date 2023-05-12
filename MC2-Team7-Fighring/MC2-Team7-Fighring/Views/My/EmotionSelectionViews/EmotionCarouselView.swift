@@ -19,9 +19,6 @@ struct EmotionCarouselView: View {
         
         
         VStack {
-            
-            Text(emotionStorage.emotions[getCenterItem()])
-            
             ZStack {
                 //                Circle()
                 //                    .frame(width: 270, height: 270)
