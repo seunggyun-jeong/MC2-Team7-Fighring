@@ -40,7 +40,7 @@ struct FrontCardView: View {
                     ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
                         Text("#\(tag)")
                             .bold()
-                          g  .foregroundColor(.accentColor)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .padding(.bottom, 33)
