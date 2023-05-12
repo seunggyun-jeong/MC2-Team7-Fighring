@@ -18,12 +18,6 @@ struct OnBoardingMainView: View {
             OnboardingTopView(isFirstLaunch: $isFirstLaunch)
                 .padding(.bottom, 12)
             
-            Line()
-                .stroke(style: StrokeStyle(lineWidth: 3, dash: [5]))
-                .frame(height: 1)
-                .foregroundColor(.accentColor)
-                .padding(.horizontal, 24)
-            
             // OnBoarding 탭 리스트.
             TabView(selection: $selection) {
                 OnboardingContents(title: "이 앱은 무슨 앱인가요?", image: "John_Bowlby", description: "존 볼비의 애착 이론을 기반으로,\n 36일동안 애착 유형을\n검사할 수 있는 앱입니다.")

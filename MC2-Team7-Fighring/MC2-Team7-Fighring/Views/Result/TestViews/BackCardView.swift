@@ -24,7 +24,7 @@ struct BackCardView: View {
                     .bold()
                     .padding(.top, 32)
                 
-                Image("Bichon_avoidant")
+                Image(TypeData.imageName[attachmentType.rawValue])
                     .resizable()
                     .scaledToFit()
                     .frame(width: 173)
