@@ -43,6 +43,7 @@ struct ContentView: View {
 //                        print(encodedStr)
                         selection = .lover
                         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
+                        print(components)
                         if components.scheme == "lover36", components.host == "receive", let message = components.queryItems?.first(where: { $0.name == "message" })?.value {
                             let data = Array(message)
                             let week = 6*Int(String(data[0]))! - 7
