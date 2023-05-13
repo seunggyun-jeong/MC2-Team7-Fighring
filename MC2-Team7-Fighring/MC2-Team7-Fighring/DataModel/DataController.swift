@@ -97,8 +97,4 @@ class DataController: ObservableObject{
         print("Saved")
     }
     
-    func getCurrentWeek() -> Int {
-        @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
-        return (Int(share.count/6))
-    }
 }
