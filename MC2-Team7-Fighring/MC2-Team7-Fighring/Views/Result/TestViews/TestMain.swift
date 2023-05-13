@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TestMain: View {
     @State private var showOtherType: Bool = false
+    private let userAttachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
     
     // Card Flip
     @State var backDegree = 90.0
@@ -37,8 +38,8 @@ struct TestMain: View {
                 
                 ZStack {
                     // 카드
-                    FrontCardView(degree: $frontDegree, attachmentType: .secure)
-                    BackCardView(degree: $backDegree, attachmentType: .secure)
+                    FrontCardView(degree: $frontDegree, attachmentType: userAttachmentType)
+                    BackCardView(degree: $backDegree, attachmentType: userAttachmentType)
                 }
                 .padding(.bottom, 37)
                 .onTapGesture {

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ResultHome: View {
-    @State private var isLocked: Bool = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
+//    @State private var isLocked: Bool = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
+    @State private var isLocked: Bool = false
     @State private var isConfirm: Bool = false
     @State private var isLoadingDone: Bool = false
     @State private var isGetResult: Bool = UserDefaults.standard.bool(forKey: "isGetResult")
+//    @State private var isGetResult: Bool = false
     
     var body: some View {
         if isGetResult {
@@ -19,9 +21,9 @@ struct ResultHome: View {
         } else {
             if isConfirm {
                 if isLoadingDone {
-                    LoadingView(isLoadingDone: $isLoadingDone)
-                } else {
                     MyResultSheet(isGetResult: $isGetResult)
+                } else {
+                    LoadingView(isLoadingDone: $isLoadingDone)
                 }
             } else {
                 LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
