@@ -27,11 +27,13 @@ struct FrontCardView: View {
                     .lineLimit(nil)
                     .padding(.horizontal, 22)
                     .padding(.top, 23)
-                    .padding(.bottom, 58)
+                
+                Spacer()
                 
                 GifImage(TypeData.imageName[attachmentType.rawValue])
                     .frame(width: 300)
-                    .padding(.bottom, 113)
+                
+                Spacer()
                 
                 HStack {
                     ForEach(TypeData.tags[attachmentType.rawValue], id: \.self) { tag in
