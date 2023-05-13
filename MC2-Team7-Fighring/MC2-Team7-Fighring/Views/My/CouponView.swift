@@ -36,7 +36,7 @@ struct CouponView: View {
                         
                         // if question is opened
                         if question.isOpened{
-
+                            
                             if question.isSolved{
                                 NavigationLink(destination: DailyTest(questionData: question, userEmotion: Int(question.userEmotion), hasDone: true)) {
                                     Image("solvedFlower")
@@ -44,11 +44,11 @@ struct CouponView: View {
                                         .padding(.zero)
                                 }
                                 
-                            //not yet solved
+                                //not yet solved
                             } else {
-                                    NavigationLink(destination: EmotionSelectView(questionData: question, hasDone: false)) {
-
-
+                                NavigationLink(destination: EmotionSelectView(questionData: question, hasDone: false)) {
+                                    
+                                    
                                     
                                     Image("opendFlower")
                                         .frame(width: 120, height: 110)
@@ -95,17 +95,18 @@ struct CouponView: View {
             }
             Spacer()
         }
+        // when button is pressed
         .sheet(isPresented: $shareActivated, content: {
-            
-           
             LetterView(questions: questions)
             
         })
+        // when six questions are done => notification => 라빈얼굴
         .sheet(isPresented: $completeSixModal, content: {
-                        CompleteSixNotifyView()
-                            .presentationDetents([.medium])
-                            .presentationDragIndicator(.visible)
+            CompleteSixNotifyView()
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
         })
+        // when not completed => 규니얼굴
         .sheet(isPresented: $notCompleteSix, content: {
             LockView()
                 .presentationDetents([.medium])
@@ -115,12 +116,14 @@ struct CouponView: View {
         .onAppear{
             checkOpened(questions: questions)
             count = countSolved(questions: questions)
-            
             if count == 6{
                 completeSix = true
                 completeSixModal = true
+                if UserDefaults.standard.bool(forKey: "completeSixModal") == true{
+                    completeSixModal = false
+                }
+                UserDefaults.standard.set(true, forKey: "completeSixModal")
             }
-            
             
         }
         .overlay(isLock ? ToastView(text:"아직 열리지 않았어요") : nil)
