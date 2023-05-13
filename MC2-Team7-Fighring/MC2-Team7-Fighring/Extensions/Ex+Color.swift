@@ -15,4 +15,6 @@ extension Color {
 struct ColorTheme {
     let mainColor = Color("mainColor")
     let secondary = Color("secondary")
+    let detailButton = Color("DetailButton")
+    let detailTextField = Color("DetailTextField")
 }

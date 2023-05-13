@@ -20,15 +20,15 @@ struct LoverDetail: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack{
-                HStack(spacing: 0){
+                HStack(spacing: 4){
                     ForEach(0 ..< 6) { index in
                         ZStack{
                             Button(action: {
                                 shareLetterClicked = index
                             }){
-                                Image("blueCircle")
-                                    .frame(width: 45, height: 45)
-                                    .opacity(shareLetterClicked == index ? 1 : 0)
+                                Circle()
+                                    .frame(width: 48, height: 48)
+                                    .foregroundColor(shareLetterClicked == index ? Color("AccentColor") : Color.theme.detailButton)
                             }
                             Text(share[6 * currentIndex + index].sixLetters!)
                                 .foregroundColor(shareLetterClicked == index ? .white : .black)
@@ -37,31 +37,37 @@ struct LoverDetail: View {
                         }
                     }
                 }
-                .frame(width: 340, height: 102)
-                .background(.gray.opacity(0.1))
-                .cornerRadius(8)
+                .frame(width: 340, height: 50)
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 56, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
 
             
-            Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
-                .frame(maxWidth: .infinity, alignment: .center)
-                .font(.system(size: 25))
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
+            HStack{
+                Text("Day \(6 * currentIndex + shareLetterClicked + 1)")
+                    .frame(width: 302, alignment: .leading)
+                    .font(.system(size: 34))
+                    .bold()
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            }.frame(maxWidth: .infinity, alignment: .center)
+
+            HStack{
+                Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
+                    .frame(width: 302)
+                    .font(.system(size: 25))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
+            }.frame(maxWidth: .infinity, alignment: .center)
+
             
             HStack(spacing: 18){
                 ForEach(0 ..< 5){ index in
                     Button(action:{
-                        print(share.count)
-                        print(share[0])
-                        print(currentIndex)
                     }){
                         ZStack{
                             Circle()
                                 .frame(width: 45, height: 45)
-                                .foregroundColor(share[6 * currentIndex + shareLetterClicked].questionAnswer - 1 == index ? .pink: .white)
-                                .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                                .foregroundColor(share[6 * currentIndex + shareLetterClicked].questionAnswer - 1 == index ? Color("AccentColor"): .white)
+                                .overlay(Circle().stroke(Color.theme.secondary, lineWidth: 1))
                             if(share[6 * currentIndex + shareLetterClicked].questionAnswer - 1 == index){
                                 Image(systemName: "heart.fill")
                                     .foregroundColor(Color.white)
@@ -77,11 +83,11 @@ struct LoverDetail: View {
             HStack{
                 HStack{
                     Text("전혀 그렇지 않다")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.secondary)
                         .font(.system(size: 15))
                     Spacer()
                     Text("매우 그렇다")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.secondary)
                         .font(.system(size: 15))
                 }
                 .frame(width: 337)
@@ -89,19 +95,23 @@ struct LoverDetail: View {
             .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 66, trailing: 0))
             
-            Text("Tip!")
-                .foregroundColor(.blue)
-                .font(.system(size: 20))
-                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
-            VStack(){
-                Text(tip)
-                    .font(.system(size: 14))
-                    .padding(EdgeInsets(top: 23, leading: 0, bottom: 0, trailing: 0))
-            }
-            .frame(width: 332, height: 131, alignment: .top)
-            .background(.gray.opacity(0.1))
-            .cornerRadius(15)
-            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+            HStack{
+                HStack{
+                    Image("tip")
+                        .resizable()
+                        .frame(width: 47, height: 19, alignment: .leading)
+                }.frame(width: 310, alignment: .leading)
+            }.frame(maxWidth: .infinity, alignment: .center)
+            HStack{
+                VStack(){
+                    Text(tip)
+                        .font(.system(size: 14))
+                        .padding(EdgeInsets(top: 23, leading: 0, bottom: 0, trailing: 0))
+                }
+                .frame(width: 332, height: 131, alignment: .top)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(8)
+            }.frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.background)
@@ -110,6 +120,6 @@ struct LoverDetail: View {
 
 struct LoverDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LoverDetail(currentIndex: .constant(1))
+        LoverDetail(currentIndex: .constant(0))
     }
 }
