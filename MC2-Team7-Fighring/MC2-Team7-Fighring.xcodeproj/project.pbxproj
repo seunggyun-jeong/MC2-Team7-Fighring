@@ -37,6 +37,7 @@
 		3DCC27732A0DE326009178BD /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27722A0DE326009178BD /* NanumPen.ttf */; };
 		6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BE2A08A107004D60A0 /* DailyTest.swift */; };
 		AE6E671E2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */; };
+		AE6E67202A0F76180002D7B8 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E671F2A0F76180002D7B8 /* ToastView.swift */; };
 		AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DB2A088E7600DEE144 /* MainView.swift */; };
 		AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DD2A08900F00DEE144 /* CouponView.swift */; };
 		AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DF2A08A1C300DEE144 /* LockView.swift */; };
@@ -84,6 +85,7 @@
 		3DCC27722A0DE326009178BD /* NanumPen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumPen.ttf; sourceTree = "<group>"; };
 		6C11F0BE2A08A107004D60A0 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
 		AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSixNotifyView.swift; sourceTree = "<group>"; };
+		AE6E671F2A0F76180002D7B8 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		AEA059DB2A088E7600DEE144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AEA059DD2A08900F00DEE144 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		AEA059DF2A08A1C300DEE144 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
 				AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */,
+				AE6E671F2A0F76180002D7B8 /* ToastView.swift */,
 				6C11F0BE2A08A107004D60A0 /* DailyTest.swift */,
 				CDAE7E522A09654E00B1D2C3 /* EmotionSelectionViews */,
 				CD8CE9702A0CB65100E46FCE /* LeadingBackBtnView.swift */,
@@ -385,6 +388,7 @@
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */,
 				CDAE7E4F2A0963A200B1D2C3 /* EmotionCarouselView.swift in Sources */,
+				AE6E67202A0F76180002D7B8 /* ToastView.swift in Sources */,
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
 				3D3E1FD42A0B790B00D0F4A4 /* Ex+Color.swift in Sources */,
 				AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */,
