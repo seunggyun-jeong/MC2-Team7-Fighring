@@ -69,7 +69,7 @@ class DataController: ObservableObject{
             if number == 0 {
                 createQuestion(questionNum: Int32(number+1), openedDate: getCurrentDateTime(), isOpened: true, context: context)
             }else {
-                createQuestion(questionNum: Int32(number+1), openedDate: "none", isOpened: false, context: context)
+                createQuestion(questionNum: Int32(number+1), openedDate: "notOpened", isOpened: false, context: context)
             }
             
         }

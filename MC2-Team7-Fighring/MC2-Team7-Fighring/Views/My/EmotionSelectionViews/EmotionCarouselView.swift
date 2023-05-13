@@ -60,7 +60,7 @@ struct EmotionCarouselView: View {
                     .padding(15)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color("AccentColor"))
                     )
             })
             .simultaneousGesture(TapGesture().onEnded {
