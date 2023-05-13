@@ -14,6 +14,7 @@ struct CouponView: View {
     @State private var isLock: Bool = false
     @State private var isNavigation: Bool = false
     @State private var completeSix: Bool = false
+    @State private var notCompleteSix: Bool = false
     @State private var shareActivated: Bool = false
     @State private var count: Int = 0
     
@@ -23,22 +24,28 @@ struct CouponView: View {
     
     var body: some View {
         VStack{
-
-            
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) { question in
                     
                     VStack{
                         // if question is opened
                         if question.isOpened{
-                            NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                            
+                            if question.isSolved{
+                                NavigationLink(destination: DailyTest(questionData: question, userEmotion: Int(question.userEmotion))) {
+                                    Image("solvedFlower")
+                                        .frame(width: 120, height: 110)
+                                        .padding(.zero)
+                                }
                                 
-                                Image(question.isSolved ? "solvedFlower" : "opendFlower")
-                                    .frame(width: 120, height: 110)
-                                    .padding(.zero)
-                                
-                                
-                                
+                            //not yet solved
+                            }else{
+                                NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                                    
+                                    Image("opendFlower")
+                                        .frame(width: 120, height: 110)
+                                        .padding(.zero)
+                                }
                             }
                         }else{
                             // if question is closed
@@ -54,44 +61,53 @@ struct CouponView: View {
                         }
                         // 몇일째의 질문인지 표기
                         Text("Day \(question.questionNum)")
-                            //.foregroundColor(Color("AccentColor"))
+                            .foregroundColor(.theme.secondary)
                             .padding(.bottom)
                     }
                 }
             }
             Button {
-                if completeSix{
-                    shareActivated = true
-                }else{
-                    shareActivated = false
-                }
+                shareActivated = completeSix
+                notCompleteSix = !completeSix
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
                     .foregroundColor(.white)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 130)
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 150)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(completeSix ? Color("AccentColor") : .theme.secondary)
                     )
             }
-            .sheet(isPresented: $shareActivated, content: {
-                LetterView(questions: questions)
-            })
-            .disabled(!completeSix)
-            .padding()
-            .onAppear{
-                count = countSolved(questions: questions)
-                if count == 6{
-                    completeSix = true
-                } else{
-                    completeSix = false
-                }
-            }
-            .sheet(isPresented: $isLock, content: {
-                LockView()
-            })
+            Spacer()
         }
+        .sheet(isPresented: $completeSix, content: {
+            CompleteSixNotifyView()
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        })
+        .sheet(isPresented: $notCompleteSix, content: {
+            LockView()
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        })
+        .sheet(isPresented: $shareActivated, content: {
+            LetterView(questions: questions)
+        })
+        .padding()
+        .onAppear{
+            count = countSolved(questions: questions)
+            if count == 6{
+                completeSix = true
+            } else{
+                completeSix = false
+            }
+        }
+        //toast로 변경
+        //            .sheet(isPresented: $isLock, content: {
+        //                LockView()
+        //            })
+        
     }
     
     func countSolved(questions: FetchedResults<Question>.SubSequence) -> Int{
