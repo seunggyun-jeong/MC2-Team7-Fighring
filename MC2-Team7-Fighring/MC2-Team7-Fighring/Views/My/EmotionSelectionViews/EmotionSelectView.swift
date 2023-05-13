@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmotionSelectView: View {
     var questionData: FetchedResults<Question>.Element
+    var hasDone: Bool
     
     var body: some View {
             VStack {
@@ -26,12 +27,12 @@ struct EmotionSelectView: View {
                 
                 Spacer()
                 
-                EmotionCarouselView(questionData: questionData)
+                EmotionCarouselView(questionData: questionData, hasDone: hasDone)
                 
                 Spacer()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "My 목록"))
+        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: hasDone ? "" : "36 days"))
     }
     
 }

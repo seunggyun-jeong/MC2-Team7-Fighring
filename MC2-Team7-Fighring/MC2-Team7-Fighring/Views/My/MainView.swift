@@ -19,16 +19,6 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                //                HStack{
-                //                    Text("36 Days")
-                //                        .font(.title)
-                //                        .fontWeight(.heavy)
-                //                      //  .foregroundColor(.theme.secondary)
-                //                    Spacer()
-                //                }
-                //                .padding(.top, 18)
-                //                .padding(.horizontal, 24)
-                
                 ZStack{
                     TabView{
                         ForEach((1...6), id:\.self){ idx in

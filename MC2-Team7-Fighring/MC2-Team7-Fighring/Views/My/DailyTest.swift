@@ -9,16 +9,18 @@ import SwiftUI
 
 struct DailyTest: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
     
     var questionData: FetchedResults<Question>.Element
     var userEmotion: Int
+    var hasDone: Bool
     
     @State var loverName: String = "❤️"
     @State var click = false
     @State var clicked = 0
     @State var reason: String = ""
+    @State var isShowModal: Bool = false
+    
     
     var body: some View {
         VStack {
@@ -27,12 +29,24 @@ struct DailyTest: View {
                     Text("Day \(Int(questionData.questionNum))")
                         .font(.title.bold())
                         .padding(.trailing, 5)
-                
-                    Image(EmotionStore().emotions[userEmotion])
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 45)
                     
+                    Button {
+                        isShowModal.toggle()
+                    } label: {
+                        Image(EmotionStore().emotions[userEmotion])
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 45)
+                    }
+                    .sheet(isPresented: $isShowModal) {
+                        EmotionSelectView(questionData: questionData, hasDone: true)
+                            .presentationDetents([.height(500)])
+                            .padding(.top, 40)
+                            .presentationDragIndicator(.visible)
+                    }
+                    .disabled(!hasDone)
+
+
                     Spacer()
                 }
                 
@@ -97,10 +111,10 @@ struct DailyTest: View {
                 TextEditor(text: $reason)
                     .font(.system(size: 18))
                     .scrollContentBackground(.hidden)
-                    .foregroundColor(.black)
+                    .foregroundColor(.gray)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(.gray.opacity(0.15))
+                            .foregroundColor(.gray.opacity(0.1))
                     )
                     .padding(.horizontal, 30)
                 //  글자 수 제한 - 50자
@@ -139,6 +153,7 @@ struct DailyTest: View {
             .disabled(reason.isEmpty || clicked == 0)
             .padding(.bottom, 40)
             .simultaneousGesture(TapGesture().onEnded {
+                // 저장하기
                 DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
             })
             .navigationBarBackButtonHidden(true)
@@ -151,7 +166,17 @@ struct DailyTest: View {
                 click = true
             }
         }
-        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: "나의 감정"))
+        .navigationBarItems(leading: LeadingBackBtnView(dismissDest: hasDone ? "36 days" : "나의 감정"))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onTapGesture {
+            self.endTextEditing()
+        }
+    }
+    
+    
+    // 빈 곳을 터치했을 때 키보드 내리기
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

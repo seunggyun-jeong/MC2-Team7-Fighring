@@ -8,28 +8,19 @@
 import SwiftUI
 
 struct EmotionCarouselView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var questionData: FetchedResults<Question>.Element
+    var hasDone: Bool
     
     @StateObject var emotionStorage = EmotionStore()
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     
     var body: some View {
-        
-        
         VStack {
             ZStack {
-                //                Circle()
-                //                    .frame(width: 270, height: 270)
-                //                    .foregroundColor(.white)
-                //                    .background(
-                //                        Circle()
-                //                            .stroke(.gray, lineWidth: 0.5)
-                //                    )
-                //                    .shadow(color: .black, radius: 4)
-                //                    .padding(.bottom, 100)
-                
                 ZStack {
                     ForEach(emotionStorage.items) { item in
                         VStack {
@@ -62,8 +53,7 @@ struct EmotionCarouselView: View {
                 
             }
             
-            NavigationLink(destination: DailyTest(questionData: questionData, userEmotion: getCenterItem()), label: {
-                
+            NavigationLink(destination: DailyTest(questionData: questionData, userEmotion: getCenterItem(), hasDone: hasDone), label: {
                 Text("선택완료")
                     .font(.body.bold())
                     .foregroundColor(.white)
@@ -72,6 +62,14 @@ struct EmotionCarouselView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.blue)
                     )
+            })
+            .simultaneousGesture(TapGesture().onEnded {
+                if hasDone {
+                    // 저장하기
+                    DataController().answerQuestion(question: questionData, questionAnswer: questionData.questionAnswer, questionNum: questionData.questionNum, userReason: questionData.userReason ?? "", userEmotion: Int32(getCenterItem()), context: managedObjectContext)
+                    presentationMode.wrappedValue.dismiss()
+                    
+                }
             })
             
         }

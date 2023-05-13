@@ -30,24 +30,24 @@ struct CouponView: View {
                     VStack{
                         // if question is opened
                         if question.isOpened{
-                            
+
                             if question.isSolved{
-                                NavigationLink(destination: DailyTest(questionData: question, userEmotion: Int(question.userEmotion))) {
+                                NavigationLink(destination: DailyTest(questionData: question, userEmotion: Int(question.userEmotion), hasDone: true)) {
                                     Image("solvedFlower")
                                         .frame(width: 120, height: 110)
                                         .padding(.zero)
                                 }
                                 
                             //not yet solved
-                            }else{
-                                NavigationLink(destination: EmotionSelectView(questionData: question)) {
+                            } else {
+                                    NavigationLink(destination: EmotionSelectView(questionData: question, hasDone: false)) {
                                     
                                     Image("opendFlower")
                                         .frame(width: 120, height: 110)
                                         .padding(.zero)
                                 }
                             }
-                        }else{
+                        } else {
                             // if question is closed
                             Button {
                                 isLock = !question.isOpened
