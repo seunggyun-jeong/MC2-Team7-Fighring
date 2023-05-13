@@ -29,13 +29,14 @@ struct LockedResult: View {
                 .foregroundColor(.secondary)
                 .bold()
             
-            Button("결과확인") {
+            ButtonComponent(buttonStyle: .long) {
+                "확인하러가기"
+            } action: {
                 // 결과 확인 기능
                 resultAlgorithm()
                 isConfirm.toggle()
             }
             .disabled(isLocked)
-            .buttonStyle(.borderedProminent)
         }
     }
     

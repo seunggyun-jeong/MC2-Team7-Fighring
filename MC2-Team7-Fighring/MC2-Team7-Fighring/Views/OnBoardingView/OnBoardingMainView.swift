@@ -28,13 +28,13 @@ struct OnBoardingMainView: View {
                 
                 OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding4", description: "주어지는 질문에 답변하다 보면,\n6일마다 나의 애인에게 공유할 수 있습니다.")
                     .tag(2)
-
+                
                 OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding5", description: "공유 링크를 통해 연인의 결과지를 확인해볼 수 있어요.")
                     .tag(3)
                 
                 OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding6", description: "36일 후에 나의 유형에대한 결과를 확인할 수 있어요.")
                     .tag(4)
-
+                
             }
             .tabViewStyle(PageTabViewStyle())
             .padding(.horizontal, 18)
@@ -42,7 +42,10 @@ struct OnBoardingMainView: View {
                 setupAppearance()
             }
             
-            Button {
+            
+            ButtonComponent(buttonStyle: .long) {
+                selection == lastPage ? "완료" : "다음"
+            } action: {
                 withAnimation {
                     if selection == lastPage {
                         showNameToggle.toggle()
@@ -50,16 +53,7 @@ struct OnBoardingMainView: View {
                         selection += 1
                     }
                 }
-            } label: {
-                Text(selection == lastPage ? "완료" : "다음")
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color.accentColor)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
             }
-            .padding(.horizontal, 12)
             
             Spacer()
         }
