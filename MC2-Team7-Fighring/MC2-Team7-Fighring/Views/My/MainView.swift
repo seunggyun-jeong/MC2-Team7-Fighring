@@ -13,7 +13,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var questions: FetchedResults<Question>
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
+    
     
     
     var body: some View {
@@ -35,7 +35,6 @@ struct MainView: View {
                 .navigationTitle("36 Days")
                 .onAppear{
                     setupAppearance()
-                    checkOpened(questions: questions)
                     checkAllComplete(question: questions[35])
                 }
                 
@@ -44,37 +43,7 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
     
-    func checkOpened(questions: FetchedResults<Question>){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let endDate = dateFormatter.date(from: DataController().getCurrentDateTime()) ?? Date()
-        
-        let numbers = (0...34)
-        let points = [6, 12, 18, 24, 30]
-        
-        for number in numbers{
-            if questions[number].openedDate != "none"{
-                let targetDate = dateFormatter.date(from: questions[number].openedDate!) ?? Date()
-                let interval = endDate.timeIntervalSince(targetDate)
-                let days = Int(interval / 86400)
-                print("\(days) 일 차이 난다")
-                
-                if points.contains(number) {
-                    let cnt = share.count
-                    
-                    if points.contains(cnt){
-                        questions[number].isOpened = true
-                    }
-                }
-                else{
-                    if(days == 1){
-                        questions[number+1].isOpened = true
-                        print(questions[number+1].questionNum)
-                    }
-                }
-            }
-        }
-    }
+
     
     func checkAllComplete(question: FetchedResults<Question>.Element){
         if question.isSolved == true{
