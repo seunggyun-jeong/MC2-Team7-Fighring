@@ -26,13 +26,13 @@ struct OnBoardingMainView: View {
                 OnboardingContents(title: "왜 36일인가요?", image: "onBoarding2", description: "애착 유형을 검사하는 것 뿐만 아니라,질문에 대해 생각해보고,\n나의 행동을 돌아볼 수 있습니다!")
                     .tag(1)
                 
-                OnboardingContents(title: "왜 36일인가요?", image: "onBoarding4", description: "주어지는 질문에 답변하다 보면,\n6일마다 나의 애인에게 공유할 수 있습니다.")
+                OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding4", description: "주어지는 질문에 답변하다 보면,\n6일마다 나의 애인에게 공유할 수 있습니다.")
                     .tag(2)
 
-                OnboardingContents(title: "왜 36일인가요?", image: "onBoarding5", description: "공유 링크를 통해 연인의 결과지를 확인해볼 수 있어요.")
+                OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding5", description: "공유 링크를 통해 연인의 결과지를 확인해볼 수 있어요.")
                     .tag(3)
                 
-                OnboardingContents(title: "왜 36일인가요?", image: "onBoarding6", description: "36일 후에 나의 유형에대한 결과를 확인할 수 있어요.")
+                OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding6", description: "36일 후에 나의 유형에대한 결과를 확인할 수 있어요.")
                     .tag(4)
 
             }
