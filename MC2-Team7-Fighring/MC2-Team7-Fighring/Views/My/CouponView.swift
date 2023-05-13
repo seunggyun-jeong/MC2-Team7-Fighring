@@ -51,6 +51,11 @@ struct CouponView: View {
                             // if question is closed
                             Button {
                                 isLock = !question.isOpened
+                                if isLock == true{
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        isLock = false
+                                    }
+                                }
                             } label: {
                                 
                                 Image("closedFlower")
@@ -72,7 +77,7 @@ struct CouponView: View {
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
                     .foregroundColor(.white)
-                    .padding(.vertical, 15)
+                    .padding(.vertical, 18)
                     .padding(.horizontal, 150)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
@@ -103,6 +108,7 @@ struct CouponView: View {
                 completeSix = false
             }
         }
+        .overlay(isLock ? ToastView(text:"아직 열리지 않았어요") : nil)
         //toast로 변경
         //            .sheet(isPresented: $isLock, content: {
         //                LockView()

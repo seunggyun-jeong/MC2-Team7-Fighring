@@ -46,6 +46,7 @@ struct MainView: View {
                 .onAppear{
                     setupAppearance()
                     checkOpened(questions: questions)
+                    checkAllComplete(question: questions[35])
                 }
                 
             }
@@ -85,9 +86,9 @@ struct MainView: View {
         }
     }
     
-    func checkAllComplete(questions: FetchedResults<Question>){
-        if questions[35].isSolved == true{
-            
+    func checkAllComplete(question: FetchedResults<Question>.Element){
+        if question.isSolved == true{
+            UserDefaults.standard.set(true, forKey: "isAllComplete")
         }
     }
     
