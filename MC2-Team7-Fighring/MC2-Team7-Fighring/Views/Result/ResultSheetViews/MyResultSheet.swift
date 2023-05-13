@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyResultSheet: View {
-    @Binding var is36DaysLater: Bool
+    @Binding var isGetResult: Bool
     var attachmentType: AttachmentType = .secure
     
     var body: some View {
@@ -50,7 +50,8 @@ struct MyResultSheet: View {
                         
                         Button("확인") {
                             // TODO: Confirm
-                            is36DaysLater.toggle()
+                            isGetResult.toggle()
+                            UserDefaults.standard.set(true, forKey: "isGetResult")
                         }
                     }
                     .frame(width: 128)
@@ -85,6 +86,6 @@ struct CustomGauge: View {
 
 struct MyResultSheet_Previews: PreviewProvider {
     static var previews: some View {
-        MyResultSheet(is36DaysLater: .constant(false))
+        MyResultSheet(isGetResult: .constant(false))
     }
 }

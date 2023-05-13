@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct ResultHome: View {
-    @State private var isLocked: Bool = false
+    @State private var isLocked: Bool = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
     @State private var isConfirm: Bool = false
     @State private var isLoadingDone: Bool = false
-    @State private var is36DaysLater: Bool = false
+    @State private var isGetResult: Bool = UserDefaults.standard.bool(forKey: "isGetResult")
     
     var body: some View {
-        if isConfirm {
-            if isLoadingDone {
-                if is36DaysLater {
-                    TestMain()
+        if isGetResult {
+            TestMain()
+        } else {
+            if isConfirm {
+                if isLoadingDone {
+                    LoadingView(isLoadingDone: $isLoadingDone)
                 } else {
-                    MyResultSheet(is36DaysLater: $is36DaysLater)
+                    MyResultSheet(isGetResult: $isGetResult)
                 }
             } else {
-                LoadingView(isLoadingDone: $isLoadingDone)
+                LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
             }
-        } else {
-            LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
         }
     }
 }
