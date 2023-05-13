@@ -9,14 +9,14 @@ import SwiftUI
 
 struct LoverHome: View {
     var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
-    @State var envelopes: [Envelope] = []
-    @State var week: Int = Envelope.week
-    @State var currentIndex: Int = Envelope.week - 1
-    @State var sendIndex: Int = Envelope.week
+    @State var envelopes: [Envelope] = [Envelope(envelopeImage: "envelope1"), Envelope(envelopeImage: "envelope2"), Envelope(envelopeImage: "envelope3"), Envelope(envelopeImage: "envelope4"), Envelope(envelopeImage: "envelope5"), Envelope(envelopeImage: "envelope6")]
+    @Binding var week: Int
+    @Binding var currentIndex: Int
     @State private var showModal = false
+    @ObservedObject var envelopeIndex = EnvelopeIndex()
     
     var body: some View {
-        if week != 0 {
+        if envelopeIndex.week != 0 {
             VStack {
                 HStack {
                     Text("\(loverName)")
@@ -35,7 +35,7 @@ struct LoverHome: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
                 
-                EnvelopeCarouseView(spacing: -25, trailingSpace: 100, index: $currentIndex, items: envelopes) {envelope in
+                EnvelopeCarouseView(spacing: -25, trailingSpace: 100, currentIndex: $envelopeIndex.currentIndex_view, index: $currentIndex, items: envelopes) {envelope in //week: $week, current: $current, currentIndex: week - 1,
                     GeometryReader{proxy in
                         let size = proxy.size
                         VStack {
@@ -74,11 +74,6 @@ struct LoverHome: View {
                 
             }
             .frame(maxHeight: .infinity, alignment: .top)
-            .onAppear {
-                for index in 1...week {
-                    envelopes.append(Envelope(envelopeImage: "envelope\(index)"))
-                }
-            }
         } else {
             VStack {
                 Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요")
@@ -86,14 +81,16 @@ struct LoverHome: View {
                     .fontWeight(.bold)
                     .font(.system(size: 25))
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
-                Image("yongjun")
+                Image("yongjun").onAppear {
+                    print(envelopeIndex.week)
+                }
             }
         }
     }
 }
 
-struct LoverHome_Previews: PreviewProvider {
-    static var previews: some View {
-        LoverHome()
-    }
-}
+//struct LoverHome_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoverHome(week: .constant(6), currentIndex: .constant(5), current: .constant(5))
+//    }
+//}
