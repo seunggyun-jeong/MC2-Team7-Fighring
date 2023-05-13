@@ -36,6 +36,7 @@
 		3DCC276D2A0DD202009178BD /* Beagle_anxious.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27692A0DD202009178BD /* Beagle_anxious.gif */; };
 		3DCC27732A0DE326009178BD /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27722A0DE326009178BD /* NanumPen.ttf */; };
 		6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BE2A08A107004D60A0 /* DailyTest.swift */; };
+		AE6E671E2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */; };
 		AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DB2A088E7600DEE144 /* MainView.swift */; };
 		AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DD2A08900F00DEE144 /* CouponView.swift */; };
 		AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA059DF2A08A1C300DEE144 /* LockView.swift */; };
@@ -82,6 +83,7 @@
 		3DCC27692A0DD202009178BD /* Beagle_anxious.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Beagle_anxious.gif; sourceTree = "<group>"; };
 		3DCC27722A0DE326009178BD /* NanumPen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumPen.ttf; sourceTree = "<group>"; };
 		6C11F0BE2A08A107004D60A0 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
+		AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSixNotifyView.swift; sourceTree = "<group>"; };
 		AEA059DB2A088E7600DEE144 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AEA059DD2A08900F00DEE144 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		AEA059DF2A08A1C300DEE144 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				CD8CE9402A0A988000E46FCE /* CodeShare.swift */,
 				AEA059DD2A08900F00DEE144 /* CouponView.swift */,
 				AEA059DF2A08A1C300DEE144 /* LockView.swift */,
+				AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */,
 				6C11F0BE2A08A107004D60A0 /* DailyTest.swift */,
 				CDAE7E522A09654E00B1D2C3 /* EmotionSelectionViews */,
 				CD8CE9702A0CB65100E46FCE /* LeadingBackBtnView.swift */,
@@ -377,6 +380,7 @@
 				3D221C0D2A0895DD00501A18 /* OtherSheet.swift in Sources */,
 				AEA059DC2A088E7600DEE144 /* MainView.swift in Sources */,
 				CD8CE9712A0CB65100E46FCE /* LeadingBackBtnView.swift in Sources */,
+				AE6E671E2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift in Sources */,
 				AEA059E02A08A1C300DEE144 /* LockView.swift in Sources */,
 				3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */,
 				AEA059DE2A08900F00DEE144 /* CouponView.swift in Sources */,

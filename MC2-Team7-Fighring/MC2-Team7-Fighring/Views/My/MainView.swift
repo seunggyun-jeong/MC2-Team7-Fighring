@@ -19,15 +19,15 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
-//                HStack{
-//                    Text("36 Days")
-//                        .font(.title)
-//                        .fontWeight(.heavy)
-//                      //  .foregroundColor(.theme.secondary)
-//                    Spacer()
-//                }
-//                .padding(.top, 18)
-//                .padding(.horizontal, 24)
+                //                HStack{
+                //                    Text("36 Days")
+                //                        .font(.title)
+                //                        .fontWeight(.heavy)
+                //                      //  .foregroundColor(.theme.secondary)
+                //                    Spacer()
+                //                }
+                //                .padding(.top, 18)
+                //                .padding(.horizontal, 24)
                 
                 ZStack{
                     TabView{
@@ -74,8 +74,6 @@ struct MainView: View {
                     if points.contains(cnt){
                         questions[number].isOpened = true
                     }
-                    
-                    
                 }
                 else{
                     if(days == 1){
@@ -84,10 +82,14 @@ struct MainView: View {
                     }
                 }
             }
-            
         }
     }
     
+    func checkAllComplete(questions: FetchedResults<Question>){
+        if questions[35].isSolved == true{
+            
+        }
+    }
     
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
