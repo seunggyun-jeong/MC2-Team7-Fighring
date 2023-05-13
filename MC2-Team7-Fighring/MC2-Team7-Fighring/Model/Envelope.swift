@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Envelope: Identifiable{
     var id = UUID().uuidString
     var envelopeImage: String
-    static var week: Int = 4
-    //static var week: Int = DataController().getCurrentWeek() ?? 1
+}
+
+class EnvelopeIndex: ObservableObject {
+    @Published var week: Int = Int(UserDefaults.standard.string(forKey: "week") ?? "0") ?? 0
+    @Published var currentIndex_home: Int = ( Int(UserDefaults.standard.string(forKey: "week") ?? "-1" )! ) - 1
+    @Published var currentIndex_view: Int = ( Int(UserDefaults.standard.string(forKey: "week") ?? "-1" )! ) - 1
 }

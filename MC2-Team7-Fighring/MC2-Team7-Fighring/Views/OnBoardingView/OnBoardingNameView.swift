@@ -37,6 +37,7 @@ struct OnBoardingNameView: View {
                 
                 isFirstLaunch = false
                 UserDefaults.standard.set(loverName, forKey: "loverName")
+                UserDefaults.standard.set(0, forKey: "week")
               
                 // print(UserDefaults.standard.string(forKey: "loverName") ?? "🧡") // UserDefaults에 저장된 값 불러오는 방법
             } label: {
