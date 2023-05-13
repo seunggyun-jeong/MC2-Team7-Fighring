@@ -125,7 +125,7 @@ struct DailyTest: View {
                     }
                 
                 if reason.isEmpty {
-                    Text("이유에 대해 생각해보아요!\nex.델리빈 볼 말랑말랑")
+                    Text("이유에 대해 생각해보아요!\nex.젤리빈 볼 말랑말랑")
                         .font(.system(size: 18))
                         .foregroundColor(.gray.opacity(0.5))
                         .padding(.leading, 36)
