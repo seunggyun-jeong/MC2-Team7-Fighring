@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "brain fade.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "brain fade.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
