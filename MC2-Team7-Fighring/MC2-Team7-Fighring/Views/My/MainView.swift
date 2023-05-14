@@ -14,8 +14,12 @@ struct MainView: View {
     
     var questions: FetchedResults<Question>
     
+    @State private var selectedTab = 1
+    @State private var tabs = [1, 2, 3, 4, 5, 6]
     
     var body: some View {
+        
+        
         NavigationStack {
             HStack {
                 Text("36 Days")
@@ -30,15 +34,12 @@ struct MainView: View {
             
             VStack{
                 ZStack{
-                    TabView{
-                        ForEach((1...6), id:\.self){ idx in
+                    TabView (selection: $selectedTab){
+                        ForEach(tabs, id:\.self){ idx in
                             VStack{
 
                                 CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
                             }
-//                            .tabItem {
-//                                Image(systemName: "\(idx).circle")
-//                            }
                         }
                         
                     }
@@ -48,12 +49,29 @@ struct MainView: View {
                 }
                 .onAppear{
                     setupAppearance()
+                    moveTab()
                 }
                 
             }
         }
         .navigationBarBackButtonHidden(true)
     }
+    
+    func moveTab() {
+        var currentWeek = 1
+        let numbers = (0...35)
+        for number in numbers{
+            if questions[number].isSolved == true{
+                currentWeek = Int(questions[number].questionNum) / 6 + 1
+                if number == 35{
+                    currentWeek = 6
+                }
+            }
+        }
+        selectedTab = currentWeek
+        print(selectedTab)
+    }
+    
     
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
