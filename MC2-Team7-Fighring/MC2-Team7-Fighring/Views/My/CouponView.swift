@@ -47,9 +47,6 @@ struct CouponView: View {
                                 //not yet solved
                             } else {
                                 NavigationLink(destination: EmotionSelectView(questionData: question, hasDone: false)) {
-                                    
-                                    
-                                    
                                     Image("opendFlower")
                                         .frame(width: 120, height: 110)
                                         .padding(.zero)

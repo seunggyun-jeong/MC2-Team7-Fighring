@@ -30,6 +30,7 @@ struct OnBoardingNameView: View {
                 
                 TextField("상대방의 이름을 입력해 주세요", text: $loverName)
                     .textFieldStyle(TextFieldBackground(systemImageString: "pencil"))
+                    .disableAutocorrection(true)
             }
             .padding(.horizontal, 30)
             

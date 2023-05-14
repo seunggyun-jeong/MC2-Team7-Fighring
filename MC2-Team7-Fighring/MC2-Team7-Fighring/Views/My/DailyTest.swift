@@ -69,11 +69,12 @@ struct DailyTest: View {
                             clicked = index
                         }){
                             if index == clicked {
-                                // 하트 마크
+                                // 하트 마크   
                                 ZStack{
                                     Circle()
                                         .frame(width: 45, height: 45)
                                         .foregroundColor(click ? Color(red: 255/255, green: 151/255, blue: 172/255): .white)
+                                        .overlay(Circle().stroke(Color(red: 255/255, green: 151/255, blue: 172/255), lineWidth: 1))
                                     
                                     Image(systemName: "heart.fill")
                                         .foregroundColor(Color.white)
@@ -82,7 +83,7 @@ struct DailyTest: View {
                             }
                             else{
                                 Circle()
-                                    .frame(width: 44, height: 44)
+                                    .frame(width: 45, height: 45)
                                     .foregroundColor(.white)
                                     .overlay(Circle().stroke(Color.gray.opacity(0.5), lineWidth: 1))
                             }
