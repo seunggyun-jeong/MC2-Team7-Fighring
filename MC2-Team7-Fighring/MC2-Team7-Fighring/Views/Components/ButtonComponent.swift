@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ButtonComponent: View {
     let buttonStyle: ButtonStyle
+    var color: Color = .accentColor
     let content: () -> String
     let action: () -> Void
     var text: String {
@@ -22,7 +23,7 @@ struct ButtonComponent: View {
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
-                .background(Color.accentColor)
+                .background(color)
                 .foregroundColor(.white)
                 .cornerRadius(12)
                 .padding(.horizontal, buttonStyle == .long ? 30 : 96)        }

@@ -30,7 +30,7 @@ struct ContentView: View {
             TabView(selection: $selection) {
                 MainView(questions: question)
                     .tabItem {
-                        Label("My", systemImage: "person.circle.fill")
+                        Label("Journey", systemImage: "heart")
                     }
                     .tag(Tab.my)
                     // TODO: URL 데이터 처리
@@ -69,13 +69,13 @@ struct ContentView: View {
                 
                 LoverHome(week: $envelopeIndex.week, currentIndex: $currentindex_copy)
                     .tabItem {
-                        Label("Lover", systemImage: "heart.circle")
+                        Label("Letters", systemImage: "envelope")
                     }
                     .tag(Tab.lover)
                 
                 ResultHome()
                     .tabItem {
-                        Label("Result", systemImage: "book.circle.fill")
+                        Label("Type", systemImage: "person")
                     }
                     .tag(Tab.result)
             }

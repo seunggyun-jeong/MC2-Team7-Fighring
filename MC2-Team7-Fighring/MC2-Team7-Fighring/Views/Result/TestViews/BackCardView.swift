@@ -21,15 +21,15 @@ struct BackCardView: View {
                 .shadow(radius: 5)
             
             VStack {
-                Text("\"유형 이름\"")
-                    .font(.title)
-                    .bold()
+                Text(TypeData.name[attachmentType.rawValue])
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
                     .padding(.top, 32)
                 
                 Image(TypeData.imageName[attachmentType.rawValue])
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 173)
+                    .frame(height: 138)
                     .padding(.bottom, 14)
                 
                 HStack(spacing: 5) {

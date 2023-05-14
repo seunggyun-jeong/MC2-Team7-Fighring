@@ -52,17 +52,16 @@ struct TestMain: View {
                     Text("검사하러 가기")
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
+                        .frame(height: 60)
                         .background(Color.accentColor)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                .padding(.horizontal, 24)
                 .padding(.bottom, 11)
                 
                 Spacer()
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 30)
             .sheet(isPresented: $showOtherType) {
                 OtherSheet()
                     .presentationDetents([.fraction(0.75)])

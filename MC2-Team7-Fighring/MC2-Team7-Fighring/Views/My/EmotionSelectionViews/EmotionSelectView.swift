@@ -18,8 +18,8 @@ struct EmotionSelectView: View {
                         Text("오늘하루")
                         Text("**나의 감정**은 어땠나요?")
                     }
-                    .padding(.leading, 20)
-                    .padding(.bottom, 30)
+                    .padding([.leading, .bottom], 30)
+                    .padding(.top, 36)
                     .font(.title)
                     
                     Spacer()

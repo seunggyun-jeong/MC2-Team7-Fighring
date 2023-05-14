@@ -8,22 +8,49 @@
 import SwiftUI
 
 struct LockView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        VStack(alignment: .leading){
-            Spacer()
-            Text("아직 6일이 지나지 않았어요.\n")
-                .bold()
-                .font(.system(size: 25))
-            Text("조금만 더 기다려 주세요 ♡\n6일 간의 질문이 끝나면 아래 버튼을 통해\n나의 답변을 상대방에게 공유할 수 있어요 :)")
-            
+        VStack {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Spacer()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.theme.secondary)
+                    }
+                }
+                .padding([.top, .bottom], 24)
+                
+                Text("아직 6일이 지나지 않았어요!")
+                    .fontWeight(.heavy)
+                    .font(.system(size: 25))
+                    .padding(.bottom, 16)
+                
+                Text("조금만 더 기다려 주세요 ♡")
+                    .font(.callout)
+                    .bold()
+            }
             Image("Guynni")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 250)
-                .padding()
+                .frame(height: 206)
+                .padding(.top, 36)
             
+            Spacer()
+            
+            Text("6일 간의 질문이 끝나면 아래 버튼에서 나의 답변을\n상대방에게 공유할 수 있어요 :)")
+                .multilineTextAlignment(.center)
+                .font(.callout)
+                .bold()
+            
+            Spacer()
         }
-        
+        .padding(.horizontal, 18)
         
     }
 }

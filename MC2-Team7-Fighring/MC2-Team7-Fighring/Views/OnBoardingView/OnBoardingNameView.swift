@@ -10,16 +10,29 @@ import SwiftUI
 struct OnBoardingNameView: View {
     @State private var loverName: String = ""
     @Binding var isFirstLaunch: Bool
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-
     
     var body: some View {
         VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.theme.secondary)
+                }
+            }
+            .padding(.vertical, 24)
+            .padding(.trailing, 16)
+            
             Group {
                 Text("상대방의 이름을\n입력해주세요!")
                     .font(.title.bold())
                     .multilineTextAlignment(.leading)
-                    .padding(.top, 30)
                     .padding(.bottom, 5)
                     .allowsTightening(true)
                 
@@ -31,10 +44,9 @@ struct OnBoardingNameView: View {
                 TextField("상대방의 이름을 입력해 주세요", text: $loverName)
                     .textFieldStyle(TextFieldBackground(systemImageString: "pencil"))
                     .disableAutocorrection(true)
+                    .padding(.bottom, 30)
             }
             .padding(.horizontal, 30)
-            
-            Spacer()
             
             ButtonComponent(buttonStyle: .long) {
                 "저장하기"
@@ -46,7 +58,6 @@ struct OnBoardingNameView: View {
                 UserDefaults.standard.set(0, forKey: "week")
             }
             .disabled(loverName.isEmpty)
-            .padding(.bottom, 50)
             
             
             Spacer()

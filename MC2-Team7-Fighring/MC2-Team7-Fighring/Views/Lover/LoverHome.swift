@@ -18,7 +18,7 @@ struct LoverHome: View {
     var body: some View {
         if envelopeIndex.week != 0 {
             VStack {
-                HStack {
+                HStack(spacing: 0) {
                     Text("\(loverName)")
                         .multilineTextAlignment(.center)
                         .fontWeight(.bold)
@@ -58,32 +58,31 @@ struct LoverHome: View {
                 .padding(.vertical, 80)
                 .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                 
-                Button{
-                    print(envelopes)
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 330, height: 60)
-                            .foregroundColor(week == 6 ? Color(red: 255 / 255, green: 151 / 255, blue: 172 / 255) : Color(red: 199 / 255, green: 199 / 255, blue: 204 / 255))
-                        Text("유형보기")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
-                            .fontWeight(.semibold)
-                    }
-                }.padding(EdgeInsets(top: -150, leading: 0, bottom: 0, trailing: 0))
+                Spacer()
                 
+                ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
+                    "유형보기"
+                } action: {
+                    print(envelopes)
+                }
+                .padding(.bottom, 60)
+                .disabled(week != 6)
             }
             .frame(maxHeight: .infinity, alignment: .top)
         } else {
             VStack {
-                Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요")
+                Image("yongjun")
+                    .frame(height: 249)
+                    .onAppear {
+                        print(envelopeIndex.week)
+                    }
+                
+                Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요.")
+                    .foregroundColor(.theme.secondary)
                     .multilineTextAlignment(.center)
                     .fontWeight(.bold)
                     .font(.system(size: 25))
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
-                Image("yongjun").onAppear {
-                    print(envelopeIndex.week)
-                }
+                    .padding(.top, 36)
             }
         }
     }

@@ -18,6 +18,17 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
+            HStack {
+                Text("36 Days")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.theme.secondary)
+                Spacer()
+            }
+            .padding(.top, 18)
+            .padding(.leading, 24)
+            .padding(.bottom, 36)
+            
             VStack{
                 ZStack{
                     TabView{
@@ -30,9 +41,9 @@ struct MainView: View {
                             }
                         }
                     }
+                    .padding(.top, 0)
                     .tabViewStyle(PageTabViewStyle())
                 }
-                .navigationTitle("36 Days")
                 .onAppear{
                     setupAppearance()
                     checkAllComplete(question: questions[35])
