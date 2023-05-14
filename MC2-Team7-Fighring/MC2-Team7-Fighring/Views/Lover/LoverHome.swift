@@ -58,13 +58,15 @@ struct LoverHome: View {
                 .padding(.vertical, 80)
                 .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                 
-                ButtonComponent(buttonStyle: .long) {
+                Spacer()
+                
+                ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
                     "유형보기"
                 } action: {
                     print(envelopes)
                 }
-                .padding(.top, -150)
-                
+                .padding(.bottom, 60)
+                .disabled(week != 6)
             }
             .frame(maxHeight: .infinity, alignment: .top)
         } else {

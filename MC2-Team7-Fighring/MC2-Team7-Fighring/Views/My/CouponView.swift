@@ -79,6 +79,8 @@ struct CouponView: View {
                 }
             }
             
+            Spacer()
+            
             Button {
                 shareActivated = completeSix
                 notCompleteSix = !completeSix
@@ -94,7 +96,7 @@ struct CouponView: View {
                     )
             }
             .padding(.horizontal, 30)
-            Spacer()
+            .padding(.bottom, 60)
         }
         // when button is pressed
         .sheet(isPresented: $shareActivated, content: {
