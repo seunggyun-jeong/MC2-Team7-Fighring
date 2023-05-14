@@ -15,41 +15,34 @@ struct OnBoardingNameView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("상대방의 이름을\n입력해주세요!")
-                .font(.title.bold())
-                .multilineTextAlignment(.leading)
-                .padding(.top, 30)
-                .padding(.bottom, 5)
-                .allowsTightening(true)
-            
-            Text("*입력시 수정 불가")
-                .foregroundColor(.theme.secondary)
-                .fontWeight(.bold)
-                .padding(.bottom, 44)
-            
-            TextField("상대방의 이름을 입력해 주세요", text: $loverName)
-                .textFieldStyle(TextFieldBackground(systemImageString: "pencil"))
+            Group {
+                Text("상대방의 이름을\n입력해주세요!")
+                    .font(.title.bold())
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 30)
+                    .padding(.bottom, 5)
+                    .allowsTightening(true)
+                
+                Text("*입력시 수정 불가")
+                    .foregroundColor(.theme.secondary)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 44)
+                
+                TextField("상대방의 이름을 입력해 주세요", text: $loverName)
+                    .textFieldStyle(TextFieldBackground(systemImageString: "pencil"))
+            }
+            .padding(.horizontal, 30)
             
             Spacer()
             
-            Button {
+            ButtonComponent(buttonStyle: .long) {
+                "저장하기"
+            } action: {
                 DataController().addData(context: managedObjectContext)
                 
                 isFirstLaunch = false
                 UserDefaults.standard.set(loverName, forKey: "loverName")
                 UserDefaults.standard.set(0, forKey: "week")
-              
-                // print(UserDefaults.standard.string(forKey: "loverName") ?? "🧡") // UserDefaults에 저장된 값 불러오는 방법
-            } label: {
-                Text("저장하기")
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(15)
-                    .fontWeight(.semibold)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(loverName.isEmpty ? .secondary : .accentColor)
-                    )
             }
             .disabled(loverName.isEmpty)
             .padding(.bottom, 50)
@@ -57,7 +50,6 @@ struct OnBoardingNameView: View {
             
             Spacer()
         }
-        .padding(.horizontal, 30)
     }
 }
 

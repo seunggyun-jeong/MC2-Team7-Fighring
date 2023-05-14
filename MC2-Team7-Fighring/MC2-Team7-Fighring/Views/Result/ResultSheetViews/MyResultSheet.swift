@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MyResultSheet: View {
-    @Binding var is36DaysLater: Bool
-    var attachmentType: AttachmentType = .secure
+    @Binding var isGetResult: Bool
+    private let attachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
+    private let avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
+    private let anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
     
     var body: some View {
         NavigationStack {
@@ -39,10 +41,8 @@ struct MyResultSheet: View {
                         .padding(.bottom, 16)
                     
                     HStack(spacing: 10) {
-                        CustomGauge(current: 33, gaugeName: "회피성")
-                        CustomGauge(current: 33, gaugeName: "회피성")
-                        CustomGauge(current: 33, gaugeName: "회피성")
-                        CustomGauge(current: 33, gaugeName: "회피성")
+                        CustomGauge(current: avoidantScore, gaugeName: "회피성")
+                        CustomGauge(current: anxiousScore, gaugeName: "불안성")
                     }
                     
                     VStack {
@@ -50,7 +50,8 @@ struct MyResultSheet: View {
                         
                         Button("확인") {
                             // TODO: Confirm
-                            is36DaysLater.toggle()
+                            isGetResult.toggle()
+                            UserDefaults.standard.set(true, forKey: "isGetResult")
                         }
                     }
                     .frame(width: 128)
@@ -85,6 +86,6 @@ struct CustomGauge: View {
 
 struct MyResultSheet_Previews: PreviewProvider {
     static var previews: some View {
-        MyResultSheet(is36DaysLater: .constant(false))
+        MyResultSheet(isGetResult: .constant(false))
     }
 }

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "onBoarding2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "onBoarding2 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

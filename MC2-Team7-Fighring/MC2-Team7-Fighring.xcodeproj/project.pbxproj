@@ -35,6 +35,7 @@
 		3DCC276C2A0DD202009178BD /* Retriever_secure.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27682A0DD202009178BD /* Retriever_secure.gif */; };
 		3DCC276D2A0DD202009178BD /* Beagle_anxious.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27692A0DD202009178BD /* Beagle_anxious.gif */; };
 		3DCC27732A0DE326009178BD /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCC27722A0DE326009178BD /* NanumPen.ttf */; };
+		3DCC27752A100762009178BD /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC27742A100762009178BD /* ButtonComponent.swift */; };
 		6C11F0BF2A08A107004D60A0 /* DailyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11F0BE2A08A107004D60A0 /* DailyTest.swift */; };
 		6CB17C852A108A3F00CD58E5 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB17C842A108A3F00CD58E5 /* Tips.swift */; };
 		AE6E671E2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */; };
@@ -84,6 +85,7 @@
 		3DCC27682A0DD202009178BD /* Retriever_secure.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Retriever_secure.gif; sourceTree = "<group>"; };
 		3DCC27692A0DD202009178BD /* Beagle_anxious.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Beagle_anxious.gif; sourceTree = "<group>"; };
 		3DCC27722A0DE326009178BD /* NanumPen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumPen.ttf; sourceTree = "<group>"; };
+		3DCC27742A100762009178BD /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		6C11F0BE2A08A107004D60A0 /* DailyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTest.swift; sourceTree = "<group>"; };
 		6CB17C842A108A3F00CD58E5 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		AE6E671D2A0F6CB80002D7B8 /* CompleteSixNotifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSixNotifyView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				3D221BE92A07B55900501A18 /* My */,
 				3D221BEA2A07B57200501A18 /* Lover */,
 				3D221BEB2A07B58800501A18 /* Result */,
+				3DCC27762A10077C009178BD /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,14 @@
 				3DCC27722A0DE326009178BD /* NanumPen.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		3DCC27762A10077C009178BD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3DCC27742A100762009178BD /* ButtonComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		AEF2EDD12A09E8DD00C3CF98 /* DataModel */ = {
@@ -396,6 +407,7 @@
 				3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */,
 				3D3E1FD42A0B790B00D0F4A4 /* Ex+Color.swift in Sources */,
 				AEA059E22A08CE4E00DEE144 /* LetterView.swift in Sources */,
+				3DCC27752A100762009178BD /* ButtonComponent.swift in Sources */,
 				114603732A0A918000BCA7F2 /* EnvelopeCarouseView.swift in Sources */,
 				3D221C0B2A08903000501A18 /* FrontCardView.swift in Sources */,
 				3D221C0F2A089ADE00501A18 /* LoadingView.swift in Sources */,

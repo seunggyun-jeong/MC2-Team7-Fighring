@@ -10,6 +10,8 @@ import SwiftUI
 struct BackCardView: View {
     @Binding var degree : Double
     var attachmentType: AttachmentType
+    private let avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
+    private let anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
     
     var body: some View {
         ZStack {
@@ -31,18 +33,10 @@ struct BackCardView: View {
                     .padding(.bottom, 14)
                 
                 HStack(spacing: 5) {
-                    Circle()
+                    CustomGauge(current: avoidantScore, gaugeName: "회피성")
                         .frame(width: 70)
-                        .foregroundColor(.green)
-                    Circle()
+                    CustomGauge(current: anxiousScore, gaugeName: "불안성")
                         .frame(width: 70)
-                        .foregroundColor(.yellow)
-                    Circle()
-                        .frame(width: 70)
-                        .foregroundColor(.orange)
-                    Circle()
-                        .frame(width: 70)
-                        .foregroundColor(.purple)
                 }
                 
                 Spacer()
