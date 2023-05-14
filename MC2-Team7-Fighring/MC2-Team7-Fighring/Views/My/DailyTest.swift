@@ -15,6 +15,7 @@ struct DailyTest: View {
     var userEmotion: Int
     var hasDone: Bool
     
+    @FocusState private var isReasonFocused: Bool
     @State var loverName: String = "❤️"
     @State var click = false
     @State var clicked = 0
@@ -24,12 +25,15 @@ struct DailyTest: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             VStack {
                 // 제목 및 감정
-                HStack {
+                HStack(spacing: 0) {
                     Text("Day \(Int(questionData.questionNum))")
-                        .font(.title.bold())
-                        .padding(.trailing, 5)
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .padding(.trailing, 13)
                     
                     Button {
                         isShowModal.toggle()
@@ -37,7 +41,7 @@ struct DailyTest: View {
                         Image(EmotionStore().emotions[userEmotion])
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 45)
+                            .frame(height: 42)
                     }
                     .sheet(isPresented: $isShowModal) {
                         EmotionSelectView(questionData: questionData, hasDone: true)
@@ -46,21 +50,25 @@ struct DailyTest: View {
                             .presentationDragIndicator(.visible)
                     }
                     .disabled(!hasDone)
-
-
+                    
                     Spacer()
                 }
+                .opacity(isReasonFocused ? 0.0 : 1.0)
+                .padding(.bottom, 42)
                 
                 // 질문
                 HStack {
                     Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
-                        .font(.system(size: 22))
+                        .font(.system(size: 26))
+                        .fontWeight(.medium)
                     
                     Spacer()
                 }
-                .padding(.top, 20)
+                .frame(height: 80)
             }
-            .padding(.leading, 20)
+            .padding(.top, 42)
+            .padding(.bottom, 34)
+            .padding(.leading, 28)
             
             // Selection Answer View
             Group {
@@ -72,12 +80,12 @@ struct DailyTest: View {
                             clicked = index
                         }){
                             if index == clicked {
-                                // 하트 마크   
+                                // 하트 마크
                                 ZStack{
                                     Circle()
                                         .frame(width: 45, height: 45)
-                                        .foregroundColor(click ? Color(red: 255/255, green: 151/255, blue: 172/255): .white)
-                                        .overlay(Circle().stroke(Color(red: 255/255, green: 151/255, blue: 172/255), lineWidth: 1))
+                                        .foregroundColor(click ? .accentColor : .white)
+                                        .overlay(Circle().stroke(Color("AccentColor"), lineWidth: 1))
                                     
                                     Image(systemName: "heart.fill")
                                         .foregroundColor(Color.white)
@@ -88,26 +96,26 @@ struct DailyTest: View {
                                 Circle()
                                     .frame(width: 45, height: 45)
                                     .foregroundColor(.white)
-                                    .overlay(Circle().stroke(Color.gray.opacity(0.5), lineWidth: 1))
+                                    .overlay(Circle().stroke(Color("secondary"), lineWidth: 1))
                             }
                         }
                     }
                 }
+                .frame(height: 45)
                 .padding(.horizontal, 40)
                 .padding(.bottom, 5)
                 
                 // 답변 Placeholder
                 HStack {
                     Text("전혀 그렇지 않다")
-                        .foregroundColor(.gray)
                     Spacer()
                     Text("매우 그렇다")
-                        .foregroundColor(.gray)
                 }
-                .font(.caption)
-                .padding(.leading, 30)
-                .padding(.trailing, 40)
-                .padding(.bottom, 20)
+                .foregroundColor(.theme.secondary)
+                .font(.footnote.bold())
+                .padding(.leading, 25)
+                .padding(.trailing, 37)
+                .padding(.bottom, 40)
             }
             
             
@@ -115,24 +123,10 @@ struct DailyTest: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .padding(.horizontal, 20)
-                    .foregroundColor(.gray.opacity(0.1))
-                
-                TextEditor(text: $reason)
-                    .font(.system(size: 18))
-                    .scrollContentBackground(.hidden)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 30)
-                    .padding(.top, 10)
-                    // 글자 수 제한 - 50자
-                    .onChange(of: reason) { newValue in
-                        if newValue.count > 50 {
-                            reason = String(newValue.prefix(50))
-                        }
-                        
-                    }
+                    .foregroundColor(.theme.secondary.opacity(0.2))
                 
                 if reason.isEmpty {
-                    VStack (alignment: .leading) {
+                    VStack(alignment: .leading) {
                         Text("어떠한 이유로 위의 답변을 선택하게 되었나요?\n선택한 이유에 대해 간단히 적어보아요 :)")
                             .padding(.top, 18)
                             .padding(.trailing, 10)
@@ -140,32 +134,49 @@ struct DailyTest: View {
                         
                         Spacer()
                     }
+                    .onTapGesture {
+                        isReasonFocused = true
+                    }
                 }
+                
+                TextEditor(text: $reason)
+                    .font(.system(size: 18))
+                    .scrollContentBackground(.hidden)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 30)
+                    .padding(.top, 10)
+                    .onChange(of: reason) { newValue in
+                        if newValue.count > 50 {
+                            reason = String(newValue.prefix(50))
+                        }
+                    }
+                    .focused($isReasonFocused)
             }
-            .frame(height: 130)
+            .frame(height: 124)
             .padding(.bottom, 40)
+            
+            Spacer()
             
             NavigationLink {
                 MainView(questions: question)
             } label: {
                 Text("저장하기")
                     .foregroundColor(.white)
-                    .font(.body.bold())
-                    .padding(.horizontal, 130)
+                    .padding(.horizontal, 148)
                     .padding(.vertical, 20)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(reason.isEmpty || clicked == 0 ? .gray.opacity(0.5) : Color(red: 255/255, green: 151/255, blue: 172/255))
+                            .foregroundColor(reason.isEmpty || clicked == 0 ? .theme.secondary : .accentColor)
                     )
                     .font(.system(size: 17))
             }
             .disabled(reason.isEmpty || clicked == 0)
-            .padding(.bottom, 40)
             .simultaneousGesture(TapGesture().onEnded {
                 // 저장하기
                 DataController().answerQuestion(question: questionData, questionAnswer: Int32(clicked), questionNum: questionData.questionNum, userReason: reason, userEmotion: Int32(userEmotion), context: managedObjectContext)
             })
             .navigationBarBackButtonHidden(true)
+            .padding(.bottom, 60)
         }
         .onAppear {
             reason = questionData.userReason ?? ""
