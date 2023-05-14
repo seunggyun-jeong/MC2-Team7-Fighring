@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MyResultSheet: View {
     @Binding var isGetResult: Bool
-    private let attachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
-    private let avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
-    private let anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
+    var attachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
+    var avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
+    var anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
     
     var body: some View {
         NavigationStack {
@@ -22,7 +22,7 @@ struct MyResultSheet: View {
                         .frame(width: 254)
                         .padding(.bottom, 27)
                     
-                    Text("\"너 없이 못살아\"형")
+                    Text(TypeData.name[attachmentType.rawValue])
                         .font(.title)
                         .bold()
                     
