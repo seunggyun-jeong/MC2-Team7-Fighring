@@ -43,20 +43,16 @@ struct LoverDetail: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
 
             
-            HStack{
-                Text("Day \(6 * currentIndex + shareLetterClicked + 1)")
-                    .frame(width: 302, alignment: .leading)
-                    .font(.system(size: 34))
-                    .bold()
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            }.frame(maxWidth: .infinity, alignment: .center)
+            Text("Day \(6 * currentIndex + shareLetterClicked + 1)")
+                .frame(width: 302, alignment: .leading)
+                .font(.system(size: 34))
+                .bold()
+                .padding(EdgeInsets(top: 0, leading: 29, bottom: 19.98, trailing: 0))
 
-            HStack{
-                Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
-                    .frame(width: 302, alignment: .leading)
-                    .font(.system(size: 25))
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
-            }.frame(maxWidth: .infinity, alignment: .center)
+            Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
+                .frame(width: 302, alignment: .leading)
+                .font(.system(size: 25))
+                .padding(EdgeInsets(top: 0, leading: 28, bottom: 52, trailing: 0))
 
             
             HStack(spacing: 18){
@@ -93,25 +89,23 @@ struct LoverDetail: View {
                 .frame(width: 337)
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 66, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 88, trailing: 0))
             
             HStack{
-                HStack{
-                    Image("tip")
-                        .resizable()
-                        .frame(width: 47, height: 19, alignment: .leading)
-                }.frame(width: 310, alignment: .leading)
-            }.frame(maxWidth: .infinity, alignment: .center)
-            HStack{
-                VStack(){
-                    Text(Tips.tip[currentIndex])
-                        .font(.system(size: 14))
-                        .frame(width: 284)
-                }
-                .frame(width: 332, height: 131)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
-            }.frame(maxWidth: .infinity, alignment: .center)
+                Image("tip")
+                    .resizable()
+                    .frame(width: 47, height: 19, alignment: .leading)
+            }.frame(width: 310, alignment: .leading)
+            .padding(EdgeInsets(top: 0, leading: 34, bottom: 10, trailing: 0))
+            VStack{
+                Text(Tips.tip[currentIndex])
+                    .font(.system(size: 14))
+                    .frame(width: 284)
+            }
+            .frame(width: 332, height: 131)
+            .background(Color.theme.detailTextField)
+            .cornerRadius(8)
+            .padding(EdgeInsets(top: 0, leading: 28, bottom: 0, trailing: 0))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.background)
