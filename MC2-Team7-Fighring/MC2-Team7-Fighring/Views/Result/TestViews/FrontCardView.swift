@@ -21,12 +21,12 @@ struct FrontCardView: View {
             VStack {
                 // TODO: 유형별 멘트 뽑아오기 (random)
                     
-                Text(TypeData.quotes[attachmentType.rawValue].randomElement()!)
+                Text("\"\(TypeData.quotes[attachmentType.rawValue].randomElement()!)\"")
                     .font(.custom("NanumPen", size: 40))
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
                     .padding(.horizontal, 22)
-                    .padding(.top, 23)
+                    .padding(.top, 44)
                 
                 Spacer()
                 
