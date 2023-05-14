@@ -32,7 +32,7 @@ struct LoverDetail: View {
                             }
                             Text(share[6 * currentIndex + index].sixLetters!)
                                 .foregroundColor(shareLetterClicked == index ? .white : .black)
-                                .font(.system(size: shareLetterClicked == index ? 30: 25))
+                                .font(.system(size: 25))
                                 .bold()
                         }
                     }
