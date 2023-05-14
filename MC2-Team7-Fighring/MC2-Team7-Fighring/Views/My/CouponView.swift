@@ -157,14 +157,16 @@ struct CouponView: View {
         
         let points = [6, 12, 18, 24, 30]
         
+        
+        
         for index in (1...5){
             if(days >= index){
                 questions[questions.startIndex + index].isOpened = true
                 questions[questions.startIndex + index].openedDate = DataController().getCurrentDateTime()
                 if index == 5{
                     let cnt = share.count
-                    
                     if cnt == 36{
+                        
                         UserDefaults.standard.set(true, forKey: "isAllComplete")
                     }
                     else if points.contains(cnt){
@@ -173,6 +175,14 @@ struct CouponView: View {
                     }
                 }
             }
+        }
+        
+        
+        // test용 코드... 위에 코드가 일자를 정한코드
+        let cnt = share.count
+        print("cnt \(cnt)")
+        if cnt == 36{
+            UserDefaults.standard.set(true, forKey: "isAllComplete")
         }
     }
 }
