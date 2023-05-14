@@ -23,7 +23,7 @@ struct OnBoardingMainView: View {
                 OnboardingContents(title: "이 앱은 무슨 앱인가요?", image: "John_Bowlby", description: "존 볼비의 애착 이론을 기반으로,\n 36일동안 애착 유형을\n검사할 수 있는 앱입니다.")
                     .tag(0)
                 
-                OnboardingContents(title: "왜 36일인가요?", image: "onBoarding2", description: "애착 유형을 검사하는 것 뿐만 아니라,질문에 대해 생각해보고,\n나의 행동을 돌아볼 수 있습니다!")
+                OnboardingContents(title: "왜 36일인가요?", image: "onBoarding2", description: "애착 유형을 검사하는 것 뿐만 아니라,질문에 대해 생각해보고,\n나의 행동을 돌아볼 수 있어요!")
                     .tag(1)
                 
                 OnboardingContents(title: "어떻게 사용하나요?", image: "onBoarding4", description: "주어지는 질문에 답변하다 보면,\n6일마다 나의 애인에게 공유할 수 있습니다.")
