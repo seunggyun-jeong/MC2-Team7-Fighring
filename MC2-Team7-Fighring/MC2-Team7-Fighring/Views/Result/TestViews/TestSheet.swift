@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct TestSheet: View {
+    @Environment(\.dismiss) var dismiss
     @State var click = [Int](repeating: 0, count: 36)
     @State var clicked = [Int](repeating: 0, count: 36)
+    @State var showResultSheet: Bool = false
+    @State var attachmentType: AttachmentType = .anxious
+    @State var anxiousScore: Double = 0.0
+    @State var avoidantScore: Double = 0.0
+    
+    
     var body: some View {
         ScrollView{
             ForEach(0 ..< 36){ y in
@@ -63,19 +70,64 @@ struct TestSheet: View {
                 .padding(.bottom, 20)
             }
             
-            Button(action: {
-                
-            }){
-                VStack{
-                    Rectangle()
-                        .frame(width: 135, height: 0.8)
-                        .foregroundColor(.gray)
-                    Text("확인")
-                }
-                
+            ButtonComponent(buttonStyle: .long, color: click.min() == 0 ? .theme.secondary : .accentColor) {
+                "검사결과확인"
+            } action: {
+                showResultSheet.toggle()
             }
-            .frame(width: 135, height: 44)
             .disabled(click.min() == 0 ? true : false)
+        }
+        .sheet(isPresented: $showResultSheet) {
+            MyResultSheet(isGetResult: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2, anxiousScore: resultAlgorithm().1, isMyResult: false) {
+                dismiss()
+            }
+        }
+    }
+    
+    func resultAlgorithm() -> (AttachmentType, Double, Double) {
+        var evenData: Int = 0
+        var oddData: Int = 0
+        
+        for i in 0...35 {
+            if i % 2 == 0 {
+                evenData += clicked[i]
+                print("----> \(i)의 값 \(clicked[i]) 짝수 값 \(evenData)")
+            } else {
+                oddData += clicked[i]
+                print("----> \(i)의 값 \(clicked[i]) 홀수 값 \(oddData)")
+            }
+        }
+        
+        // 회피 점수 및 불안 점수 계산
+        let avoidantScore: Double = Double(oddData) / 18
+        let anxiousScore: Double = Double(evenData) / 18
+        print("----> 불안점수 : \(anxiousScore)")
+        print("----> 회피점수 : \(avoidantScore)")
+        
+        // 각 점수를 5점 만점 -> 100점 만점 환산 (score * 20)
+        let exchangedAvoidantScore: Double = avoidantScore * 20
+        let exchangedAnxiousScore: Double = anxiousScore * 20
+        
+        print("----> 환산된 불안점수 : \(exchangedAnxiousScore)")
+        print("----> 환산된 회피점수 : \(exchangedAvoidantScore)")
+        
+        // 유형 검사
+        if avoidantScore < 2.33 {
+            if anxiousScore < 2.61 {
+                // 안정형
+                return (.secure, exchangedAnxiousScore, exchangedAvoidantScore)
+            } else {
+                // 불안형
+                return (.anxious, exchangedAnxiousScore, exchangedAvoidantScore)
+            }
+        } else {
+            if anxiousScore < 2.61 {
+                // 회피형
+                return (.avoidant, exchangedAnxiousScore, exchangedAvoidantScore)
+            } else {
+                // 공포형
+                return (.fearful, exchangedAnxiousScore, exchangedAvoidantScore)
+            }
         }
     }
 }

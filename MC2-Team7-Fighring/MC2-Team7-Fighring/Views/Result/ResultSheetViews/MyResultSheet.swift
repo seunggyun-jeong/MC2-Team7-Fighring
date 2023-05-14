@@ -12,6 +12,8 @@ struct MyResultSheet: View {
     var attachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
     var avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
     var anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
+    var isMyResult: Bool = true
+    var buttonAction: () -> Void = { }
     
     var body: some View {
         NavigationStack {
@@ -49,9 +51,13 @@ struct MyResultSheet: View {
                         Divider()
                         
                         Button("확인") {
-                            // TODO: Confirm
-                            isGetResult.toggle()
-                            UserDefaults.standard.set(true, forKey: "isGetResult")
+                            if isMyResult {
+                                // TODO: Confirm
+                                isGetResult.toggle()
+                                UserDefaults.standard.set(true, forKey: "isGetResult")
+                            } else {
+                                buttonAction()
+                            }
                         }
                     }
                     .frame(width: 128)
