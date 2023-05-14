@@ -104,11 +104,11 @@ struct LoverDetail: View {
             }.frame(maxWidth: .infinity, alignment: .center)
             HStack{
                 VStack(){
-                    Text(tip)
+                    Text(Tips.tip[currentIndex])
                         .font(.system(size: 14))
-                        .padding(EdgeInsets(top: 23, leading: 0, bottom: 0, trailing: 0))
+                        .frame(width: 284)
                 }
-                .frame(width: 332, height: 131, alignment: .top)
+                .frame(width: 332, height: 131)
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(8)
             }.frame(maxWidth: .infinity, alignment: .center)
