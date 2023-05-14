@@ -33,10 +33,14 @@ struct MainView: View {
                     TabView{
                         ForEach((1...6), id:\.self){ idx in
                             VStack{
+<<<<<<< Updated upstream
                                 CouponView(questions: questions[idx*6-6...6*idx-1])
                                     .tabItem {
                                         Image(systemName: "\(idx).circle")
                                     }
+=======
+                                CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
+>>>>>>> Stashed changes
                             }
                         }
                     }

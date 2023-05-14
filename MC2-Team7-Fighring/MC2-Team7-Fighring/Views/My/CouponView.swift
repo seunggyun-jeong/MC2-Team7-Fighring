@@ -14,6 +14,7 @@ struct CouponView: View {
     
     
     var questions: FetchedResults<Question>.SubSequence
+    var startIdx: Int
     @State private var isLock: Bool = false
     @State private var isNavigation: Bool = false
     @State private var completeSix: Bool = false
@@ -100,7 +101,7 @@ struct CouponView: View {
         }
         // when button is pressed
         .sheet(isPresented: $shareActivated, content: {
-            LetterView(questions: questions)
+            LetterView(questions: questions, startIdx: startIdx)
             
         })
         // when six questions are done => notification => 라빈얼굴
