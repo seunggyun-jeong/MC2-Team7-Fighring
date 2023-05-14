@@ -27,7 +27,7 @@ struct DailyTest: View {
         VStack {
             Spacer()
             
-            VStack {
+            VStack(alignment: .leading) {
                 // 제목 및 감정
                 HStack(spacing: 0) {
                     Text("Day \(Int(questionData.questionNum))")
@@ -56,18 +56,14 @@ struct DailyTest: View {
                 .padding(.bottom, 42)
                 
                 // 질문
-                HStack {
                     Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
                         .font(.system(size: 26))
                         .fontWeight(.medium)
-                    
-                    Spacer()
-                }
-                .frame(height: 80)
+                        .frame(height: QuestionList.question[Int(questionData.questionNum)-1].count < 43 ? 80 : 120)
             }
             .padding(.top, 42)
             .padding(.bottom, 34)
-            .padding(.leading, 28)
+            .padding(.horizontal, 26)
             
             // Selection Answer View
             Group {
