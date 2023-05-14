@@ -106,7 +106,7 @@ struct CouponView: View {
         // when six questions are done => notification => 라빈얼굴
         .sheet(isPresented: $completeSixModal, content: {
             CompleteSixNotifyView()
-                .presentationDetents([.medium])
+                .presentationDetents([.fraction(0.66)])
                 .presentationDragIndicator(.visible)
         })
         // when not completed => 규니얼굴
@@ -122,12 +122,11 @@ struct CouponView: View {
             if count == 6{
                 completeSix = true
                 completeSixModal = true
-                if UserDefaults.standard.bool(forKey: "completeSixModal") == true{
+                if UserDefaults.standard.bool(forKey: "completeSixModal\(questions.startIndex)") == true{
                     completeSixModal = false
                 }
-                UserDefaults.standard.set(true, forKey: "completeSixModal")
+                UserDefaults.standard.set(true, forKey: "completeSixModal\(questions.startIndex)")
             }
-            
         }
         .overlay(isLock ? ToastView(text:"아직 열리지 않았어요") : nil)
         
