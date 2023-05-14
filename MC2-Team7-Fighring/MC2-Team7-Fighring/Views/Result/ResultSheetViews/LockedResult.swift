@@ -64,8 +64,8 @@ struct LockedResult: View {
         print("----> 회피점수 : \(avoidantScore)")
         
         // 각 점수를 5점 만점 -> 100점 만점 환산 (score * 50)
-        let exchangedAvoidantScore: Double = avoidantScore * 50
-        let exchangedAnxiousScore: Double = anxiousScore * 50
+        let exchangedAvoidantScore: Double = avoidantScore * 20
+        let exchangedAnxiousScore: Double = anxiousScore * 20
         
         print("----> 환산된 불안점수 : \(exchangedAnxiousScore)")
         print("----> 환산된 회피점수 : \(exchangedAvoidantScore)")

@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct LoverHome: View {
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
+    
     var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
     @State var envelopes: [Envelope] = [Envelope(envelopeImage: "envelope1"), Envelope(envelopeImage: "envelope2"), Envelope(envelopeImage: "envelope3"), Envelope(envelopeImage: "envelope4"), Envelope(envelopeImage: "envelope5"), Envelope(envelopeImage: "envelope6")]
     @Binding var week: Int
     @Binding var currentIndex: Int
     @State private var showModal = false
+    @State private var showTypeSheet = false
+    var anxiousScore: Double = 0.0
+    var avoidantScore: Double = 0.0
     @ObservedObject var envelopeIndex = EnvelopeIndex()
     
     var body: some View {
@@ -63,12 +68,16 @@ struct LoverHome: View {
                 ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
                     "유형보기"
                 } action: {
-                    print(envelopes)
+                    showTypeSheet.toggle()
                 }
                 .padding(.bottom, 60)
                 .disabled(week != 6)
             }
             .frame(maxHeight: .infinity, alignment: .top)
+            .sheet(isPresented: $showTypeSheet) {
+                MyResultSheet(isGetResult: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
+                              , anxiousScore: resultAlgorithm().1)
+            }
         } else {
             VStack {
                 Image("yongjun")
@@ -83,6 +92,53 @@ struct LoverHome: View {
                     .fontWeight(.bold)
                     .font(.system(size: 25))
                     .padding(.top, 36)
+            }
+        }
+    }
+    
+    func resultAlgorithm() -> (AttachmentType, Double, Double) {
+        var evenData: Int32 = 0
+        var oddData: Int32 = 0
+        
+        for i in 0...35 {
+            if i % 2 == 0 {
+                evenData += share[i].questionAnswer
+                print("----> \(i)의 값 \(share[i].questionAnswer) 짝수 값 \(evenData)")
+            } else {
+                oddData += share[i].questionAnswer
+                print("----> \(i)의 값 \(share[i].questionAnswer) 홀수 값 \(oddData)")
+            }
+        }
+        
+        // 회피 점수 및 불안 점수 계산
+        let avoidantScore: Double = Double(oddData) / 18
+        let anxiousScore: Double = Double(evenData) / 18
+        print("----> 불안점수 : \(anxiousScore)")
+        print("----> 회피점수 : \(avoidantScore)")
+        
+        // 각 점수를 5점 만점 -> 100점 만점 환산 (score * 20)
+        let exchangedAvoidantScore: Double = avoidantScore * 20
+        let exchangedAnxiousScore: Double = anxiousScore * 20
+        
+        print("----> 환산된 불안점수 : \(exchangedAnxiousScore)")
+        print("----> 환산된 회피점수 : \(exchangedAvoidantScore)")
+        
+        // 유형 검사
+        if avoidantScore < 2.33 {
+            if anxiousScore < 2.61 {
+                // 안정형
+                return (.secure, exchangedAnxiousScore, exchangedAvoidantScore)
+            } else {
+                // 불안형
+                return (.anxious, exchangedAnxiousScore, exchangedAvoidantScore)
+            }
+        } else {
+            if anxiousScore < 2.61 {
+                // 회피형
+                return (.avoidant, exchangedAnxiousScore, exchangedAvoidantScore)
+            } else {
+                // 공포형
+                return (.fearful, exchangedAnxiousScore, exchangedAvoidantScore)
             }
         }
     }
