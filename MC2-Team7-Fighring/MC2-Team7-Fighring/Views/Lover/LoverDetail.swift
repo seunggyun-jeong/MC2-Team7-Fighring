@@ -75,7 +75,7 @@ struct LoverDetail: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 14, trailing: 0))
             HStack{
                 HStack{
                     Text("전혀 그렇지 않다")
