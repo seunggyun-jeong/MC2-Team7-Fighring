@@ -15,7 +15,6 @@ struct MainView: View {
     var questions: FetchedResults<Question>
     
     
-    
     var body: some View {
         NavigationStack {
             HStack {

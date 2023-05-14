@@ -53,7 +53,6 @@ struct DailyTest: View {
                     
                     Spacer()
                 }
-                .opacity(isReasonFocused ? 0.0 : 1.0)
                 .padding(.bottom, 42)
                 
                 // 질문
@@ -186,6 +185,7 @@ struct DailyTest: View {
                 click = true
             }
         }
+        .ignoresSafeArea(.keyboard)
         .navigationBarItems(leading: LeadingBackBtnView(dismissDest: hasDone ? "36 days" : "나의 감정"))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onTapGesture {

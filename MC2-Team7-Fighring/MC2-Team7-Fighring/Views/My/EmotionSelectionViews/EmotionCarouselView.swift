@@ -61,7 +61,7 @@ struct EmotionCarouselView: View {
                     .frame(height: 60)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     )
             })
             .padding(.horizontal, 30)
@@ -70,7 +70,6 @@ struct EmotionCarouselView: View {
                     // 저장하기
                     DataController().answerQuestion(question: questionData, questionAnswer: questionData.questionAnswer, questionNum: questionData.questionNum, userReason: questionData.userReason ?? "", userEmotion: Int32(getCenterItem()), context: managedObjectContext)
                     presentationMode.wrappedValue.dismiss()
-                    
                 }
             })
             
