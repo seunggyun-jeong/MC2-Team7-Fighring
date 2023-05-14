@@ -107,34 +107,38 @@ struct DailyTest: View {
             
             
             // TextEditor - Why
-            ZStack(alignment: .topLeading){
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .padding(.horizontal, 20)
+                    .foregroundColor(.gray.opacity(0.1))
+                
                 TextEditor(text: $reason)
                     .font(.system(size: 18))
                     .scrollContentBackground(.hidden)
                     .foregroundColor(.gray)
-                    .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(.gray.opacity(0.1))
-                    )
                     .padding(.horizontal, 30)
-                //  글자 수 제한 - 50자
+                    .padding(.top, 10)
+                    // 글자 수 제한 - 50자
                     .onChange(of: reason) { newValue in
                         if newValue.count > 50 {
                             reason = String(newValue.prefix(50))
                         }
+                        
                     }
                 
                 if reason.isEmpty {
-                    Text("이유에 대해 생각해보아요!\nex.델리빈 볼 말랑말랑")
-                        .font(.system(size: 18))
-                        .foregroundColor(.gray.opacity(0.5))
-                        .padding(.leading, 36)
-                        .padding(.top, 8)
+                    VStack (alignment: .leading) {
+                        Text("어떠한 이유로 위의 답변을 선택하게 되었나요?\n선택한 이유에 대해 간단히 적어보아요 :)")
+                            .padding(.top, 18)
+                            .padding(.trailing, 10)
+                            .foregroundColor(.gray.opacity(0.5))
+                        
+                        Spacer()
+                    }
                 }
             }
             .frame(height: 130)
             .padding(.bottom, 40)
-            
             
             NavigationLink {
                 MainView(questions: question)
@@ -143,7 +147,7 @@ struct DailyTest: View {
                     .foregroundColor(.white)
                     .font(.body.bold())
                     .padding(.horizontal, 130)
-                    .padding(.vertical, 15)
+                    .padding(.vertical, 20)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(reason.isEmpty || clicked == 0 ? .gray.opacity(0.5) : Color(red: 255/255, green: 151/255, blue: 172/255))
