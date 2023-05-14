@@ -76,14 +76,18 @@ struct LoverHome: View {
             .frame(maxHeight: .infinity, alignment: .top)
         } else {
             VStack {
-                Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요")
+                Image("yongjun")
+                    .frame(height: 249)
+                    .onAppear {
+                        print(envelopeIndex.week)
+                    }
+                
+                Text("아직 공유받은 메시지가 없어요\n조금만 더 기다려 보아요.")
+                    .foregroundColor(.theme.secondary)
                     .multilineTextAlignment(.center)
                     .fontWeight(.bold)
                     .font(.system(size: 25))
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
-                Image("yongjun").onAppear {
-                    print(envelopeIndex.week)
-                }
+                    .padding(.top, 36)
             }
         }
     }
