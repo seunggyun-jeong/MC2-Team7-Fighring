@@ -25,6 +25,7 @@ struct LetterView: View {
     @State private var showModal: Bool = false
     @State private var finalCode: String = ""
     @State private var input: String = ""
+   
     
     //@State private var chars: [Character]
     @Environment(\.dismiss) private var dismiss
@@ -42,14 +43,14 @@ struct LetterView: View {
                 }.padding(.bottom)
                 
                 
-                TextField("Enter Code", text: $input)
+                TextField("6글자를 입력해주세요.", text: $input)
                     .onChange(of: input) { newText in
                                if newText.count > 6 {
                                    input = String(newText.prefix(6))
                                }
                            }
-                           .textFieldStyle(RoundedBorderTextFieldStyle())
-                           .padding()
+                           .underlineTextField()
+                           .padding(.horizontal, 100)
 //                LetterField()
 //                    .onChange(of: letters) { newValue in
 //                        letterCondition(value: newValue)
@@ -58,7 +59,7 @@ struct LetterView: View {
 //                        focusedField = .f1
 //                    }
                 
-                
+            
                 Button {
                     showModal.toggle()
                    // finalCode = letters.joined()
@@ -76,6 +77,9 @@ struct LetterView: View {
                 .sheet(isPresented: $showModal) {
                     // TODO: Deep Link 지정 후 수정 예정  1 -> 1, 7 -> 2, 13 -> 3
                     ActivityViewController(activityItems: ["lover36://receive?message=\(getStringData(startIdx: startIdx))\(input)"])
+                        .onDisappear {
+                            dismiss()
+                        }
                 }
             }
         }
@@ -170,3 +174,12 @@ struct LetterView: View {
 //}
 
 
+extension View {
+    func underlineTextField() -> some View {
+        self
+            .padding(.vertical, 10)
+            .overlay(Rectangle().frame(height: 2).padding(.top, 35))
+            .foregroundColor(Color("AccentColor"))
+            .padding(10)
+    }
+}
