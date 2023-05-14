@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "LaunchScreen_Image.png",
+      "filename" : "launchScreen.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
