@@ -53,7 +53,7 @@ struct LoverDetail: View {
 
             HStack{
                 Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
-                    .frame(width: 302)
+                    .frame(width: 302, alignment: .leading)
                     .font(.system(size: 25))
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 38, trailing: 0))
             }.frame(maxWidth: .infinity, alignment: .center)
