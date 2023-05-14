@@ -28,7 +28,6 @@ struct CouponView: View {
     
     var body: some View {
         VStack{
-            Spacer()
             LazyVGrid(columns: columns) {
                 ForEach(questions, id: \.self) { question in
                     
@@ -40,7 +39,8 @@ struct CouponView: View {
                             if question.isSolved{
                                 NavigationLink(destination: DailyTest(questionData: question, userEmotion: Int(question.userEmotion), hasDone: true)) {
                                     Image("solvedFlower")
-                                        .frame(width: 120, height: 110)
+                                        .resizable()
+                                        .frame(width: 100, height: 90)
                                         .padding(.zero)
                                 }
                                 
@@ -48,7 +48,8 @@ struct CouponView: View {
                             } else {
                                 NavigationLink(destination: EmotionSelectView(questionData: question, hasDone: false)) {
                                     Image("opendFlower")
-                                        .frame(width: 120, height: 110)
+                                        .resizable()
+                                        .frame(width: 100, height: 90)
                                         .padding(.zero)
                                 }
                             }
@@ -64,7 +65,8 @@ struct CouponView: View {
                             } label: {
                                 
                                 Image("closedFlower")
-                                    .frame(width: 120, height: 110)
+                                    .resizable()
+                                    .frame(width: 100, height: 90)
                                     .padding(.zero)
                                 
                             }
@@ -72,10 +74,11 @@ struct CouponView: View {
                         // 몇일째의 질문인지 표기
                         Text("Day \(question.questionNum)")
                             .foregroundColor(.theme.secondary)
-                            .padding(.bottom)
+                            .padding(.bottom, 36)
                     }
                 }
             }
+            
             Button {
                 shareActivated = completeSix
                 notCompleteSix = !completeSix
@@ -83,13 +86,14 @@ struct CouponView: View {
             } label: {
                 Text(completeSix ? "공유하기" : "\(count)/6")
                     .foregroundColor(.white)
-                    .frame(width: 300, height: 50)
-                
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity)
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(completeSix ? Color("AccentColor") : .theme.secondary)
                     )
             }
+            .padding(.horizontal, 30)
             Spacer()
         }
         // when button is pressed

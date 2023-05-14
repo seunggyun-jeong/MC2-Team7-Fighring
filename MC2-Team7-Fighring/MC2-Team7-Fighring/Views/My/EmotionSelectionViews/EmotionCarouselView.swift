@@ -57,12 +57,14 @@ struct EmotionCarouselView: View {
                 Text("선택완료")
                     .font(.body.bold())
                     .foregroundColor(.white)
-                    .padding(15)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 60)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color("AccentColor"))
+                            .foregroundColor(.accentColor)
                     )
             })
+            .padding(.horizontal, 30)
             .simultaneousGesture(TapGesture().onEnded {
                 if hasDone {
                     // 저장하기
