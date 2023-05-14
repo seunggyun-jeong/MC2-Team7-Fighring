@@ -34,31 +34,24 @@ struct MainView: View {
                         ForEach((1...6), id:\.self){ idx in
                             VStack{
                                 CouponView(questions: questions[idx*6-6...6*idx-1])
-                                    .tabItem {
-                                        Image(systemName: "\(idx).circle")
-                                    }
                             }
+//                            .tabItem {
+//                                Image(systemName: "\(idx).circle")
+//                            }
                         }
+                        
                     }
+                    
                     .padding(.top, 0)
                     .tabViewStyle(PageTabViewStyle())
                 }
                 .onAppear{
                     setupAppearance()
-                    checkAllComplete(question: questions[35])
                 }
                 
             }
         }
         .navigationBarBackButtonHidden(true)
-    }
-    
-
-    
-    func checkAllComplete(question: FetchedResults<Question>.Element){
-        if question.isSolved == true{
-            UserDefaults.standard.set(true, forKey: "isAllComplete")
-        }
     }
     
     func setupAppearance() {

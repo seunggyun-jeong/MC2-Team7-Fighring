@@ -63,7 +63,6 @@ struct CouponView: View {
                                     }
                                 }
                             } label: {
-                                
                                 Image("closedFlower")
                                     .resizable()
                                     .frame(width: 100, height: 90)
@@ -163,7 +162,11 @@ struct CouponView: View {
                 questions[questions.startIndex + index].openedDate = DataController().getCurrentDateTime()
                 if index == 5{
                     let cnt = share.count
-                    if points.contains(cnt){
+                    
+                    if cnt == 36{
+                        UserDefaults.standard.set(true, forKey: "isAllComplete")
+                    }
+                    else if points.contains(cnt){
                         questionFull[questions.startIndex + cnt].openedDate = DataController().getCurrentDateTime()
                         questionFull[questions.startIndex + cnt].isOpened = true
                     }
