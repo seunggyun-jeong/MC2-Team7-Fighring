@@ -27,12 +27,12 @@ struct EmotionCarouselView: View {
                             Image(item.emotion)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 220)
+                                .frame(width: 257)
                             
                         }
-                        .scaleEffect(1.0 - abs(getDistance(item.id)) * 0.6 )
-                        .opacity(1.0 - abs(getDistance(item.id)) * 0.55 )
-                        .offset(x: getMyXOffset(item.id), y: 0)
+                        .scaleEffect(1.0 - abs(getDistance(item.id)) * 0.43 )
+                        .opacity(1.0 - abs(getDistance(item.id)) * 0.5 )
+                        .offset(x: getMyXOffset(item.id) + 25 * getDistance(item.id), y: 90 * abs(getDistance(item.id)))
                         .zIndex(1.0 - abs(getDistance(item.id)) * 0.1)
                     }
                 }
