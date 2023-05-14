@@ -43,7 +43,7 @@ class DataController: ObservableObject{
         question.openedDate = openedDate
         question.id = UUID()
         question.isSolved = false
-        //
+        // UT 때 true로 명시하여 배포!
         question.isOpened = true
         question.questionNum = questionNum
         
