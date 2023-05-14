@@ -18,7 +18,7 @@ struct LoverHome: View {
     var body: some View {
         if envelopeIndex.week != 0 {
             VStack {
-                HStack {
+                HStack(spacing: 0) {
                     Text("\(loverName)")
                         .multilineTextAlignment(.center)
                         .fontWeight(.bold)
@@ -58,19 +58,12 @@ struct LoverHome: View {
                 .padding(.vertical, 80)
                 .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                 
-                Button{
+                ButtonComponent(buttonStyle: .long) {
+                    "유형보기"
+                } action: {
                     print(envelopes)
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 330, height: 60)
-                            .foregroundColor(week == 6 ? Color(red: 255 / 255, green: 151 / 255, blue: 172 / 255) : Color(red: 199 / 255, green: 199 / 255, blue: 204 / 255))
-                        Text("유형보기")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
-                            .fontWeight(.semibold)
-                    }
-                }.padding(EdgeInsets(top: -150, leading: 0, bottom: 0, trailing: 0))
+                }
+                .padding(.top, -150)
                 
             }
             .frame(maxHeight: .infinity, alignment: .top)

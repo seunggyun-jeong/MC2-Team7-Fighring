@@ -59,7 +59,7 @@ struct OnBoardingMainView: View {
         }
         .sheet(isPresented: $showNameToggle) {
             OnBoardingNameView(isFirstLaunch: $isFirstLaunch)
-                .presentationDetents([.fraction(0.5)])
+                .presentationDetents([.fraction(0.6)])
                 .presentationDragIndicator(.visible)
         }
     }
@@ -92,7 +92,7 @@ struct OnboardingTopView: View {
             .fontWeight(.semibold)
             .sheet(isPresented: $showToggle) {
                 OnBoardingNameView(isFirstLaunch: $isFirstLaunch)
-                    .presentationDetents([.fraction(0.5)])
+                    .presentationDetents([.fraction(0.6)])
             }
         }
         .padding(.top, 18)
