@@ -110,7 +110,7 @@ struct CouponView: View {
         // when not completed => 규니얼굴
         .sheet(isPresented: $notCompleteSix, content: {
             LockView()
-                .presentationDetents([.medium])
+                .presentationDetents([.fraction(0.66)])
                 .presentationDragIndicator(.visible)
         })
         

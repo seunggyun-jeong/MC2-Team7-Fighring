@@ -25,6 +25,7 @@ struct DailyTest: View {
     var body: some View {
         VStack {
             VStack {
+                // 제목 및 감정
                 HStack {
                     Text("Day \(Int(questionData.questionNum))")
                         .font(.title.bold())
@@ -50,6 +51,7 @@ struct DailyTest: View {
                     Spacer()
                 }
                 
+                // 질문
                 HStack {
                     Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
                         .font(.system(size: 22))
@@ -62,7 +64,8 @@ struct DailyTest: View {
             
             // Selection Answer View
             Group {
-                HStack(spacing: 20){
+                // 답변
+                HStack(spacing: 20) {
                     ForEach(1 ..< 6){ index in
                         Button(action:{
                             click = true
@@ -93,7 +96,8 @@ struct DailyTest: View {
                 .padding(.horizontal, 40)
                 .padding(.bottom, 5)
                 
-                HStack{
+                // 답변 Placeholder
+                HStack {
                     Text("전혀 그렇지 않다")
                         .foregroundColor(.gray)
                     Spacer()
