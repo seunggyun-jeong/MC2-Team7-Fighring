@@ -33,7 +33,8 @@ struct MainView: View {
                     TabView{
                         ForEach((1...6), id:\.self){ idx in
                             VStack{
-                                CouponView(questions: questions[idx*6-6...6*idx-1])
+
+                                CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
                             }
 //                            .tabItem {
 //                                Image(systemName: "\(idx).circle")
