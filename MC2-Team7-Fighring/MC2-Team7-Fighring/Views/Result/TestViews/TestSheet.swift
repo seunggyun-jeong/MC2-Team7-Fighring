@@ -15,7 +15,7 @@ struct TestSheet: View {
             ForEach(0 ..< 36){ y in
                 
                 HStack {
-                    Text(QuestionList.question[y])
+                    Text("Q\(y+1). "+QuestionList.question[y])
                         .font(.system(size: 22))
                         .padding(.bottom, 20)
                         .padding(.trailing, 30)
