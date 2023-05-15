@@ -43,8 +43,8 @@ struct MyResultSheet: View {
                         .padding(.bottom, 16)
                     
                     HStack(spacing: 10) {
-                        CustomGauge(current: avoidantScore, gaugeName: "회피성")
-                        CustomGauge(current: anxiousScore, gaugeName: "불안성")
+                        CustomGauge(current: 100 - avoidantScore, gaugeName: "타인사랑")
+                        CustomGauge(current: 100 - anxiousScore, gaugeName: "자기사랑")
                     }
                     
                     VStack {

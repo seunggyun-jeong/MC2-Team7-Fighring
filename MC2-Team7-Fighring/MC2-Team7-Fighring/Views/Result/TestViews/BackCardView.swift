@@ -33,9 +33,9 @@ struct BackCardView: View {
                     .padding(.bottom, 14)
                 
                 HStack(spacing: 5) {
-                    CustomGauge(current: avoidantScore, gaugeName: "회피성")
+                    CustomGauge(current: 100 - avoidantScore, gaugeName: "타인긍정")
                         .frame(width: 70)
-                    CustomGauge(current: anxiousScore, gaugeName: "불안성")
+                    CustomGauge(current: 100 - anxiousScore, gaugeName: "자기긍정")
                         .frame(width: 70)
                 }
                 
