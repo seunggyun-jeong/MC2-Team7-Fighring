@@ -50,7 +50,7 @@ struct LoverDetail: View {
                 .padding(EdgeInsets(top: 0, leading: 29, bottom: 19.98, trailing: 0))
 
             Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
-                .frame(width: 302, alignment: .leading)
+                .frame(width: 302, height: 93, alignment: .leading)
                 .font(.system(size: 25))
                 .padding(EdgeInsets(top: 0, leading: 28, bottom: 52, trailing: 0))
 
