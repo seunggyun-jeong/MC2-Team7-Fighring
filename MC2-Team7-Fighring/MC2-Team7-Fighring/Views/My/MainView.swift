@@ -48,6 +48,12 @@ struct MainView: View {
                     .tabViewStyle(PageTabViewStyle())
                 }
                 .onAppear{
+                    if UserDefaults.standard.bool(forKey: "setForUT") == true{
+                        // do nothing
+                    }else{
+                        settingUT(questions: questions)
+                        UserDefaults.standard.set(true, forKey: "setForUT")
+                    }
                     setupAppearance()
                     moveTab()
                 }
@@ -55,6 +61,13 @@ struct MainView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    func settingUT(questions: FetchedResults<Question> ){
+        let UTnumbers = (0...29)
+        for ut in UTnumbers{
+            DataController().answerQuestion(question: questions[ut], questionAnswer: Int32(3), questionNum: questions[ut].questionNum, userReason: "Random", userEmotion: 0, context: managedObjectContext)
+        }
     }
     
     func moveTab() {
