@@ -22,16 +22,22 @@ struct TestSheet: View {
             ForEach(0 ..< 36){ y in
                 
                 HStack {
-                    Text("Q\(y+1). "+QuestionList.question[y])
+                    Text("Q\(y+1). ")
+                        .font(.system(size: 22))
+                        .padding(.top, 10)
+                        .frame(width: 45)
+                        .frame(maxHeight: .infinity, alignment: .top)
+
+                    Text(QuestionList.question[y])
+                        .frame(width: 260, alignment: .leading)
                         .font(.system(size: 22))
                         .padding(.bottom, 20)
                         .padding(.trailing, 30)
                         .padding(.top, 10)
                         .multilineTextAlignment(.leading)
                     
-                    Spacer()
-                    
                 }
+                .frame(width: .infinity, alignment: .topLeading)
                 .padding(.leading, 20)
                 
                 HStack(spacing: 18){
