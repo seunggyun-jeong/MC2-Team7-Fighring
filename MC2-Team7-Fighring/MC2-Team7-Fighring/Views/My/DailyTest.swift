@@ -57,9 +57,10 @@ struct DailyTest: View {
                 
                 // 질문
                     Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
-                        .font(.system(size: 26))
+                        .font(.system(size: 24
+                                     ))
                         .fontWeight(.medium)
-                        .frame(height: QuestionList.question[Int(questionData.questionNum)-1].count < 43 ? 80 : 120)
+                        .frame(height: QuestionList.question[Int(questionData.questionNum)-1].count < 35 ? 80 : 130)
             }
             .padding(.top, 42)
             .padding(.bottom, 34)
