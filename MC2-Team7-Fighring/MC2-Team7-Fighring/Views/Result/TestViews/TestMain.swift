@@ -29,7 +29,7 @@ struct TestMain: View {
                         // 다른 유형 보기 시트 On
                         showOtherType.toggle()
                     } label: {
-                        Label("다른 유형 보기", systemImage: "plus.app.fill")
+                        Label("다른 유형 보기", systemImage: "magnifyingglass")
                     }
                     Spacer()
                 }
@@ -49,7 +49,7 @@ struct TestMain: View {
                 NavigationLink {
                     TestSheet()
                 } label: {
-                    Text("검사하러 가기")
+                    Text("지금의 나는 어떨까?")
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
