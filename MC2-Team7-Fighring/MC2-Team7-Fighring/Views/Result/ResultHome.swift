@@ -27,6 +27,9 @@ struct ResultHome: View {
                 }
             } else {
                 LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
+                    .onAppear {
+                        isLocked = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
+                    }
             }
         }
     }
