@@ -62,9 +62,10 @@ struct MainView: View {
         let numbers = (0...35)
         for number in numbers{
             if questions[number].isSolved == true{
-                currentWeek = Int(questions[number].questionNum) / 6 + 1
-                if number == 35{
-                    currentWeek = 6
+                if Int(questions[number].questionNum) % 6 == 0{
+                    currentWeek = Int(questions[number].questionNum) / 6
+                } else {
+                    currentWeek = Int(questions[number].questionNum) / 6 + 1
                 }
             }
         }
