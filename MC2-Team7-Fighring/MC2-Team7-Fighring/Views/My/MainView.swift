@@ -21,22 +21,29 @@ struct MainView: View {
         
         
         NavigationStack {
-            HStack {
-                Text("36 Days")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.theme.secondary)
-                Spacer()
-            }
-            .padding(.top, 18)
-            .padding(.leading, 24)
-            .padding(.bottom, 36)
+            
+    
             
             VStack{
                 ZStack{
                     TabView (selection: $selectedTab){
                         ForEach(tabs, id:\.self){ idx in
                             VStack{
+                                HStack {
+                                    Text("36 Days")
+                                        .font(.largeTitle)
+                                        .bold()
+                                        .foregroundColor(.theme.secondary)
+                                    Spacer()
+                                    Text("\(idx) Week")
+                                        .foregroundColor(.theme.secondary)
+                                    
+                                }
+                                .padding(.top, 18)
+                                .padding(.leading, 24)
+                                .padding(.trailing, 24)
+                                .padding(.bottom, 36)
+                               
 
                                 CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
                             }
