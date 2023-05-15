@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyResultSheet: View {
     @Binding var isGetResult: Bool
+    @Binding var showTypeSheet: Bool
     var attachmentType: AttachmentType = AttachmentType(rawValue: UserDefaults.standard.integer(forKey: "userAttachmentType")) ?? .secure
     var avoidantScore: Double = UserDefaults.standard.double(forKey: "avoidantScore")
     var anxiousScore: Double = UserDefaults.standard.double(forKey: "anxiousScore")
@@ -56,6 +57,7 @@ struct MyResultSheet: View {
                                 isGetResult.toggle()
                                 UserDefaults.standard.set(true, forKey: "isGetResult")
                             } else {
+                                showTypeSheet.toggle()
                                 buttonAction()
                             }
                         }
@@ -66,7 +68,7 @@ struct MyResultSheet: View {
                     Spacer()
                 }
             }
-            .navigationTitle("나의 유형은?")
+            .navigationTitle(isMyResult ? "나의 유형은?" : "연인의 유형은?")
         }
     }
 }
@@ -92,6 +94,6 @@ struct CustomGauge: View {
 
 struct MyResultSheet_Previews: PreviewProvider {
     static var previews: some View {
-        MyResultSheet(isGetResult: .constant(false))
+        MyResultSheet(isGetResult: .constant(false), showTypeSheet: .constant(false))
     }
 }

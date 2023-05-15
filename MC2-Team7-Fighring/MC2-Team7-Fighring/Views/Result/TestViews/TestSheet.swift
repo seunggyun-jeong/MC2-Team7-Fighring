@@ -84,7 +84,7 @@ struct TestSheet: View {
             .disabled(click.min() == 0 ? true : false)
         }
         .sheet(isPresented: $showResultSheet) {
-            MyResultSheet(isGetResult: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2, anxiousScore: resultAlgorithm().1, isMyResult: false) {
+            MyResultSheet(isGetResult: .constant(false), showTypeSheet: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2, anxiousScore: resultAlgorithm().1, isMyResult: false) {
                 dismiss()
             }
         }

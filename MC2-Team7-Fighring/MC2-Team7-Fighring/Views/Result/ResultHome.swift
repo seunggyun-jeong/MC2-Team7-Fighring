@@ -21,7 +21,7 @@ struct ResultHome: View {
         } else {
             if isConfirm {
                 if isLoadingDone {
-                    MyResultSheet(isGetResult: $isGetResult)
+                    MyResultSheet(isGetResult: $isGetResult, showTypeSheet: .constant(false))
                 } else {
                     LoadingView(isLoadingDone: $isLoadingDone)
                 }
