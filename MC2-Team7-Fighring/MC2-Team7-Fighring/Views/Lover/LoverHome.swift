@@ -73,7 +73,7 @@ struct LoverHome: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .sheet(isPresented: $showTypeSheet) {
-                MyResultSheet(isGetResult: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
+                MyResultSheet(isGetResult: .constant(false), showTypeSheet: $showTypeSheet, attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
                               , anxiousScore: resultAlgorithm().1, isMyResult: false) {
                     dismiss()
                 }
