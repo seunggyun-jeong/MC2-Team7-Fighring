@@ -14,9 +14,12 @@ struct MainView: View {
     
     var questions: FetchedResults<Question>
     
-    
+    @State private var selectedTab = 1
+    @State private var tabs = [1, 2, 3, 4, 5, 6]
     
     var body: some View {
+        
+        
         NavigationStack {
             HStack {
                 Text("36 Days")
@@ -31,22 +34,22 @@ struct MainView: View {
             
             VStack{
                 ZStack{
-                    TabView{
-                        ForEach((1...6), id:\.self){ idx in
+                    TabView (selection: $selectedTab){
+                        ForEach(tabs, id:\.self){ idx in
                             VStack{
-                                CouponView(questions: questions[idx*6-6...6*idx-1])
-                                    .tabItem {
-                                        Image(systemName: "\(idx).circle")
-                                    }
+
+                                CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
                             }
                         }
+                        
                     }
+                    
                     .padding(.top, 0)
                     .tabViewStyle(PageTabViewStyle())
                 }
                 .onAppear{
                     setupAppearance()
-                    checkAllComplete(question: questions[35])
+                    moveTab()
                 }
                 
             }
@@ -54,13 +57,22 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
     
-
-    
-    func checkAllComplete(question: FetchedResults<Question>.Element){
-        if question.isSolved == true{
-            UserDefaults.standard.set(true, forKey: "isAllComplete")
+    func moveTab() {
+        var currentWeek = 1
+        let numbers = (0...35)
+        for number in numbers{
+            if questions[number].isSolved == true{
+                if Int(questions[number].questionNum) % 6 == 0{
+                    currentWeek = Int(questions[number].questionNum) / 6
+                } else {
+                    currentWeek = Int(questions[number].questionNum) / 6 + 1
+                }
+            }
         }
+        selectedTab = currentWeek
+        print(selectedTab)
     }
+    
     
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black

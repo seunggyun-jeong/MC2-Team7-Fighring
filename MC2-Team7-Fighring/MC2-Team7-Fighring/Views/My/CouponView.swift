@@ -14,6 +14,7 @@ struct CouponView: View {
     
     
     var questions: FetchedResults<Question>.SubSequence
+    var startIdx: Int
     @State private var isLock: Bool = false
     @State private var isNavigation: Bool = false
     @State private var completeSix: Bool = false
@@ -63,7 +64,6 @@ struct CouponView: View {
                                     }
                                 }
                             } label: {
-                                
                                 Image("closedFlower")
                                     .resizable()
                                     .frame(width: 100, height: 90)
@@ -100,13 +100,13 @@ struct CouponView: View {
         }
         // when button is pressed
         .sheet(isPresented: $shareActivated, content: {
-            LetterView(questions: questions)
+            LetterView(questions: questions, startIdx: startIdx)
             
         })
         // when six questions are done => notification => 라빈얼굴
         .sheet(isPresented: $completeSixModal, content: {
             CompleteSixNotifyView()
-                .presentationDetents([.medium])
+                .presentationDetents([.fraction(0.66)])
                 .presentationDragIndicator(.visible)
         })
         // when not completed => 규니얼굴
@@ -122,12 +122,11 @@ struct CouponView: View {
             if count == 6{
                 completeSix = true
                 completeSixModal = true
-                if UserDefaults.standard.bool(forKey: "completeSixModal") == true{
+                if UserDefaults.standard.bool(forKey: "completeSixModal\(questions.startIndex)") == true{
                     completeSixModal = false
                 }
-                UserDefaults.standard.set(true, forKey: "completeSixModal")
+                UserDefaults.standard.set(true, forKey: "completeSixModal\(questions.startIndex)")
             }
-            
         }
         .overlay(isLock ? ToastView(text:"아직 열리지 않았어요") : nil)
         
@@ -158,18 +157,32 @@ struct CouponView: View {
         
         let points = [6, 12, 18, 24, 30]
         
+        
+        
         for index in (1...5){
             if(days >= index){
                 questions[questions.startIndex + index].isOpened = true
                 questions[questions.startIndex + index].openedDate = DataController().getCurrentDateTime()
                 if index == 5{
                     let cnt = share.count
-                    if points.contains(cnt){
+                    if cnt == 36{
+                        
+                        UserDefaults.standard.set(true, forKey: "isAllComplete")
+                    }
+                    else if points.contains(cnt){
                         questionFull[questions.startIndex + cnt].openedDate = DataController().getCurrentDateTime()
                         questionFull[questions.startIndex + cnt].isOpened = true
                     }
                 }
             }
+        }
+        
+        
+        // test용 코드... 위에 코드가 일자를 정한코드
+        let cnt = share.count
+        print("cnt \(cnt)")
+        if cnt == 36{
+            UserDefaults.standard.set(true, forKey: "isAllComplete")
         }
     }
 }

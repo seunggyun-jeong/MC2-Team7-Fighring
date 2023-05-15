@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ResultHome: View {
-//    @State private var isLocked: Bool = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
-    @State private var isLocked: Bool = false
+    @State private var isLocked: Bool = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
+//    @State private var isLocked: Bool = false
     @State private var isConfirm: Bool = false
     @State private var isLoadingDone: Bool = false
     @State private var isGetResult: Bool = UserDefaults.standard.bool(forKey: "isGetResult")

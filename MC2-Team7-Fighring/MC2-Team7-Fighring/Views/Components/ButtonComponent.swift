@@ -26,7 +26,8 @@ struct ButtonComponent: View {
                 .background(color)
                 .foregroundColor(.white)
                 .cornerRadius(12)
-                .padding(.horizontal, buttonStyle == .long ? 30 : 96)        }
+                .padding(.horizontal, buttonStyle == .long ? 30 : 96)
+        }
     }
     
     enum ButtonStyle {

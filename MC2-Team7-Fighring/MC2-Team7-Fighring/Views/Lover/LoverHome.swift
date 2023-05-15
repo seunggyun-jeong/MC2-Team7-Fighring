@@ -9,15 +9,13 @@ import SwiftUI
 
 struct LoverHome: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
-    
+    @Environment(\.dismiss) var dismiss
     var loverName = UserDefaults.standard.string(forKey: "loverName") ?? "리아❤️"
     @State var envelopes: [Envelope] = [Envelope(envelopeImage: "envelope1"), Envelope(envelopeImage: "envelope2"), Envelope(envelopeImage: "envelope3"), Envelope(envelopeImage: "envelope4"), Envelope(envelopeImage: "envelope5"), Envelope(envelopeImage: "envelope6")]
     @Binding var week: Int
     @Binding var currentIndex: Int
     @State private var showModal = false
     @State private var showTypeSheet = false
-    var anxiousScore: Double = 0.0
-    var avoidantScore: Double = 0.0
     @ObservedObject var envelopeIndex = EnvelopeIndex()
     
     var body: some View {
@@ -76,7 +74,9 @@ struct LoverHome: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .sheet(isPresented: $showTypeSheet) {
                 MyResultSheet(isGetResult: .constant(false), attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
-                              , anxiousScore: resultAlgorithm().1)
+                              , anxiousScore: resultAlgorithm().1, isMyResult: false) {
+                    dismiss()
+                }
             }
         } else {
             VStack {
