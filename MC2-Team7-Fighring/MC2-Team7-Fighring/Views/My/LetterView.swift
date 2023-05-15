@@ -43,12 +43,13 @@ struct LetterView: View {
                 }.padding(.bottom)
                 
                 
-                TextField("6글자를 입력해주세요.", text: $input)
+                TextField("예) 나너많이좋아", text: $input)
                     .onChange(of: input) { newText in
                                if newText.count > 6 {
                                    input = String(newText.prefix(6))
                                }
                            }
+                    .multilineTextAlignment(.center)
                            .underlineTextField()
                            .padding(.horizontal, 100)
 //                LetterField()

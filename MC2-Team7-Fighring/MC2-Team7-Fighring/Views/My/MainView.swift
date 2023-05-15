@@ -21,22 +21,29 @@ struct MainView: View {
         
         
         NavigationStack {
-            HStack {
-                Text("36 Days")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.theme.secondary)
-                Spacer()
-            }
-            .padding(.top, 18)
-            .padding(.leading, 24)
-            .padding(.bottom, 36)
+            
+    
             
             VStack{
                 ZStack{
                     TabView (selection: $selectedTab){
                         ForEach(tabs, id:\.self){ idx in
                             VStack{
+                                HStack {
+                                    Text("36 Days")
+                                        .font(.largeTitle)
+                                        .bold()
+                                        .foregroundColor(.theme.secondary)
+                                    Spacer()
+                                    Text("\(idx) Week")
+                                        .foregroundColor(.theme.secondary)
+                                    
+                                }
+                                .padding(.top, 18)
+                                .padding(.leading, 24)
+                                .padding(.trailing, 24)
+                                .padding(.bottom, 36)
+                               
 
                                 CouponView(questions: questions[idx*6-6...6*idx-1], startIdx: idx*6-6)
                             }
@@ -48,6 +55,12 @@ struct MainView: View {
                     .tabViewStyle(PageTabViewStyle())
                 }
                 .onAppear{
+                    if UserDefaults.standard.bool(forKey: "setForUT") == true{
+                        // do nothing
+                    }else{
+                        settingUT(questions: questions)
+                        UserDefaults.standard.set(true, forKey: "setForUT")
+                    }
                     setupAppearance()
                     moveTab()
                 }
@@ -55,6 +68,13 @@ struct MainView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    func settingUT(questions: FetchedResults<Question> ){
+        let UTnumbers = (0...29)
+        for ut in UTnumbers{
+            DataController().answerQuestion(question: questions[ut], questionAnswer: Int32(3), questionNum: questions[ut].questionNum, userReason: "Random", userEmotion: 0, context: managedObjectContext)
+        }
     }
     
     func moveTab() {
