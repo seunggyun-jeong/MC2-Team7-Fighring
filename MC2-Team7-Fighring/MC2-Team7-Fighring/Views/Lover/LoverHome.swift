@@ -64,7 +64,7 @@ struct LoverHome: View {
                 Spacer()
                 
                 ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
-                    "유형보기"
+                    "\(loverName)의"+" 유형보기"
                 } action: {
                     showTypeSheet.toggle()
                 }
