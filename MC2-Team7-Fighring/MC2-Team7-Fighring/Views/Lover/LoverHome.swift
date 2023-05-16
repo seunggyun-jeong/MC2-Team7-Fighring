@@ -14,68 +14,66 @@ struct LoverHome: View {
     @State var envelopes: [Envelope] = [Envelope(envelopeImage: "envelope1"), Envelope(envelopeImage: "envelope2"), Envelope(envelopeImage: "envelope3"), Envelope(envelopeImage: "envelope4"), Envelope(envelopeImage: "envelope5"), Envelope(envelopeImage: "envelope6")]
     @Binding var week: Int
     @Binding var currentIndex: Int
-    @State private var showModal = false
     @State private var showTypeSheet = false
     @ObservedObject var envelopeIndex = EnvelopeIndex()
     
     var body: some View {
         if envelopeIndex.week != 0 {
-            VStack {
-                HStack(spacing: 0) {
-                    Text("\(loverName)")
+            NavigationStack {
+                VStack {
+                    HStack(spacing: 0) {
+                        Text("\(loverName)")
+                            .multilineTextAlignment(.center)
+                            .fontWeight(.bold)
+                            .font(.system(size: 26))
+                        Text("가 보낸 메세지에요")
+                            .multilineTextAlignment(.center)
+                            .fontWeight(.regular)
+                            .font(.system(size: 26))
+                    }.padding(EdgeInsets(top: 90, leading: 0, bottom: 1, trailing: 0))
+                    Text("확인해볼까요?")
                         .multilineTextAlignment(.center)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .font(.system(size: 26))
-                    Text("가 보낸 메세지에요")
-                        .multilineTextAlignment(.center)
-                        .fontWeight(.regular)
-                        .font(.system(size: 26))
-                }.padding(EdgeInsets(top: 90, leading: 0, bottom: 1, trailing: 0))
-                Text("확인해볼까요?")
-                    .multilineTextAlignment(.center)
-                    .fontWeight(.semibold)
-                    .font(.system(size: 26))
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                
-                
-                EnvelopeCarouseView(spacing: -25, trailingSpace: 100, currentIndex: $envelopeIndex.currentIndex_view, index: $currentIndex, items: envelopes) {envelope in //week: $week, current: $current, currentIndex: week - 1,
-                    GeometryReader{proxy in
-                        let size = proxy.size
-                        VStack {
-                            Image(envelope.envelopeImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: size.width)
-                                .scaleEffect(envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 1.0 : 0.75)
-                                .offset(y: envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 0.0 : 100)
-                                .animation(.easeOut, value: envelope.envelopeImage == "envelope" + String(currentIndex + 1))
-                                .onTapGesture {
-                                    self.showModal = true
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    
+                    NavigationLink {
+                        LoverDetail(currentIndex: $currentIndex)
+                    } label: {
+                        EnvelopeCarouseView(spacing: -25, trailingSpace: 100, currentIndex: $envelopeIndex.currentIndex_view, index: $currentIndex, items: envelopes) {envelope in
+                            GeometryReader{proxy in
+                                let size = proxy.size
+                                VStack {
+                                    Image(envelope.envelopeImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: size.width)
+                                        .scaleEffect(envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 1.0 : 0.75)
+                                        .offset(y: envelope.envelopeImage == "envelope" + String(currentIndex + 1) ? 0.0 : 100)
+                                        .animation(.easeOut, value: envelope.envelopeImage == "envelope" + String(currentIndex + 1))
                                 }
-                                .sheet(isPresented: self.$showModal) {
-                                    LoverDetail(currentIndex: $currentIndex)
-                                }
+                            }
                         }
+                        .padding(.vertical, 80)
+                        .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                     }
+                    
+                    Spacer()
+                    
+                    ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
+                        "\(loverName)의"+" 유형보기"
+                    } action: {
+                        showTypeSheet.toggle()
+                    }
+                    .padding(.bottom, 60)
+                    .disabled(week != 6)
                 }
-                .padding(.vertical, 80)
-                .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
-                
-                Spacer()
-                
-                ButtonComponent(buttonStyle: .long, color: week != 6 ? Color.theme.secondary : .accentColor) {
-                    "\(loverName)의"+" 유형보기"
-                } action: {
-                    showTypeSheet.toggle()
-                }
-                .padding(.bottom, 60)
-                .disabled(week != 6)
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .sheet(isPresented: $showTypeSheet) {
-                MyResultSheet(isGetResult: .constant(false), showTypeSheet: $showTypeSheet, attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
-                              , anxiousScore: resultAlgorithm().1, isMyResult: false) {
-                    dismiss()
+                .frame(maxHeight: .infinity, alignment: .top)
+                .sheet(isPresented: $showTypeSheet) {
+                    MyResultSheet(isGetResult: .constant(false), showTypeSheet: $showTypeSheet, attachmentType: resultAlgorithm().0, avoidantScore: resultAlgorithm().2
+                                  , anxiousScore: resultAlgorithm().1, isMyResult: false) {
+                        dismiss()
+                    }
                 }
             }
         } else {
