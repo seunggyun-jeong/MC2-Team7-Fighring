@@ -26,9 +26,10 @@ struct ResultHome: View {
                     LoadingView(isLoadingDone: $isLoadingDone)
                 }
             } else {
-                LockedResult(isLocked: isLocked, isConfirm: $isConfirm)
+                LockedResult(isLocked: $isLocked, isConfirm: $isConfirm)
                     .onAppear {
                         isLocked = !(UserDefaults.standard.bool(forKey: "isAllComplete"))
+                        print(isLocked)
                     }
             }
         }

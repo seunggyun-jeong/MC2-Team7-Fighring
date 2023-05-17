@@ -17,4 +17,5 @@ struct ColorTheme {
     let secondary = Color("secondary")
     let detailButton = Color("DetailButton")
     let detailTextField = Color("DetailTextField")
+    let teritary = Color("teritiary")
 }

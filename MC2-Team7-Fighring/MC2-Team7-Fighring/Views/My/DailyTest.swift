@@ -58,17 +58,18 @@ struct DailyTest: View {
                         Spacer()
                     }
                     .padding(.bottom, 42)
-                    
-                    // 질문
-                    Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
-                        .font(.system(size: 24))
-                        .fontWeight(.medium)
-                        .frame(height: QuestionList.question[Int(questionData.questionNum)-1].count < 35 ? 80 : 130)
-                }
-                .padding(.top, 42)
-                .padding(.bottom, 34)
-                .padding(.horizontal, 26)
-            
+                // 질문
+                Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
+                    .font(.system(size: 24))
+                    .fontWeight(.medium)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(alignment: .leading)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(.top, 42)
+            .padding(.bottom, 34)
+            .padding(.horizontal, 26)
             
             // Selection Answer View
             Group {
