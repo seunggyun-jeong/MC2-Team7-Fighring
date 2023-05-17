@@ -105,9 +105,11 @@ struct CouponView: View {
         })
         // when six questions are done => notification => 라빈얼굴
         .sheet(isPresented: $completeSixModal, content: {
-            CompleteSixNotifyView()
-                .presentationDetents([.fraction(0.66)])
-                .presentationDragIndicator(.visible)
+            
+                CompleteSixNotifyView(idx: startIdx+6)
+                    .presentationDetents([.fraction(0.66)])
+                    .presentationDragIndicator(.visible)
+            
         })
         // when not completed => 규니얼굴
         .sheet(isPresented: $notCompleteSix, content: {
@@ -121,7 +123,10 @@ struct CouponView: View {
             count = countSolved(questions: questions)
             if count == 6{
                 completeSix = true
-                completeSixModal = true
+                // UT용 => 36일차만 보여주기
+                if startIdx+6 == 36{
+                    completeSixModal = true
+                }
                 if UserDefaults.standard.bool(forKey: "completeSixModal\(questions.startIndex)") == true{
                     completeSixModal = false
                 }
@@ -166,7 +171,6 @@ struct CouponView: View {
                 if index == 5{
                     let cnt = share.count
                     if cnt == 36{
-                        
                         UserDefaults.standard.set(true, forKey: "isAllComplete")
                     }
                     else if points.contains(cnt){
@@ -178,11 +182,12 @@ struct CouponView: View {
         }
         
         
-        // test용 코드... 위에 코드가 일자를 정한코드
-        let cnt = share.count
-        print("cnt \(cnt)")
-        if cnt == 36{
-            UserDefaults.standard.set(true, forKey: "isAllComplete")
+        // test용 코드... 마지막 문제 풀었을 때 열리도록
+        if startIdx == 30{
+            if questions[questions.endIndex-1].isSolved == true{
+                UserDefaults.standard.set(true, forKey: "isAllComplete")
+                
+            }
         }
     }
 }
