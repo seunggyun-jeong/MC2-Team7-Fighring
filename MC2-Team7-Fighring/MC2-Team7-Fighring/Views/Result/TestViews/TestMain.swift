@@ -61,7 +61,7 @@ struct TestMain: View {
                 
                 Text("상세내용 보러가기 􀆊")
                     .font(.footnote)
-                    .foregroundColor(<#T##color: Color?##Color?#>)
+                    .foregroundColor(.theme.teritary)
                 
                 Spacer()
             }
