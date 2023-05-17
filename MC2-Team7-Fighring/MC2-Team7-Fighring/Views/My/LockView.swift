@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LockView: View {
     @Environment(\.presentationMode) var presentationMode
+    var questions: FetchedResults<Question>.SubSequence
     
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct LockView: View {
                 }
                 .padding([.top, .bottom], 24)
                 
-                Text("아직 6일이 지나지 않았어요!")
+                Text("아직일이 지나지 않았어요!")
                     .fontWeight(.heavy)
                     .font(.system(size: 25))
                     .padding(.bottom, 16)
@@ -55,8 +56,8 @@ struct LockView: View {
     }
 }
 
-struct LockView_Previews: PreviewProvider {
-    static var previews: some View {
-        LockView()
-    }
-}
+//struct LockView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LockView()
+//    }
+//}

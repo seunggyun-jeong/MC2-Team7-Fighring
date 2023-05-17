@@ -14,16 +14,12 @@ struct MainView: View {
     
     var questions: FetchedResults<Question>
     
+    @State private var isFirstVisit = false
     @State private var selectedTab = 1
     @State private var tabs = [1, 2, 3, 4, 5, 6]
     
     var body: some View {
-        
-        
         NavigationStack {
-            
-    
-            
             VStack{
                 ZStack{
                     TabView (selection: $selectedTab){
@@ -55,14 +51,18 @@ struct MainView: View {
                     .tabViewStyle(PageTabViewStyle())
                 }
                 .onAppear{
-                    if UserDefaults.standard.bool(forKey: "setForUT") == true{
-                        // do nothing
-                    }else{
-                        settingUT(questions: questions)
-                        UserDefaults.standard.set(true, forKey: "setForUT")
+                    if !isFirstVisit {
+                        isFirstVisit.toggle()
+                        
+                        if UserDefaults.standard.bool(forKey: "setForUT") == true{
+                            // do nothing
+                        } else {
+                            settingUT(questions: questions)
+                            UserDefaults.standard.set(true, forKey: "setForUT")
+                        }
+                        setupAppearance()
+                        moveTab()
                     }
-                    setupAppearance()
-                    moveTab()
                 }
                 
             }
@@ -99,6 +99,21 @@ struct MainView: View {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 }
+
+
+// Custom Navigation View Back Gesture
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        navigationBar.isHidden = true
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+
 
 //struct MainView_Previews: PreviewProvider {
 //    static var previews: some View {
