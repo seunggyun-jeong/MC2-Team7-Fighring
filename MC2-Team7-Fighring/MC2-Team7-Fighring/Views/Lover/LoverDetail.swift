@@ -9,10 +9,7 @@ import SwiftUI
 
 struct LoverDetail: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
-    @State var shareLetter = ["너", "없", "이", "못", "살", "아"]
     @State var shareLetterClicked = 0
-    @State var loverName: String = "❤️"
-    @State var tip: String = "위의 답변을 가지고 서로의 생각을 조금 더 들어보는\n 시간을 갖는 것은 어떨까요?\n\n대화를 나누고 서로를 조금 더 이해해보아요!"
     @State var click = true
     @State var clicked = 0
     @Binding var currentIndex: Int
@@ -49,7 +46,7 @@ struct LoverDetail: View {
                 .bold()
                 .padding(EdgeInsets(top: 0, leading: 29, bottom: 19.98, trailing: 0))
 
-            Text("\(QuestionList.question[6 * currentIndex + shareLetterClicked])")
+            Text("\(QuestionList.detailQuestion[6 * currentIndex + shareLetterClicked])")
                 .frame(width: 302, height: 120, alignment: .leading)
                 .font(.system(size: 25))
                 .padding(EdgeInsets(top: 0, leading: 28, bottom: 20, trailing: 0))
