@@ -21,10 +21,13 @@ struct BackCardView: View {
                 .shadow(radius: 5)
             
             VStack {
+                Spacer()
+                
                 Text(TypeData.name[attachmentType.rawValue])
                     .font(.largeTitle)
                     .fontWeight(.heavy)
-                    .padding(.top, 32)
+                
+                Spacer()
                 
                 Image(TypeData.imageName[attachmentType.rawValue])
                     .resizable()
@@ -46,6 +49,7 @@ struct BackCardView: View {
                     .padding(.horizontal, 27)
                     .padding(.bottom, 32)
                     .multilineTextAlignment(.center)
+                    .allowsTightening(true)
                 
                 Spacer()
 
