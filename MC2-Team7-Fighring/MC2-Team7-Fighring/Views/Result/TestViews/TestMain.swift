@@ -59,10 +59,6 @@ struct TestMain: View {
                 }
                 .padding(.bottom, 29)
                 
-                Text("상세내용 보러가기 􀆊")
-                    .font(.footnote)
-                    .foregroundColor(.theme.teritary)
-                
                 Spacer()
             }
             .padding(.horizontal, 30)

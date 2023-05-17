@@ -42,7 +42,18 @@ struct FrontCardView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                .padding(.bottom, 33)
+                .padding(.bottom, 29)
+
+                HStack(alignment: .center, spacing: 3) {
+                    Text("상세내용 보러가기")
+                        .font(.footnote)
+                        .foregroundColor(.theme.teritary)
+                    Label("상세내용 보러가기", systemImage: "chevron.right")
+                        .font(.footnote)
+                        .foregroundColor(.theme.teritary)
+                        .labelStyle(.iconOnly)
+                }
+                .padding(.bottom, 22)
             }
         }
         .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
