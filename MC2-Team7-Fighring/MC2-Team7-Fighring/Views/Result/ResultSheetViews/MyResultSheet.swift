@@ -82,7 +82,9 @@ struct CustomGauge: View {
     var body: some View {
         Gauge(value: current, in: minValue...maxValue) {
             Text(gaugeName)
+                .frame(width: 40)
                 .foregroundColor(.accentColor)
+                .font(.system(size: 9))
         } currentValueLabel: {
             Text("\(Int(current))")
                 .foregroundColor(Color.accentColor)
