@@ -57,7 +57,11 @@ struct TestMain: View {
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                .padding(.bottom, 11)
+                .padding(.bottom, 29)
+                
+                Text("상세내용 보러가기 􀆊")
+                    .font(.footnote)
+                    .foregroundColor(<#T##color: Color?##Color?#>)
                 
                 Spacer()
             }
