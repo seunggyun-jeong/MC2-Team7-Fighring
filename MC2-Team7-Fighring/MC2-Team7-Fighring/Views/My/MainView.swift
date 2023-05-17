@@ -35,9 +35,10 @@ struct MainView: View {
                                     
                                     Button {
                                         DataController().resetCoreData(viewContext: managedObjectContext)
-                                        DataController().addData(context: managedObjectContext)
-                                       // settingUT(questions: questions)
+                                //        DataController().addData(context: managedObjectContext)
+                                        UserDefaults.standard.set(true, forKey: "_isFirstLaunch")
                                         UserDefaults.standard.set(false, forKey: "setForUT")
+
                                     } label: {
                                         Text("\(idx) Week")
                                             .foregroundColor(.theme.secondary)

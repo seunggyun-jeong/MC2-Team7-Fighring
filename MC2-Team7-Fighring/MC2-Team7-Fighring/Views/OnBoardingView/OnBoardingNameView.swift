@@ -52,7 +52,7 @@ struct OnBoardingNameView: View {
                 "저장하기"
             } action: {
                 DataController().addData(context: managedObjectContext)
-                
+                UserDefaults.standard.set(false, forKey: "_isFirstLaunch")
                 isFirstLaunch = false
                 UserDefaults.standard.set(loverName, forKey: "loverName")
                 UserDefaults.standard.set(0, forKey: "week")

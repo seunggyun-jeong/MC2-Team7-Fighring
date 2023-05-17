@@ -14,6 +14,8 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var share: FetchedResults<Sharing>
     @State var currentindex_copy: Int = ( Int(UserDefaults.standard.string(forKey: "week") ?? "-1" )! ) - 1
     @State private var selection: Tab = .my
+    
+    
     // 앱을 첫 실행할 때만 온보딩 화면 띄우기 위한 변수
     @AppStorage("_isFirstLaunch") var isFirst: Bool = true
     
