@@ -11,6 +11,7 @@
 		1146036F2A09F3EC00BCA7F2 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1146036E2A09F3EC00BCA7F2 /* Questions.swift */; };
 		114603732A0A918000BCA7F2 /* EnvelopeCarouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114603722A0A918000BCA7F2 /* EnvelopeCarouseView.swift */; };
 		11BD32182A0B2DFC00F2CDC0 /* Envelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */; };
+		11EBC0FE2A145F20006E6F43 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EBC0FD2A145F20006E6F43 /* HideKeyboard.swift */; };
 		3D221BD92A07B26C00501A18 /* MC2_Team7_FighringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */; };
 		3D221BDB2A07B26C00501A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D221BDA2A07B26C00501A18 /* ContentView.swift */; };
 		3D221BDD2A07B26D00501A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D221BDC2A07B26D00501A18 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		1146036E2A09F3EC00BCA7F2 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Questions.swift; path = "MC2-Team7-Fighring/Views/Lover/Questions.swift"; sourceTree = SOURCE_ROOT; };
 		114603722A0A918000BCA7F2 /* EnvelopeCarouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeCarouseView.swift; sourceTree = "<group>"; };
 		11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Envelope.swift; path = "MC2-Team7-Fighring/Model/Envelope.swift"; sourceTree = SOURCE_ROOT; };
+		11EBC0FD2A145F20006E6F43 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		3D221BD52A07B26C00501A18 /* MC2-Team7-Fighring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC2-Team7-Fighring.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D221BD82A07B26C00501A18 /* MC2_Team7_FighringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2_Team7_FighringApp.swift; sourceTree = "<group>"; };
 		3D221BDA2A07B26C00501A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				11BD32172A0B2DFC00F2CDC0 /* Envelope.swift */,
 				CDAE7E502A0963E800B1D2C3 /* Emotion.swift */,
 				3DB999152A0CBA8900BF254B /* Line.swift */,
+				11EBC0FD2A145F20006E6F43 /* HideKeyboard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11EBC0FE2A145F20006E6F43 /* HideKeyboard.swift in Sources */,
 				3D221BF12A07B5F600501A18 /* ResultHome.swift in Sources */,
 				CDAE7E452A08A50800B1D2C3 /* OnBoardingNameView.swift in Sources */,
 				1146036F2A09F3EC00BCA7F2 /* Questions.swift in Sources */,

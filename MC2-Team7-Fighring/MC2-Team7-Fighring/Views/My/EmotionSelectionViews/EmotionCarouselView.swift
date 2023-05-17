@@ -39,11 +39,11 @@ struct EmotionCarouselView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            draggingItem = snappedItem + value.translation.width / 100
+                            draggingItem = snappedItem + value.translation.width / 400
                         }
                         .onEnded { value in
                             withAnimation {
-                                draggingItem = snappedItem + value.predictedEndTranslation.width / 100
+                                draggingItem = snappedItem + value.predictedEndTranslation.width / 400
                                 draggingItem = round(draggingItem).remainder(dividingBy: Double(emotionStorage.items.count))
                                 snappedItem = draggingItem
                             }

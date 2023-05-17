@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+
 struct DailyTest: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
+    
     
     var questionData: FetchedResults<Question>.Element
     var userEmotion: Int
@@ -21,40 +23,41 @@ struct DailyTest: View {
     @State var clicked = 0
     @State var reason: String = ""
     @State var isShowModal: Bool = false
-    
+    @StateObject private var keyboardHandler = KeyboardHandler()
     
     var body: some View {
+        
         VStack {
             Spacer()
             
-            VStack(alignment: .leading) {
-                // 제목 및 감정
-                HStack(spacing: 0) {
-                    Text("Day \(Int(questionData.questionNum))")
-                        .font(.largeTitle)
-                        .fontWeight(.semibold)
-                        .padding(.trailing, 13)
-                    
-                    Button {
-                        isShowModal.toggle()
-                    } label: {
-                        Image(EmotionStore().emotions[userEmotion])
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 42)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    // 제목 및 감정
+                    HStack(spacing: 0) {
+                        Text("Day \(Int(questionData.questionNum))")
+                            .font(.largeTitle)
+                            .fontWeight(.semibold)
+                            .padding(.trailing, 13)
+                        
+                        Button {
+                            isShowModal.toggle()
+                        } label: {
+                            Image(EmotionStore().emotions[userEmotion])
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 42)
+                        }
+                        .sheet(isPresented: $isShowModal) {
+                            EmotionSelectView(questionData: questionData, hasDone: true)
+                                .presentationDetents([.height(500)])
+                                .padding(.top, 40)
+                                .presentationDragIndicator(.visible)
+                        }
+                        .disabled(!hasDone)
+                        
+                        Spacer()
                     }
-                    .sheet(isPresented: $isShowModal) {
-                        EmotionSelectView(questionData: questionData, hasDone: true)
-                            .presentationDetents([.height(500)])
-                            .padding(.top, 40)
-                            .presentationDragIndicator(.visible)
-                    }
-                    .disabled(!hasDone)
-                    
-                    Spacer()
-                }
-                .padding(.bottom, 42)
-                
+                    .padding(.bottom, 42)
                 // 질문
                 Text("\(QuestionList.question[Int(questionData.questionNum)-1])")
                     .font(.system(size: 24))
@@ -149,12 +152,12 @@ struct DailyTest: View {
                         }
                     }
                     .focused($isReasonFocused)
-            }
-            .frame(height: 124)
-            .padding(.bottom, 40)
+            }.onAppear (perform : UIApplication.shared.hideKeyboard)
+                .frame(height: 124)
+                .padding(.bottom, 40)
             
             Spacer()
-            
+        }
             NavigationLink {
                 MainView(questions: question)
             } label: {
@@ -168,6 +171,8 @@ struct DailyTest: View {
                     )
                     .font(.system(size: 17))
             }
+            .padding(.bottom, keyboardHandler.keyboardHeight == 0 ? 0 : keyboardHandler.keyboardHeight - 120)
+            .animation(.easeInOut(duration: 0.25), value: keyboardHandler.keyboardHeight)
             .disabled(reason.isEmpty || clicked == 0)
             .simultaneousGesture(TapGesture().onEnded {
                 // 저장하기
@@ -187,15 +192,7 @@ struct DailyTest: View {
         .ignoresSafeArea(.keyboard)
         .navigationBarItems(leading: LeadingBackBtnView(dismissDest: hasDone ? "36 days" : "나의 감정"))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onTapGesture {
-            self.endTextEditing()
-        }
-    }
-    
-    
-    // 빈 곳을 터치했을 때 키보드 내리기
-    func endTextEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        .toolbarBackground(Color.white, for: .navigationBar)
     }
 }
 
