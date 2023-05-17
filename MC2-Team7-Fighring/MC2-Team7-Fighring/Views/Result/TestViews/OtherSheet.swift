@@ -54,7 +54,7 @@ struct Type1: View {
     
     var body: some View {
         VStack {
-            Text("유형 이름")
+            Text(TypeData.name[attachmentType.rawValue])
                 .font(.title)
                 .foregroundColor(.secondary)
                 .bold()

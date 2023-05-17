@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LockedResult: View {
     
-    @State var isLocked: Bool
+    @Binding var isLocked: Bool
     @Binding var isConfirm: Bool
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.questionNum)]) var question: FetchedResults<Question>
@@ -101,6 +101,6 @@ struct LockedResult: View {
 
 struct lockedResult_Previews: PreviewProvider {
     static var previews: some View {
-        LockedResult(isLocked: true, isConfirm: .constant(true))
+        LockedResult(isLocked: .constant(true), isConfirm: .constant(true))
     }
 }

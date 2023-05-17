@@ -57,7 +57,7 @@ struct TestMain: View {
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                .padding(.bottom, 11)
+                .padding(.bottom, 29)
                 
                 Spacer()
             }
