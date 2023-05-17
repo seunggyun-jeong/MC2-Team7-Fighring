@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CompleteSixNotifyView: View {
     @Environment(\.presentationMode) var presentationMode
+    var idx:Int
     
     
     var body: some View {
@@ -27,7 +28,7 @@ struct CompleteSixNotifyView: View {
                 }
                 .padding([.top, .bottom], 24)
                 
-                Text("6일차 질문이 완료되었어요!")
+                Text("\(idx)일차 질문이 완료되었어요!")
                     .fontWeight(.heavy)
                     .font(.system(size: 25))
                     .padding(.bottom, 16)
@@ -52,11 +53,5 @@ struct CompleteSixNotifyView: View {
             Spacer()
         }
         .padding(.horizontal, 18)
-    }
-}
-
-struct CompleteSixNotifyView_Previews: PreviewProvider {
-    static var previews: some View {
-        CompleteSixNotifyView()
     }
 }

@@ -21,6 +21,7 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
+
                 ZStack{
                     TabView (selection: $selectedTab){
                         ForEach(tabs, id:\.self){ idx in
@@ -31,8 +32,18 @@ struct MainView: View {
                                         .bold()
                                         .foregroundColor(.theme.secondary)
                                     Spacer()
-                                    Text("\(idx) Week")
-                                        .foregroundColor(.theme.secondary)
+                                    
+                                    Button {
+                                        DataController().resetCoreData(viewContext: managedObjectContext)
+                                        DataController().addData(context: managedObjectContext)
+                                       // settingUT(questions: questions)
+                                        UserDefaults.standard.set(false, forKey: "setForUT")
+                                    } label: {
+                                        Text("\(idx) Week")
+                                            .foregroundColor(.theme.secondary)
+                                    }
+
+                                   
                                     
                                 }
                                 .padding(.top, 18)
@@ -70,6 +81,7 @@ struct MainView: View {
         .navigationBarBackButtonHidden(true)
     }
     
+    //UT용 셋팅
     func settingUT(questions: FetchedResults<Question> ){
         let UTnumbers = (0...29)
         for ut in UTnumbers{
