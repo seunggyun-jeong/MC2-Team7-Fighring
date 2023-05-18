@@ -38,7 +38,7 @@ struct MainView: View {
                                 //        DataController().addData(context: managedObjectContext)
                                         UserDefaults.standard.set(true, forKey: "_isFirstLaunch")
                                         UserDefaults.standard.set(false, forKey: "setForUT")
-
+                                        UserDefaults.standard.set(false, forKey: "isAllComplete")
                                     } label: {
                                         Text("\(idx) Week")
                                             .foregroundColor(.theme.secondary)
