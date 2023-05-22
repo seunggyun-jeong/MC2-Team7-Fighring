@@ -6,9 +6,8 @@
 >
 > **🩵 프로젝트명 : 36Days**
 
-```
 존 보울비의 애착 이론을 기반으로 탄생한 "성인 애착 유형 검사"를 하루에 하나씩 풀어가면서 자신의 애착유형과 상대방의 애착유형을 이해하고, 더욱 건강한 연애를 할 수 있도록 돕는 애플리케이션입니다.
-```
+
 
 <center>
 <img src="https://github.com/seunggyun-jeong/MC2-Team7-Fighring/assets/77708819/4fe6ee71-1abf-49cc-9e6b-789193e02516">
