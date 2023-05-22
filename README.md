@@ -36,12 +36,9 @@
 - URLScheme
 
 ## 👨‍👩‍👧‍👦 Cowork Tools
-<img src="https://camo.githubusercontent.com/7ab436ab25e4c27dfc2e2d9013daf26d66f023e946e63aaf2391c046acd3a594/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666c6174266c6f676f3d4e6f74696f6e266c6f676f436f6c6f723d7768697465">
-<img src="https://camo.githubusercontent.com/779ecf5e6059fd906fca2099015186945f91679f22da6bf05f37f52e69e86e8a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3138313731373f7374796c653d666c6174266c6f676f3d476974487562266c6f676f436f6c6f723d7768697465">
+<img src="https://camo.githubusercontent.com/7ab436ab25e4c27dfc2e2d9013daf26d66f023e946e63aaf2391c046acd3a594/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666c6174266c6f676f3d4e6f74696f6e266c6f676f436f6c6f723d7768697465"> <img src="https://camo.githubusercontent.com/779ecf5e6059fd906fca2099015186945f91679f22da6bf05f37f52e69e86e8a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3138313731373f7374796c653d666c6174266c6f676f3d476974487562266c6f676f436f6c6f723d7768697465">
 
-<img src="https://img.shields.io/badge/Sketch-F7B500?style=flat&logo=Sketch&logoColor=050038"/>
-<img src="https://img.shields.io/badge/Miro-F8D254?style=flat&logo=miro&logoColor=050038"/>
-<img src="https://img.shields.io/badge/diagrams.net-F08705?style=flat&logo=diagrams.net&logoColor=050038"/>
+<img src="https://img.shields.io/badge/Sketch-F7B500?style=flat&logo=Sketch&logoColor=050038"/> <img src="https://img.shields.io/badge/Miro-F8D254?style=flat&logo=miro&logoColor=050038"/> <img src="https://img.shields.io/badge/diagrams.net-F08705?style=flat&logo=diagrams.net&logoColor=050038"/>
 
 <br>
 
